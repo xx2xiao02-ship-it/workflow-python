@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>监控概览</h1>
+
+{% if schedule_status %}
+<div class="schedule-bar">
+    <span class="schedule-info">
+        ⏱ 定时调度: {{ schedule_status.mode }}
+        {% if schedule_status.next_run %}· 下次执行: {{ schedule_status.next_run }}{% endif %}
+    </span>
+</div>
+{% endif %}
+
+<div class="actions-top">
+    <button class="btn btn-primary" onclick="runFetch()">🔄 抓取全部</button>
+    <button class="btn btn-secondary" onclick="transcribeAll()">📝 获取全部文本</button>
+    <button class="btn btn-outline" onclick="exportCSV()">📥 导出 CSV</button>
+    <label style="margin-left:12px;font-size:13px;color:var(--text-secondary)">
+        Whisper:
+        <select id="whisper-model" onchange="changeModel()" style="padding:4px 8px;font-size:13px;margin-left:4px">
+            <option value="tiny">tiny</option>
+            <option value="base">base</option>
+            <option value="small" selected>small</option>
+            <option value="medium">medium</option>
+            <option value="large-v3">large-v3</option>
+        </select>
+    </label>
+    <span class="fetch-status" id="fetch-status"></span>
+</div>
+
+<div class="summary-grid">
+    <div class="summary-card">
+        <div class="summary-icon">👤</div>
+        <div class="summary-value">{{ summary_stats.total_creators }}</div>
+        <div class="summary-label">监控博主</div>
+    </div>
+    <div class="summary-card">
+        <div class="summary-icon">🎬</div>
+        <div class="summary-value">{{ summary_stats.total_videos | format_number }}</div>
+        <div class="summary-label">总视频数</div>
+    </div>
+    <div class="summary-card">
+        <div class="summary-icon">👍</div>
+        <div class="summary-value">{{ summary_stats.total_likes | format_number_cn }}</div>
+        <div class="summary-label">总点赞数</div>
+    </div>
+    <div class="summary-card summary-card-today">
+        <div class="summary-icon">🆕</div>
+        <div class="summary-value">{{ today_summary.today_videos | default(0) | int }}</div>
+        <div class="summary-label">今日新增视频</div>
+    </div>
+    <div class="summary-card summary-card-today">
+        <div class="summary-icon">🔥</div>
+        <div class="summary-value">{{ today_summary.today_likes | default(0) | int | format_number }}</div>
+        <div class="summary-label">今日新增点赞</div>
+    </div>
+    <div class="summary-card summary-card-today">
+        <div class="summary-icon">💬</div>
+        <div class="summary-value">{{ today_summary.today_comments | default(0) | int | format_number }}</div>
+        <div class="summary-label">今日新增评论</div>
+    </div>
+</div>
+
+{% if today_videos %}
+<div class="today-section">
+    <h2>📅 今日视频 <span class="today-count">{{ today_videos | length }} 条</span></h2>
+    <div class="video-grid">
+    {% for v in today_videos %}
+    <div class="video-card">
+        <img src="{{ v.cover_url }}" alt="" loading="lazy" onerror="this.style.display='none'">
+        <div class="video-info">
+            <div class="video-title" title="{{ v.title }}">
+                <a href="/video/{{ v.id }}" class="video-link">{{ v.title[:60] }}</a>
+                <a href="https://www.douyin.com/video/{{ v.vid }}" target="_blank" rel="noopener" class="video-ext-link" title="在抖音打开">🔗</a>
+            </div>
+            <div class="video-meta">
+                <span title="点赞">👍 {{ v.like_count | int | format_number }}</span>
+                <span title="评论">💬 {{ v.comment_count | int | format_number }}</span>
+                <span title="分享">↗ {{ v.share_count | int | format_number }}</span>
+            </div>
+            <div class="video-time">{{ v.create_time_str }} · {{ v.duration_str }}</div>
+            <div class="video-creator-name">{{ v.creator_name }}</div>
+            {% if v.transcript %}
+            <div class="video-transcript" title="{{ v.transcript }}">
+                <span class="transcript-icon">📝</span><span class="transcript-text">{{ v.transcript[:120] }}{% if v.transcript|length > 120 %}...{% endif %}</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<div class="stats-grid">
+    {% for c in creators %}
+    <div class="stat-card">
+        <div class="stat-card-header">
+            {% if c.avatar_url %}
+            <img class="avatar" src="{{ c.avatar_url }}" alt="{{ c.nickname or c.name }}">
+            {% endif %}
+            <div>
+                <h3>{{ c.name }}</h3>
+                {% if c.nickname and c.nickname != c.name %}
+                <span class="nickname">@{{ c.nickname }}</span>
+                {% endif %}
+            </div>
+            <div class="freshness-badge freshness-{{ _freshness_level(c.last_fetched_at) }}">
+                {{ _freshness_text(c.last_fetched_at) }}
+            </div>
+        </div>
+        {% if c.follower_count %}
+        <div class="stat-row"><span>粉丝</span><strong>{{ c.follower_count | int | format_number }}</strong></div>
+        {% endif %}
+        {% if c.following_count %}
+        <div class="stat-row"><span>关注</span><strong>{{ c.following_count | int | format_number }}</strong></div>
+        {% endif %}
+        {% if c.total_likes %}
+        <div class="stat-row"><span>获赞</span><strong>{{ c.total_likes | int | format_number }}</strong></div>
+        {% endif %}
+        {% if c.total_videos %}
+        <div class="stat-row"><span>视频数</span><strong>{{ c.total_videos }}</strong></div>
+        {% endif %}
+        {% if c.max_likes %}
+        <div class="stat-row"><span>最高点赞</span><strong>{{ c.max_likes | int | format_number }}</strong></div>
+        <div class="stat-row"><span>最高评论</span><strong>{{ c.max_comments | int | format_number }}</strong></div>
+        {% endif %}
+        {% if c.bio %}
+        <div class="stat-row bio-row"><span>简介</span><span class="bio-text">{{ c.bio }}</span></div>
+        {% endif %}
+        <div class="stat-row"><span>最后更新</span><strong>{{ c.last_fetched_at or '从未' }}</strong></div>
+        <a href="/trends/{{ c.id }}" class="btn btn-outline btn-sm">趋势图</a>
+        <a href="/videos?creator_id={{ c.id }}" class="btn btn-outline btn-sm">视频列表</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% if creators | length > 1 %}
+<div style="text-align:center;margin-top:var(--spacing-lg)">
+    <a href="/trends/compare" class="btn btn-primary">📊 多博主趋势对比</a>
+</div>
+{% endif %}
+
+<script>
+async function runFetch() {
+    var el = document.getElementById('fetch-status');
+    el.textContent = '⏳ 正在抓取...';
+    try {
+        var resp = await fetch('/api/run', { method: 'POST' });
+        var data = await resp.json();
+        if (data.error) {
+            showToast(data.error, 'error');
+            el.textContent = '抓取失败';
+        } else {
+            showToast('抓取完成 — 共 ' + data.total + ' 条视频入库', 'success');
+            el.textContent = '完成 — 共 ' + data.total + ' 条视频入库';
+            setTimeout(function() { location.reload(); }, 2000);
+        }
+    } catch(e) {
+        showToast('抓取失败: ' + e, 'error');
+        el.textContent = '失败: ' + e;
+    }
+}
+
+async function transcribeAll() {
+    var el = document.getElementById('fetch-status');
+    el.textContent = '⏳ 正在转录，请耐心等待...';
+    showToast('开始批量转录，请耐心等待...', 'info');
+    try {
+        var resp = await fetch('/api/transcribe-all', { method: 'POST' });
+        var data = await resp.json();
+        if (data.error) {
+            showToast(data.error, 'error');
+            el.textContent = '失败: ' + data.error;
+        } else {
+            var msg = '完成 — ' + data.ok + ' 条转录成功';
+            if (data.error) msg += ', ' + data.error + ' 条失败';
+            if (data.skipped) msg += ', ' + data.skipped + ' 条跳过';
+            showToast(msg, 'success');
+            el.textContent = msg;
+            setTimeout(function() { location.reload(); }, 2000);
+        }
+    } catch(e) {
+        showToast('转录失败: ' + e, 'error');
+        el.textContent = '失败: ' + e;
+    }
+}
+
+async function exportCSV() {
+    try {
+        var el = document.getElementById('fetch-status');
+        el.textContent = '正在导出...';
+        var resp = await fetch('/api/export');
+        if (!resp.ok) {
+            var err = await resp.json();
+            showToast(err.error || '导出失败', 'error');
+            el.textContent = '';
+            return;
+        }
+        var blob = await resp.blob();
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'douyin_export_' + new Date().toISOString().slice(0,10) + '.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('导出成功', 'success');
+        el.textContent = '';
+    } catch(e) {
+        showToast('导出失败: ' + e, 'error');
+    }
+}
+
+(async function loadModel() {
+    try {
+        var resp = await fetch('/api/transcriber-config');
+        var cfg = await resp.json();
+        document.getElementById('whisper-model').value = cfg.model || 'small';
+    } catch(e) {}
+})();
+
+async function changeModel() {
+    var sel = document.getElementById('whisper-model');
+    try {
+        await fetch('/api/transcriber-config', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ model: sel.value })
+        });
+        showToast('模型已切换为 ' + sel.value + '，下次转录生效', 'success');
+    } catch(e) {
+        showToast('保存失败: ' + e, 'error');
+    }
+}
+</script>
+{% endblock %}

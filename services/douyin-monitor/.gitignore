@@ -1,0 +1,34 @@
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# Playwright 浏览器会话（含 Cookie，切勿提交）
+douyin_session_1/
+douyin_session_2/
+douyin_session/
+douyin_web_session/
+douyin_chrome_session/
+$null
+
+# SQLite 数据库文件
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# CSV 导出
+exports/
+
+# IDE
+.vscode/
+.idea/
+
+# 环境变量
+.env
+
+# 配置文件（含博主 UID 等隐私，推示例模板）
+config.yaml
+
+# Python 运行时缓存
+Python/
