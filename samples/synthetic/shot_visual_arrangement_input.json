@@ -1,0 +1,39 @@
+{
+  "Code_list": [
+    {
+      "clip_duration": [8],
+      "int_duration": [8],
+      "shots": [
+        {
+          "clip_duration": 8,
+          "clip_role": "状态建立",
+          "source_text": "AI正在改变工作方式",
+          "story_beat": "变化已经被提出"
+        }
+      ],
+      "timelines": [{"start": 0, "end": 8000000}]
+    },
+    {
+      "clip_duration": [10],
+      "int_duration": [10],
+      "shots": [
+        {
+          "clip_duration": 10,
+          "clip_role": "结果落点",
+          "source_text": "人要学会与AI共生",
+          "story_beat": "观点落到主动成长"
+        }
+      ],
+      "timelines": [{"start": 8000000, "end": 18000000}]
+    }
+  ],
+  "ref_image": [
+    "https://example.invalid/synthetic-ref-a.png",
+    "https://example.invalid/synthetic-ref-b.png"
+  ],
+  "segments": [
+    "第一段 synthetic 工作变化",
+    "第二段 synthetic 主动成长"
+  ],
+  "debug": false
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "empty_arrays",
+    "category": "空数组",
+    "params": {"plan_out_list": [], "ref_image": [], "clip_duration": []}
+  },
+  {
+    "name": "missing_fields",
+    "category": "字段缺失",
+    "params": {}
+  },
+  {
+    "name": "json_string_wrappers",
+    "category": "JSON 字符串输入",
+    "params": {
+      "plan_out_list": "[{\"plans\":[{\"shot_index\":0,\"duration\":5,\"stages\":[{\"time_range\":\"0-5s\",\"action\":\"保持\",\"camera_motion\":\"固定机位\"}]}]}]",
+      "ref_image": "[{\"ref_image\":[\"synthetic://json-frame\"]}]",
+      "clip_duration": "[{\"clip_duration\":[5]}]"
+    }
+  },
+  {
+    "name": "invalid_timeline_and_missing_stage_fields",
+    "category": "无效时间线和字段缺失",
+    "params": {
+      "plan_out_list": [{"plans":[{"shot_index":0,"duration":6,"stages":[{"time_range":"5-1s","action":"有效动作"},{"camera_motion":"固定机位"}]}]}],
+      "ref_image": [{"ref_image":["synthetic://invalid-timeline"]}],
+      "clip_duration": [{"clip_duration":[6]}]
+    }
+  },
+  {
+    "name": "count_mismatch",
+    "category": "数组数量不一致",
+    "params": {
+      "plan_out_list": [{"plans":[{"shot_index":0,"duration":5,"stages":[{"action":"a"}]},{"shot_index":1,"duration":5,"stages":[{"action":"b"}]}]}],
+      "ref_image": [{"ref_image":["synthetic://only-one"]}],
+      "clip_duration": [{"clip_duration":[5]}]
+    }
+  },
+  {
+    "name": "invalid_indexes_and_duration_bounds",
+    "category": "异常索引和时长边界",
+    "params": {
+      "plan_out_list": [{"plans":[{"shot_index":9,"duration":0,"stages":[{"action":"zero"}]},{"shot_index":0,"duration":20,"stages":[{"action":"large"}]}]}],
+      "ref_image": [{"ref_image":["synthetic://a","synthetic://b"]}],
+      "clip_duration": [{"clip_duration":[2,3]}]
+    }
+  },
+  {
+    "name": "nested_output_wrapper",
+    "category": "嵌套输出兼容",
+    "params": {
+      "plan_out_list": [{"output":{"plans":[{"shot_index":0,"duration":5,"stages":[{"action":"nested","camera_motion":"固定机位"}]}]}}],
+      "ref_image": [{"ref_image":[{"url":"synthetic://object-frame"}]}],
+      "clip_duration": [{"clip_duration":[5]}]
+    }
+  },
+  {
+    "name": "exceptional_top_level_inputs",
+    "category": "异常输入",
+    "params": "not-json"
+  }
+]

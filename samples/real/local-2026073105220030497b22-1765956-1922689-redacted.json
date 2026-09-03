@@ -1,0 +1,18 @@
+{
+  "source": "local CapCut Mate structural acceptance",
+  "nodes": ["1765956", "1922689"],
+  "draft_id": "2026073105220030497b22",
+  "effect_infos_count": 17,
+  "add_effects_response": {"code": 0, "effect_ids_count": 17, "segment_ids_count": 17, "track_id_present": true},
+  "final_draft_content": {
+    "track_count": 5,
+    "video_segment_count": 17,
+    "effect_track_count": 2,
+    "effect_segment_count": 34,
+    "effect_track_segment_counts": [17, 17],
+    "keyframe_count": 34,
+    "first_effect_ranges": [[0, 6906732], [6906732, 13613268]],
+    "last_effect_ranges": [[100656000, 109416000], [109416000, 111672000]]
+  },
+  "redaction": ["dynamic_ids", "material_ids", "file_urls"]
+}

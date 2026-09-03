@@ -1,0 +1,10 @@
+{
+  "node_id": "181639",
+  "node_name": "图生视频提示词导演",
+  "container_node_id": "195692",
+  "source_origin": "Workflow-Daily_Update_Te-draft-1256.zip 内 YAML 配置",
+  "source_config_copy": "audit/source/181639_coze_config.md",
+  "external_model_calls_executed": false,
+  "credentials_preserved": false,
+  "code_level_equivalence": "not_applicable_without_model_source_and_same_model_response"
+}

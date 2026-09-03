@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 ProjectManifest",
+  "type": "object",
+  "required": ["project_id", "run_id", "director", "assets", "edit", "evidence_level", "mapping_notes", "field_mappings"],
+  "properties": {
+    "project_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "director": {"$ref": "director_locked_manifest.schema.json"},
+    "assets": {"$ref": "asset_registry.schema.json"},
+    "edit": {"$ref": "edit_manifest.schema.json"},
+    "evidence_level": {"type": "string", "minLength": 1},
+    "mapping_notes": {"type": "array", "items": {"type": "string"}},
+    "field_mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ref_node", "source_path", "target_path", "source_type", "target_type", "cardinality", "order_policy", "timeline_unit", "evidence_status"],
+        "properties": {
+          "ref_node": {"type": "string", "minLength": 1},
+          "source_path": {"type": "string", "minLength": 1},
+          "target_path": {"type": "string", "minLength": 1},
+          "source_type": {"type": "string", "minLength": 1},
+          "target_type": {"type": "string", "minLength": 1},
+          "cardinality": {"type": "string", "minLength": 1},
+          "order_policy": {"type": "string", "minLength": 1},
+          "timeline_unit": {"type": "string", "minLength": 1},
+          "evidence_status": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

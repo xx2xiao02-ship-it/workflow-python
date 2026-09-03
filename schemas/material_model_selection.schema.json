@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/material-model-selection.schema.json",
+  "title": "1256 素材生成模型选择",
+  "type": "object",
+  "properties": {
+    "image_model": {"enum": ["auto", "image2"], "default": "auto"},
+    "video_model": {
+      "enum": ["auto", "seedance_1_5_pro", "seedance_1_0_pro"],
+      "default": "auto",
+      "description": "auto/1.5 优先使用 Seedance 1.5 Pro；额度、权限或接入点不可用时自动降级到 1.0 Pro。"
+    }
+  },
+  "additionalProperties": false
+}

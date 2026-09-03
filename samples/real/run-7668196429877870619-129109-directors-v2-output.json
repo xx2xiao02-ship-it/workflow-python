@@ -1,0 +1,92 @@
+{
+  "director_plan": {
+    "arc": ["hook", "turn", "proof", "why", "wrong", "method", "end", "act", "move"],
+    "core": "AI不是替代人，而是重排职业分工与能力门槛",
+    "director_type": "view_dir",
+    "emo": "先焦虑，再反转为清醒，最后落到行动感",
+    "expression_domains": ["work", "mindset", "system"],
+    "goal": "让观众从怕失业转向学会用AI",
+    "open": "先抛社会换血感，再反转AI恐惧",
+    "rule": "每段只推进一个认知拐点",
+    "spine": "恐惧替代→反转认知→举例证明→重设标准→给出共生方法",
+    "tone": "反常识、强共鸣",
+    "variation_focus": ["viewpoint", "density", "rhythm"]
+  },
+  "ok": true,
+  "segment_beats": [
+    {
+      "beats": [{"expression_need": "emotion", "relation": "new", "route_candidates": ["scene", "host"]}],
+      "rhythm": "hook",
+      "segment_goal": "建立焦虑入口",
+      "segment_index": 0,
+      "segment_text": "你有没有发现？我们脚下的社会，正在偷偷完成一次大换血。\n前阵子还在说 AI 是噱头，转头文案、设计、剪辑、客服，大半岗位都能被 AI 接手。无数人陷入焦虑：我的饭碗，还保得住吗？"
+    },
+    {
+      "beats": [{"expression_need": "contrast", "relation": "turn", "route_candidates": ["host", "logic"]}],
+      "rhythm": "turn",
+      "segment_goal": "反转AI恐惧",
+      "segment_index": 1,
+      "segment_text": "\n\n但我想说：你根本不用怕 AI 取代你，真正该怕的，是别人用 AI，跑赢了你。\nAI 从来不是社会的对立面，它是新社会的 “水电煤”—— 就像当年的互联网，没有消灭职业，而是重塑了所有职业。"
+    },
+    {
+      "beats": [{"expression_need": "reality", "relation": "confirm", "route_candidates": ["scene"]}],
+      "rhythm": "proof",
+      "segment_goal": "证明新岗位",
+      "segment_index": 2,
+      "segment_text": "\n\n你看现在的新职业：AI 提示工程师、数字人运营师、AI 训练师，放在五年前根本没人听过。\n你再看当下的创业者：一个人就是一支队伍，AI 写方案、做海报、剪视频、回消息，人只负责定方向、做决策、注入人情味。个体的能量被放大十倍百倍，这就是 AI 给社会带来的最直观的改变。"
+    },
+    {
+      "beats": [{"expression_need": "contrast", "relation": "why", "route_candidates": ["scene", "symbol"]}],
+      "rhythm": "load",
+      "segment_goal": "重设竞争标准",
+      "segment_index": 3,
+      "segment_text": "\n\n以前的社会，拼学历、拼资历、拼谁熬的夜更多；\n新的时代，拼什么？拼你会不会精准提问、会不会审美把关、会不会把 AI 当副手，把人的创造力拉到最大。"
+    },
+    {
+      "beats": [{"expression_need": "conclusion", "relation": "wrong", "route_candidates": ["host"]}],
+      "rhythm": "wrong",
+      "segment_goal": "强调人类优势",
+      "segment_index": 4,
+      "segment_text": "\n算法算不出共情，代码写不出温度，标准化的劳动会被替代，但人的创意、判断和同理心，永远是稀缺品。\n\n别站在原地恐慌了。AI 不会淘汰任何人，只会淘汰拒绝成长的人。"
+    },
+    {
+      "beats": [{"expression_need": "contrast", "relation": "add", "route_candidates": ["host"]}],
+      "rhythm": "fact",
+      "segment_goal": "拉开时代分层",
+      "segment_index": 5,
+      "segment_text": "\n这是最好的时代：普通人靠一套 AI 工具，就能撬动以前想都不敢想的机会；\n这也是最残酷的时代：原地踏步的人，会被时代甩得悄无声息。"
+    },
+    {
+      "beats": [{"expression_need": "mechanism", "relation": "why", "route_candidates": ["symbol"]}],
+      "rhythm": "why",
+      "segment_goal": "解释技术本质",
+      "segment_index": 6,
+      "segment_text": "\n\n技术从来没有善恶，驾驭技术的人，才定义了新社会的模样。它打破了旧的阶层壁垒，也竖起了新的能力标尺。"
+    },
+    {
+      "beats": [{"expression_need": "conclusion", "relation": "act", "route_candidates": ["host"]}],
+      "rhythm": "act",
+      "segment_goal": "给出共生路径",
+      "segment_index": 7,
+      "segment_text": "\n与其焦虑被替代，不如主动去共生。毕竟，能在 AI 时代站稳脚跟的，永远是会用工具、有独立思考的人。"
+    },
+    {
+      "beats": [{"expression_need": "emotion", "relation": "end", "route_candidates": ["host"]}],
+      "rhythm": "end",
+      "segment_goal": "抛出互动收束",
+      "segment_index": 8,
+      "segment_text": "\n\n你的工作，被 AI 改变了多少？"
+    }
+  ],
+  "segments": [
+    "你有没有发现？我们脚下的社会，正在偷偷完成一次大换血。\n前阵子还在说 AI 是噱头，转头文案、设计、剪辑、客服，大半岗位都能被 AI 接手。无数人陷入焦虑：我的饭碗，还保得住吗？",
+    "\n\n但我想说：你根本不用怕 AI 取代你，真正该怕的，是别人用 AI，跑赢了你。\nAI 从来不是社会的对立面，它是新社会的 “水电煤”—— 就像当年的互联网，没有消灭职业，而是重塑了所有职业。",
+    "\n\n你看现在的新职业：AI 提示工程师、数字人运营师、AI 训练师，放在五年前根本没人听过。\n你再看当下的创业者：一个人就是一支队伍，AI 写方案、做海报、剪视频、回消息，人只负责定方向、做决策、注入人情味。个体的能量被放大十倍百倍，这就是 AI 给社会带来的最直观的改变。",
+    "\n\n以前的社会，拼学历、拼资历、拼谁熬的夜更多；\n新的时代，拼什么？拼你会不会精准提问、会不会审美把关、会不会把 AI 当副手，把人的创造力拉到最大。",
+    "\n算法算不出共情，代码写不出温度，标准化的劳动会被替代，但人的创意、判断和同理心，永远是稀缺品。\n\n别站在原地恐慌了。AI 不会淘汰任何人，只会淘汰拒绝成长的人。",
+    "\n这是最好的时代：普通人靠一套 AI 工具，就能撬动以前想都不敢想的机会；\n这也是最残酷的时代：原地踏步的人，会被时代甩得悄无声息。",
+    "\n\n技术从来没有善恶，驾驭技术的人，才定义了新社会的模样。它打破了旧的阶层壁垒，也竖起了新的能力标尺。",
+    "\n与其焦虑被替代，不如主动去共生。毕竟，能在 AI 时代站稳脚跟的，永远是会用工具、有独立思考的人。",
+    "\n\n你的工作，被 AI 改变了多少？"
+  ]
+}

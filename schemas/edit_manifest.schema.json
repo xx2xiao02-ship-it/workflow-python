@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 EditManifest",
+  "type": "object",
+  "required": ["project_id", "run_id", "source_plan_version", "source_asset_version", "edit_version", "bindings", "tracks", "draft_url", "local_draft_path", "status", "validation"],
+  "properties": {
+    "project_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "source_plan_version": {"type": "string", "minLength": 1},
+    "source_asset_version": {"type": "string", "minLength": 1},
+    "edit_version": {"type": "string", "minLength": 1},
+    "bindings": {"type": "array", "items": {"$ref": "#/$defs/binding"}},
+    "tracks": {"type": "array", "items": {"type": "object"}},
+    "draft_url": {"type": "string"},
+    "local_draft_path": {"type": "string"},
+    "status": {"enum": ["EDIT_PLAN_READY", "COMPILING", "DRAFT_WRITTEN", "DRAFT_STRUCTURALLY_VALID", "DRAFT_VALIDATED", "EDIT_FAILED", "EDIT_MAPPING_ONLY"]},
+    "validation": {"type": "object"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "time_window": {
+      "type": "object",
+      "required": ["start_us", "end_us", "duration_us"],
+      "properties": {
+        "start_us": {"type": "integer", "minimum": 0},
+        "end_us": {"type": "integer", "minimum": 1},
+        "duration_us": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false,
+      "description": "duration_us must equal end_us - start_us"
+    },
+    "binding": {
+      "type": "object",
+      "required": ["shot_id", "requirement_id", "asset_id", "track_role", "track_id", "segment_id", "planned_timeline", "asset_duration_us", "edit_timeline", "fit_policy", "status", "metadata"],
+      "properties": {
+        "shot_id": {"type": "string", "minLength": 1},
+        "requirement_id": {"type": "string", "minLength": 1},
+        "asset_id": {"type": "string", "minLength": 1},
+        "track_role": {"type": "string", "minLength": 1},
+        "track_id": {"type": "string"},
+        "segment_id": {"type": "string"},
+        "planned_timeline": {"$ref": "#/$defs/time_window"},
+        "asset_duration_us": {"type": ["integer", "null"], "minimum": 0},
+        "edit_timeline": {"anyOf": [{"$ref": "#/$defs/time_window"}, {"type": "null"}]},
+        "fit_policy": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "metadata": {"type": "object"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

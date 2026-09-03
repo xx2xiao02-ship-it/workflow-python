@@ -1,0 +1,18 @@
+{
+  "video_prompt": [
+    "synthetic prompt 1",
+    "synthetic prompt 2",
+    "synthetic prompt 3"
+  ],
+  "int_duration": [4, 7, 9],
+  "ref_image_f": [
+    "https://synthetic.example/frame-1.png",
+    "https://synthetic.example/frame-2.png",
+    "https://synthetic.example/frame-3.png"
+  ],
+  "ref_image_e": [
+    "",
+    "https://synthetic.example/end-2.png",
+    ""
+  ]
+}

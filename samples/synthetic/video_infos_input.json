@@ -1,0 +1,16 @@
+{
+  "synthetic": true,
+  "video_urls": [
+    "synthetic://video/1.mp4",
+    "synthetic://video/2.mp4",
+    "synthetic://video/3.mp4"
+  ],
+  "timelines": [
+    {"start": 0, "end": 4000000},
+    {"start": 4000000, "end": 8500000},
+    {"start": 8500000, "end": 12000000}
+  ],
+  "transition": "漫画撕纸",
+  "transition_duration": 1000000,
+  "volume": 0
+}

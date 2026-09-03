@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/add-keyframes.schema.json",
+  "title": "添加关键帧（节点115137）输入输出契约",
+  "description": "写入节点的 Coze 输出只有 draft_url；keyframes 是 JSON 字符串，offset 按原服务使用微秒。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "draft_url": {"type": "string"},
+        "keyframes": {"type": "string"}
+      },
+      "required": ["draft_url", "keyframes"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {"draft_url": {"type": "string"}},
+      "required": ["draft_url"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

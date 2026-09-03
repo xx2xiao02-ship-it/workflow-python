@@ -1,0 +1,12 @@
+{
+  "draft_url": "draft://synthetic-digital-human-result",
+  "segment_ids": ["segment-host-0", "segment-host-1", "segment-host-2"],
+  "segment_infos": [
+    {"end": 4000000, "id": "segment-host-0", "start": 0},
+    {"end": 8500000, "id": "segment-host-1", "start": 4000000},
+    {"end": 12000000, "id": "segment-host-2", "start": 8500000}
+  ],
+  "track_id": "track-synthetic-digital-human",
+  "video_ids": ["video-host-0", "video-host-1", "video-host-2"]
+}
+

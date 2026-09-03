@@ -1,0 +1,16 @@
+{
+  "node_id": "1962357",
+  "name": "添加关键帧",
+  "kind": "capcut-mate plugin interface",
+  "api": "add_keyframes",
+  "upstream": {"node_id": "1904923", "field": "keyframes_infos"},
+  "downstream": {"node_id": "167309", "field": "draft_url"},
+  "source_readonly": ["audit/source/1962357_coze_config.md", "audit/source/add_keyframes_capcut_mate_original.py"],
+  "implementation": "src/workflow_1256/add_keyframes_second.py",
+  "schema": "schemas/add_keyframes_second.schema.json",
+  "adapter": "audit/coze_adapter_add_keyframes_second.py",
+  "comparison": "audit/equivalence_add_keyframes_second.py",
+  "tests": ["tests/test_add_keyframes_second.py"],
+  "real_evidence": ["samples/real/run-7668196429877870619-174651-aigc-animation-real-values-redacted.json"],
+  "status": "code_level_equivalent_passed; local_17_segment_write_passed; public_upload_pending"
+}

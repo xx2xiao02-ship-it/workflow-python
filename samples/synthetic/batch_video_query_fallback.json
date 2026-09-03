@@ -1,0 +1,16 @@
+{
+  "synthetic": true,
+  "source": "原始 YAML video_query settingOnError.dataOnErr",
+  "video_query_output": {
+    "public_video_url": "",
+    "status": "",
+    "success": false,
+    "tip": "",
+    "file_size_mb": 0,
+    "msg": ""
+  },
+  "outer_projection": {
+    "public_video_url_list": [""]
+  },
+  "note": "该样本验证已登记的空 URL 投影，不代表已取得真实 Coze 失败批次执行记录。"
+}

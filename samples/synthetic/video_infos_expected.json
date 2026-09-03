@@ -1,0 +1,3 @@
+{
+  "infos": "[{\"video_url\": \"synthetic://video/1.mp4\", \"start\": 0, \"end\": 4000000, \"duration\": 4000000, \"transition\": \"漫画撕纸\", \"transition_duration\": 1000000, \"volume\": 0}, {\"video_url\": \"synthetic://video/2.mp4\", \"start\": 4000000, \"end\": 8500000, \"duration\": 4500000, \"transition\": \"漫画撕纸\", \"transition_duration\": 1000000, \"volume\": 0}, {\"video_url\": \"synthetic://video/3.mp4\", \"start\": 8500000, \"end\": 12000000, \"duration\": 3500000, \"transition\": \"漫画撕纸\", \"transition_duration\": 1000000, \"volume\": 0}]"
+}

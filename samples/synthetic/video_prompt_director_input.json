@@ -1,0 +1,18 @@
+{
+  "items": [
+    {"visual_core": "建立AI协作场景", "visual_story": "人物与电脑保持连续动作"},
+    {"visual_core": "收束观点", "visual_story": "人物停在稳定姿态"}
+  ],
+  "motion_seed": [
+    {"motion_seed": ["动作一", "动作二"]},
+    {"motion_seed": ["动作三"]}
+  ],
+  "ref_image": [
+    {"ref_image": ["synthetic://frame/1", "synthetic://frame/2"]},
+    {"ref_image": ["synthetic://frame/3"]}
+  ],
+  "clip_duration": [
+    {"clip_duration": [5.0, 4.0]},
+    {"clip_duration": [3.0]}
+  ]
+}

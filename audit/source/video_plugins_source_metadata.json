@@ -1,0 +1,24 @@
+{
+  "source_policy": {
+    "original_attachments_read": true,
+    "original_credentials_saved": false,
+    "external_requests_executed": false,
+    "tos_operations_executed": false
+  },
+  "video_generate": {
+    "workflow_node_id": "139653",
+    "workflow_node_name": "video_generate",
+    "attachment_sha256": "5574762e3344befb5bcba79056e7e8f027c2d0a49737ce503a21be65d54ea68c",
+    "sanitized_copy": "audit/source/video_generate_attachment_sanitized.py",
+    "sanitized_copy_sha256": "FA1B6A7B491208F7FE4711397A77070F825B4CEB2FB9A803EB6B94C97652A102",
+    "workflow_role": "创建 Seedance 视频任务并返回 task_id"
+  },
+  "video_query": {
+    "workflow_node_id": "106157",
+    "workflow_node_name": "video_query",
+    "attachment_sha256": "495b84b9e875c30e5f5a24d8816790a31a6404458969d79a104e3aa114694d16",
+    "sanitized_copy": "audit/source/video_query_attachment_sanitized.py",
+    "sanitized_copy_sha256": "DF582FCEC248865C098778AB8B4CFD5FBAB889B5BE81F1048FE6BC4B18B02BF3",
+    "workflow_role": "轮询任务状态、下载结果并返回 public_video_url"
+  }
+}

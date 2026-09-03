@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workflow-1256-python"
+version = "0.1.0"
+description = "逐节点 Python 化：1256 工作流的 TTS-STT 字幕与镜头坑位链路"
+requires-python = ">=3.10"
+dependencies = [
+    "Pillow>=11.0",
+]
+
+[project.optional-dependencies]
+capcut-stt = [
+    "requests>=2.25.0",
+    "capcut-tts-api @ git+https://github.com/K07VN/capcut-tts-api.git@main",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["archive", "tmp", "outputs", ".pytest_tmp*"]

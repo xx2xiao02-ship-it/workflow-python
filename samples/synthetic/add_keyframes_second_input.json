@@ -1,0 +1,4 @@
+{
+  "draft_url": "http://synthetic.local/openapi/capcut-mate/v1/get_draft?draft_id=synthetic-1962357",
+  "keyframes": "[{\"segment_id\":\"second-seg-a\",\"property\":\"UNIFORM_SCALE\",\"offset\":0,\"value\":1.0},{\"segment_id\":\"second-seg-a\",\"property\":\"UNIFORM_SCALE\",\"offset\":6906732,\"value\":1.15},{\"segment_id\":\"second-seg-b\",\"property\":\"UNIFORM_SCALE\",\"offset\":0,\"value\":1.0},{\"segment_id\":\"second-seg-b\",\"property\":\"UNIFORM_SCALE\",\"offset\":6706536,\"value\":1.15}]"
+}

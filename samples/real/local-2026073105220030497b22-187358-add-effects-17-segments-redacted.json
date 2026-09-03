@@ -1,0 +1,18 @@
+{
+  "source": "local CapCut Mate structural acceptance",
+  "node_id": "187358",
+  "draft_id": "2026073105220030497b22",
+  "draft_url": "http://127.0.0.1:30000/openapi/capcut-mate/v1/get_draft?draft_id=2026073105220030497b22",
+  "input_effect_count": 17,
+  "response": {"code": 0, "effect_ids_count": 17, "segment_ids_count": 17, "track_id_present": true},
+  "draft_content": {
+    "track_count": 4,
+    "video_segment_count": 17,
+    "effect_track_count": 1,
+    "effect_segment_count": 17,
+    "keyframe_count": 34,
+    "first_effect_range": [0, 6906732],
+    "last_effect_range": [109416000, 111672000]
+  },
+  "redaction": ["dynamic_ids", "material_ids", "file_urls"]
+}

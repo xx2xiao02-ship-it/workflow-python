@@ -1,0 +1,7 @@
+[
+  {"name":"empty_segments","category":"boundary","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[]}},
+  {"name":"json_string_input","category":"compatibility","params":"{\"ctype\":\"UNIFORM_SCALE\",\"offsets\":\"0|100\",\"values\":\"1|1.15\",\"segment_infos\":[{\"id\":\"json-second\",\"start\":0,\"end\":1000000}]}"},
+  {"name":"missing_required_field","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15"}},
+  {"name":"missing_segment_field","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[{"id":"bad","start":0}]}},
+  {"name":"invalid_timeline_arithmetic","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[{"id":"bad","start":"bad","end":100}]}}
+]

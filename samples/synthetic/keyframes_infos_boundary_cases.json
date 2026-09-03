@@ -1,0 +1,14 @@
+[
+  {"name":"empty_segments","category":"boundary","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[]}},
+  {"name":"empty_strings_raise","category":"boundary","params":{"ctype":"UNIFORM_SCALE","offsets":"","values":"","segment_infos":[]}},
+  {"name":"mismatched_offsets_values","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|50|100","values":"1|1.15","segment_infos":[]}},
+  {"name":"json_string_input","category":"compatibility","params":"{\"ctype\":\"UNIFORM_SCALE\",\"offsets\":\"0|100\",\"values\":\"1|1.15\",\"segment_infos\":[{\"id\":\"json-seg\",\"start\":0,\"end\":1000000}]}"},
+  {"name":"nested_input_wrapper","category":"compatibility","params":{"input":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[{"id":"nested-seg","start":100,"end":3100}]}}},
+  {"name":"params_input_wrapper","category":"compatibility","params":{"params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[{"id":"params-seg","start":0,"end":3}]}}},
+  {"name":"missing_required_field","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15"}},
+  {"name":"missing_segment_field","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[{"id":"bad-seg","start":0}]}},
+  {"name":"invalid_timeline_arithmetic","category":"exceptional input","params":{"ctype":"UNIFORM_SCALE","offsets":"0|100","values":"1|1.15","segment_infos":[{"id":"bad-seg","start":"bad","end":100}]}},
+  {"name":"negative_duration_preserved","category":"boundary","params":{"ctype":"UNIFORM_SCALE","offsets":"0|50|100","values":"1|2|3","segment_infos":[{"id":"reverse-seg","start":1000,"end":0}]}},
+  {"name":"position_x_pixel_normalization","category":"boundary","params":{"ctype":"KFTypePositionX","offsets":"0|100","values":"0|1920","width":1920,"height":1080,"segment_infos":[{"id":"position-seg","start":0,"end":5000000}]}},
+  {"name":"position_y_pixel_normalization","category":"boundary","params":{"ctype":"KFTypePositionY","offsets":"0|100","values":"0|1080","width":1920,"height":1080,"segment_infos":[{"id":"position-y-seg","start":0,"end":5000000}]}}
+]

@@ -1,0 +1,27 @@
+{
+  "items": [
+    {"visual_core": "第一组核心", "visual_story": "第一组故事"},
+    {"visual_core": "第二组核心", "visual_story": "第二组故事"}
+  ],
+  "motion_seed": [
+    {"motion_seed": ["第一镜头动作", "第二镜头动作"]},
+    {"motion_seed": ["第三镜头动作"]}
+  ],
+  "clip_duration": [
+    {"clip_duration": [4, 4.2]},
+    {"clip_duration": [6]}
+  ],
+  "ref_image": [
+    {"ref_image": ["synthetic://frame/1", "synthetic://frame/2"]},
+    {"ref_image": ["synthetic://frame/3"]}
+  ],
+  "ref_image_f": [
+    {"ref_image_f": ["synthetic://frame/1", "synthetic://frame/2"]},
+    {"ref_image_f": ["synthetic://frame/3"]}
+  ],
+  "ref_image_e": [
+    {"ref_image_e": ["synthetic://frame/2"]},
+    {"ref_image_e": []}
+  ],
+  "error": ""
+}

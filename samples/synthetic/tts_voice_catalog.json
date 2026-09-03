@@ -1,0 +1,34 @@
+{
+  "synthetic": true,
+  "workflow": "1256",
+  "node": "159953",
+  "official_endpoint": "https://openspeech.bytedance.com/api/v3/tts/unidirectional",
+  "resource_ids": ["seed-tts-2.0", "seed-icl-2.0"],
+  "original_coze_voice_id": "7468518920446607398",
+  "original_contract": {
+    "input": ["text", "speed_ratio", "voice_id"],
+    "output": ["data.duration", "data.link", "log_id", "msg"]
+  },
+  "mapping": {
+    "voice_id": "req_params.speaker",
+    "speed_ratio": "req_params.audio_params.speech_rate",
+    "base64_data": "published_url"
+  },
+  "real_verified": true,
+  "voices": [
+    {
+      "name": "原 Coze 默认音色",
+      "coze_voice_id": "7468518920446607398",
+      "ark_speaker_id": null,
+      "status": "recorded_unverified"
+    },
+    {
+      "name": "擎苍 2.0",
+      "coze_voice_id": null,
+      "ark_speaker_id": "zh_male_qingcang_uranus_bigtts",
+      "config_env": "ARK_TTS_SPEAKER_ID",
+      "resource_id": "seed-tts-2.0",
+      "status": "real_verified"
+    }
+  ]
+}

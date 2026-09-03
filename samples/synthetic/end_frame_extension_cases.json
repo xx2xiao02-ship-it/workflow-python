@@ -1,0 +1,55 @@
+[
+  {
+    "name": "empty_arrays",
+    "category": "boundary",
+    "params": {"LLM_list": [], "motion_seed": [], "items": [], "image_url_list": [], "Code_list": []}
+  },
+  {
+    "name": "missing_fields",
+    "category": "boundary",
+    "params": {}
+  },
+  {
+    "name": "json_string_fields",
+    "category": "boundary",
+    "params": {
+      "LLM_list": "[{\"shots\":[{\"id\":1}]}]",
+      "motion_seed": "[\"seed-json\"]",
+      "items": "[{\"visual_core\":\"core\",\"visual_story\":\"story\"}]",
+      "image_url_list": "[\"synthetic://json-frame\"]",
+      "Code_list": "[{\"clip_durations\":[2.04]}]"
+    }
+  },
+  {
+    "name": "nested_input_wrapper",
+    "category": "boundary",
+    "params": {"_input": {"items": [{"visual_core": "core", "visual_story": "story"}], "LLM_list": [{"shots": [{}]}], "Code_list": [{"clip_duration": [3]}], "motion_seed": ["seed"], "image_url_list": ["synthetic://nested-frame"]}}
+  },
+  {
+    "name": "mismatched_and_missing_frame",
+    "category": "exceptional input",
+    "params": {
+      "LLM_list": [{"shots": [{}, {}]}],
+      "motion_seed": ["only-seed", "unused-seed"],
+      "items": [{"visual_core": "core", "visual_story": "story"}],
+      "image_url_list": [{"unknown": ""}],
+      "Code_list": [{"clip_duration": [4, 5, 6]}]
+    }
+  },
+  {
+    "name": "fallback_keys_and_rounding",
+    "category": "boundary",
+    "params": {
+      "LLM_list": [{"items": [{}, {}]}],
+      "motion_seed": [{"text": "text-seed"}, {"content": "content-seed"}],
+      "items": [{"visual_core": "core", "visual_story": "story"}],
+      "image_url_list": [{"image": "synthetic://image-key"}, {"src": "synthetic://src-key"}],
+      "Code_list": [{"duration_list": [0, -1, "bad"]}]
+    }
+  },
+  {
+    "name": "invalid_json_and_non_objects",
+    "category": "exceptional input",
+    "params": {"LLM_list": "{bad", "motion_seed": 1, "items": "not-json", "image_url_list": [1], "Code_list": ["not-object"]}
+  }
+]

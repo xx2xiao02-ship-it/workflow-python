@@ -1,0 +1,46 @@
+{
+  "synthetic": false,
+  "redacted_structural_fixture": true,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "batch_node": {
+    "node_id": "110697",
+    "node_name": "批处理",
+    "status": "运行成功",
+    "duration_observed": "51s",
+    "batch_size": 100,
+    "concurrent_size": 8,
+    "input_fields": ["video_prompt", "int_duration", "ref_image_f", "ref_image_e"],
+    "output_field": "public_video_url_list",
+    "output_type": "Array<String>"
+  },
+  "internal_nodes": {
+    "video_generate": {
+      "node_id": "139653",
+      "template_visible": true,
+      "execution_item_count_observed": 17,
+      "status_observed": "运行成功",
+      "duration_examples_observed": ["47.58s", "46.58s", "44.86s", "46.47s"]
+    },
+    "video_query": {
+      "node_id": "106157",
+      "template_visible": true,
+      "execution_item_count_observed": 17,
+      "status_observed": "运行成功",
+      "duration_examples_observed": ["41.01s", "10.84s", "1.18min", "40.87s"]
+    }
+  },
+  "outer_output_shape_observed": {
+    "field": "public_video_url_list",
+    "type": "Array<String>",
+    "count": 17,
+    "indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "all_items_non_empty": true,
+    "item_value_saved": false
+  },
+  "limitations": [
+    "页面结构确认了批处理配置、17 个内部 video_generate/video_query 执行项及运行成功状态。",
+    "页面已读取每个汇总成员的数量、索引、类型和非空状态，但未保存 task_id、public_video_url、完整插件输入输出值；敏感 URL 和鉴权信息未保存。",
+    "该页面证据不能单独证明单项失败时的批处理聚合规则。"
+  ]
+}

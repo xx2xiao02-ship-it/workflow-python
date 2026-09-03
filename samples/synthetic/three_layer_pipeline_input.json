@@ -1,0 +1,18 @@
+{
+  "text": "第一段文案。第二段文案。",
+  "director_output": {
+    "director_plan": {"core": "清晰表达", "tone": "克制"},
+    "segment_beats": [
+      {"segment_index": 0, "segment_goal": "开场"},
+      {"segment_index": 1, "segment_goal": "收束"}
+    ],
+    "segments": ["第一段文案。", "第二段文案。"]
+  },
+  "asset_inputs": {
+    "aigc_video_infos": "[{\"video_url\":\"synthetic://video/1\",\"start\":0,\"end\":4000000}]",
+    "digital_human_video_infos": [{"video_url": "synthetic://host/1", "start": 4000000, "end": 8000000}],
+    "narration_audio_infos": [{"audio_url": "synthetic://audio/narration", "start": 0, "end": 8000000}],
+    "captions": [{"text": "第一段文案。", "start": 0, "end": 4000000}, {"text": "第二段文案。", "start": 4000000, "end": 8000000}]
+  },
+  "draft_url": "synthetic://draft/three-layer"
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 DirectorStoryDraft",
+  "type": "object",
+  "required": [
+    "project_id",
+    "run_id",
+    "plan_version",
+    "source_text",
+    "segments",
+    "timelines",
+    "story",
+    "revision",
+    "review_status",
+    "handoff_state"
+  ],
+  "properties": {
+    "project_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "plan_version": {"type": "string", "minLength": 1},
+    "source_text": {"type": "string", "minLength": 1},
+    "segments": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "timelines": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/timeline"}},
+    "story": {"type": "object"},
+    "revision": {"type": "integer", "minimum": 1},
+    "review_status": {"const": "PENDING_USER_REVIEW"},
+    "handoff_state": {"const": "WAITING_FOR_USER_APPROVAL"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "timeline": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    }
+  }
+}

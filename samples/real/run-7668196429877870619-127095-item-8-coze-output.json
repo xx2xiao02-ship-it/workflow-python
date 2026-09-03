@@ -1,0 +1,15 @@
+{
+  "shots": [
+    {
+      "source_text": "与其焦虑被AI替代，不如主动与AI共生，会用工具、有独立思考的人才能在AI时代站稳脚跟",
+      "clip_role": "信息触发",
+      "story_beat": "AI时代的核心生存逻辑观点已经完整传递，受众明确知晓主动共生、善用工具、独立思考的重要性",
+      "clip_duration": 8.8
+    }
+  ],
+  "clip_duration": [8.8],
+  "int_duration": [9],
+  "timelines": [
+    {"start": 100656000, "end": 109416000}
+  ]
+}

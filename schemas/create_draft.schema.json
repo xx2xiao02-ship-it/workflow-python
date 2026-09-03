@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/create-draft.schema.json",
+  "title": "1256 创建草稿节点输入输出契约",
+  "description": "工作流节点 create_draft 的输入输出契约；节点实际配置固定传入 1080x1920。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1080,
+          "description": "画布高度，单位为像素。"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1920,
+          "description": "画布宽度，单位为像素。"
+        }
+      },
+      "required": ["height", "width"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "draft_url": {
+          "type": "string",
+          "description": "创建后的草稿 URL。"
+        },
+        "tip_url": {
+          "type": "string",
+          "description": "插件路由层补充的帮助文档 URL。"
+        }
+      },
+      "required": ["draft_url", "tip_url"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

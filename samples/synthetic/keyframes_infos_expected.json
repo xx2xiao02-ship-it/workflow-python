@@ -1,0 +1,3 @@
+{
+  "keyframes_infos": "[{\"offset\": 0, \"property\": \"UNIFORM_SCALE\", \"segment_id\": \"seg-a\", \"value\": 1.0}, {\"offset\": 6906732, \"property\": \"UNIFORM_SCALE\", \"segment_id\": \"seg-a\", \"value\": 1.15}, {\"offset\": 0, \"property\": \"UNIFORM_SCALE\", \"segment_id\": \"seg-b\", \"value\": 1.0}, {\"offset\": 6706536, \"property\": \"UNIFORM_SCALE\", \"segment_id\": \"seg-b\", \"value\": 1.15}, {\"offset\": 0, \"property\": \"UNIFORM_SCALE\", \"segment_id\": \"seg-c\", \"value\": 1.0}, {\"offset\": 2802732, \"property\": \"UNIFORM_SCALE\", \"segment_id\": \"seg-c\", \"value\": 1.15}]"
+}

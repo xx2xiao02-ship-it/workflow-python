@@ -1,0 +1,22 @@
+{
+  "shots": [
+    {
+      "source_text": "人工智能正在改变工作方式",
+      "clip_role": "建立场景",
+      "story_beat": "提出变化",
+      "clip_duration": 7.9
+    },
+    {
+      "source_text": "会使用工具的人获得新的机会",
+      "clip_role": "推进观点",
+      "story_beat": "给出结论",
+      "clip_duration": 4.4
+    }
+  ],
+  "clip_duration": [7.9, 4.4],
+  "int_duration": [8, 5],
+  "timelines": [
+    {"start": 0, "end": 7900000},
+    {"start": 7900000, "end": 12300000}
+  ]
+}

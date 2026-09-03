@@ -1,0 +1,53 @@
+{
+  "synthetic": false,
+  "redacted_structural_fixture": true,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "node_id": "106157",
+  "node_name": "video_query",
+  "total_items_observed": 17,
+  "captured_item_indices": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+  "pending_item_indices": [],
+  "item_summary": [
+    {"index": 1, "int_duration": 7, "ref_image_e_present": true, "ref_image_f_present": true, "video_prompt_length": 324, "file_size_mb": 10.73},
+    {"index": 2, "int_duration": 7, "ref_image_e_present": true, "ref_image_f_present": true, "video_prompt_length": 364, "file_size_mb": 10.01},
+    {"index": 3, "int_duration": 4, "ref_image_e_present": false, "ref_image_f_present": true, "video_prompt_length": 306, "file_size_mb": 3.97},
+    {"index": 4, "int_duration": 9, "ref_image_e_present": true, "ref_image_f_present": true, "video_prompt_length": 362, "file_size_mb": 8.09},
+    {"index": 5, "int_duration": 5, "ref_image_e_present": false, "ref_image_f_present": true, "video_prompt_length": 314, "file_size_mb": 7.34},
+    {"index": 6, "int_duration": 9, "ref_image_e_present": true, "ref_image_f_present": true, "video_prompt_length": 317, "file_size_mb": 16.44},
+    {"index": 7, "int_duration": 10, "ref_image_e_present": true, "ref_image_f_present": true, "file_size_mb": 9.67},
+    {"index": 8, "int_duration": 4, "ref_image_e_present": false, "ref_image_f_present": true, "file_size_mb": 6},
+    {"index": 9, "int_duration": 8, "ref_image_e_present": true, "ref_image_f_present": true, "file_size_mb": 7.99},
+    {"index": 10, "int_duration": 6, "ref_image_e_present": false, "ref_image_f_present": true, "file_size_mb": 4.88},
+    {"index": 11, "int_duration": 10, "ref_image_e_present": true, "ref_image_f_present": true, "file_size_mb": 9.36},
+    {"index": 12, "int_duration": 5, "ref_image_e_present": false, "ref_image_f_present": true, "file_size_mb": 10.4},
+    {"index": 13, "int_duration": 8, "ref_image_e_present": true, "ref_image_f_present": true, "video_prompt_length": 396, "file_size_mb": 7.65},
+    {"index": 14, "int_duration": 4, "ref_image_e_present": false, "ref_image_f_present": true, "video_prompt_length": 311, "file_size_mb": 4.14},
+    {"index": 15, "int_duration": 8, "ref_image_e_present": false, "ref_image_f_present": true, "video_prompt_length": 377, "file_size_mb": 20.51},
+    {"index": 16, "int_duration": 9, "ref_image_e_present": false, "ref_image_f_present": true, "video_prompt_length": 347, "file_size_mb": 13.4},
+    {"index": 17, "int_duration": 4, "ref_image_e_present": false, "ref_image_f_present": true, "video_prompt_length": 281, "file_size_mb": 3.92}
+  ],
+  "common_output_observed": {
+    "errorBody": null,
+    "isSuccess": true,
+    "msg": "视频生成完成，已成功转存为永久链接",
+    "public_video_url": {"type": "String", "present": true, "value_saved": false},
+    "status": "生成完成",
+    "success": true,
+    "tip": {"type": "String", "present": true, "value_saved": false}
+  },
+  "outer_output_shape": {
+    "field": "public_video_url_list",
+    "type": "Array<String>",
+    "count": 17,
+    "indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "all_items_non_empty": true,
+    "item_string_length": 104,
+    "value_saved": false
+  },
+  "sensitive_values_saved": false,
+  "limitations": [
+    "没有保存 task_id、public_video_url、参考图 URL、完整提示词或鉴权信息。",
+    "完整汇总数组已读取其数量、索引、类型和非空状态，但没有保存 URL 原文。"
+  ]
+}

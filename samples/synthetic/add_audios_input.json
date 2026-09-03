@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "draft_url": "synthetic://draft/1256",
+  "audio_infos": "[{\"audio_url\":\"https://synthetic.example/audio/narration-1.mp3\",\"duration\":6000000,\"start\":0,\"end\":5000000,\"volume\":0.8},{\"audio_url\":\"https://synthetic.example/audio/narration-2.mp3\",\"start\":5000000,\"end\":9000000,\"audio_effect\":\"reverb\"}]"
+}

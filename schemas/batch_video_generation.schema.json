@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 batch video generation input/output contract",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "video_prompt",
+    "int_duration",
+    "ref_image_f",
+    "ref_image_e"
+  ],
+  "properties": {
+    "video_prompt": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {"type": "string"}
+    },
+    "int_duration": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {"type": "number"}
+    },
+    "ref_image_f": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {"type": "string"}
+    },
+    "ref_image_e": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {"type": "string"}
+    },
+    "video_model": {
+      "enum": ["auto", "seedance_1_5_pro", "seedance_1_0_pro"],
+      "default": "auto",
+      "description": "auto/1.5 优先使用 Seedance 1.5 Pro；额度、权限或接入点不可用时自动降级到 1.0 Pro。"
+    },
+    "use_frame_continuity": {
+      "type": "boolean",
+      "default": false,
+      "description": "是否启用素材层首尾帧连续逻辑；用户界面应显式传入。"
+    }
+  },
+  "x-coze-node": {
+    "node_name": "batch video generation",
+    "node_id": "110697",
+    "concurrent_size": 8,
+    "output": {
+      "public_video_url_list": {
+        "type": "array",
+        "items": {"type": "string"},
+        "source": "video_query.public_video_url"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "synthetic": true,
+  "draft_url": "synthetic://draft/1256-after-voice",
+  "audio_infos": "[{\"audio_url\":\"https://synthetic.example/audio/background.mp3\",\"start\":0,\"end\":111672000,\"volume\":0.4}]"
+}

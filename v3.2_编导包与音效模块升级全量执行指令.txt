@@ -1,0 +1,504 @@
+目标：在当前项目中完成“v3.2 编导包 + 独立音效生成业务模块”的增量升级，并形成可验证、可回滚、可收敛的执行结果。
+
+工作目录：
+C:\Users\Administrator\Documents\工作流py化
+
+重要原则：
+
+1. 始终使用简体中文沟通和报告。
+2. 修改任何生产代码前，必须先完成只读审计。
+3. 不得删除历史代码、旧任务、旧草稿或旧输出。
+4. 不得直接覆盖当前 v3.1；v3.2 必须新增并保留回滚能力。
+5. 不得在未获得明确授权前调用真实付费 API。
+6. 不得用 Mock、synthetic fixture、语法检查或单节点测试代替真实端到端验证。
+7. 代码实现、离线测试、真实外部服务、真实剪映写入必须分别报告。
+8. 不得因为本次升级而重构无关模块。
+
+零、服务调用互斥与等待机制（强制）
+
+1. 修改任何生产代码前，先检查：
+
+- 当前视频制作控制台进程；
+- tools\local_service_governance.py 的服务状态；
+- 当前任务状态文件；
+- 是否存在正在提交、轮询、生成、写入草稿或保存草稿的业务任务；
+- 是否已有其他维护锁。
+
+不能仅根据 Python 进程存在就判断业务任务正在运行，必须检查实际任务状态。
+
+2. 如果发现任务处于以下状态，禁止修改代码：
+
+queued
+running
+submitting
+polling
+creating
+writing
+saving
+retrying
+
+必须等待任务进入以下终态：
+
+succeeded
+failed
+blocked
+cancelled
+
+等待期间：
+
+- 每 5–10 秒检查一次；
+- 不得强制结束进程；
+- 不得取消任务；
+- 不得修改正在使用的服务代码；
+- 不得重新提交业务任务；
+- 必须记录任务 ID、当前阶段和状态。
+
+3. 进入等待前，先建立维护请求标记，阻止新的业务任务进入：
+
+maintenance_requested = true
+reason = "v3.2 编导包与音效模块升级"
+
+新请求不得静默执行，必须返回：
+
+MAINTENANCE_WAITING
+服务正在等待当前任务完成，暂不接受新的生产任务。
+
+如果现有系统没有维护门禁，只在当前生产任务入口增加最小门禁，不得大范围重构。
+
+4. 所有旧任务进入终态后，再进行二次确认：
+
+- 没有 running、queued、submitting、polling、writing 任务；
+- 没有未完成的外部 API 请求；
+- 没有草稿写入操作；
+- 没有其他 Codex 或维护进程持有升级锁；
+- 没有正在执行的业务回调。
+
+确认通过后，使用原子方式创建维护锁：
+
+.codex\locks\v32-upgrade.lock
+
+锁文件至少记录：
+
+{
+  "owner": "codex-v32-upgrade",
+  "pid": 0,
+  "purpose": "v3.2 编导包与音效模块升级",
+  "created_at": "",
+  "source_revision": ""
+}
+
+5. 如果发现已有维护锁：
+
+- 先检查锁对应的 PID 和任务状态；
+- PID 仍存活时继续等待，不得覆盖锁；
+- PID 已退出但任务状态不明确时，停止并报告；
+- 不得直接删除或覆盖未知来源的锁文件。
+
+6. 获得锁后，才允许执行：
+
+读取源码快照
+→ 记录文件哈希
+→ 修改代码
+→ 执行测试
+→ 控制重启服务
+→ 执行健康检查
+
+7. 修改期间禁止启动新的外部业务任务，禁止调用真实付费 API。
+
+8. 修改完成后：
+
+- 先运行测试；
+- 再控制重启本地服务；
+- 检查服务端口和健康状态；
+- 检查 v3.2 是否可加载；
+- 检查 v3.1 是否仍可加载；
+- 确认没有遗留任务锁；
+- 最后清除 maintenance_requested；
+- 最后释放 v32-upgrade.lock。
+
+服务重启只用于加载新代码，不得自动重新执行旧业务任务。
+
+9. 等待上限：
+
+- 普通节点任务最长等待 30 分钟；
+- 视频生成、数字人和草稿写入任务最长等待 60 分钟；
+- 超时不得强杀进程，不得直接修改；
+- 必须报告任务 ID、状态、阶段和阻断原因，并将升级标记为 BLOCKED。
+
+一、执行前审计
+
+1. 先读取并核对以下文件及调用关系：
+
+- tools\video_production_console.py
+- tools\run_locked_director_text_live.py
+- tools\run_token_assets_live.py
+- tools\local_service_governance.py
+- src\workflow_1256\governance\media_route_scoring_v3.py
+- src\workflow_1256\shot_visual_arrangement.py
+- src\workflow_1256\asset_generation_contracts.py
+- src\workflow_1256\real_asset_handoff.py
+- src\workflow_1256\editing_layer.py
+- src\workflow_1256\governance\contracts.py
+- schemas\director_locked_manifest.schema.json
+- schemas\asset_registry.schema.json
+- schemas\asset_manifest.schema.json
+- schemas\edit_manifest.schema.json
+
+2. 如果 graphify-out\graph.json 存在，执行：
+
+graphify query "v3.1 编导包、媒体路由锁、素材生成、AssetRegistry、EditingLayer、剪映音频轨道之间的调用关系" --budget 2500
+
+3. 如果没有图谱，先执行：
+
+graphify extract . --code-only --no-cluster
+
+4. 修改前运行基线测试，记录当前失败项：
+
+$env:PYTHONPATH="src"
+python -m pytest -q tests/test_media_route_scoring_v3.py tests/test_shot_visual_arrangement.py tests/test_editing_layer.py tests/test_video_production_console_tasks.py --basetemp .pytest_v32_baseline
+
+当前审计基线曾出现 206 passed、5 failed、1 skipped。再次执行时必须以实际结果为准，并区分环境问题、现有逻辑问题和本次新增问题。
+
+二、增加 v3.2 编导包
+
+1. 在现有 DIRECTOR_PACKAGE_SPECS 中增加：
+
+director_package_id = v3_2
+label = v3.2 编导包
+version = 3.2
+
+2. v3.1 必须完整保留，不能删除、覆盖或改变旧任务行为。
+
+3. v3.2 继续保留 v3.1 的全部硬规则：
+
+- 首镜必须使用 AIGC；
+- 非首镜低于 3 秒必须使用静态图片；
+- shot_id、group_id、镜头顺序不可改变；
+- start_us、end_us、duration_us 使用微秒；
+- 编导锁定后的时间线不可被素材生成节点改写；
+- 五类媒体路由保持一一对应。
+
+4. 不要复制一套完整 v3.1 代码。优先通过版本策略、公共函数和配置扩展实现。
+
+5. v3.2 新增逐镜音效计划，建议放入 DirectorLockedManifest 的明确字段中：
+
+{
+  "sound_effect_plan": [
+    {
+      "shot_id": "g01_s01",
+      "enabled": true,
+      "subject": "金币",
+      "subject_confidence": 0.95,
+      "sound_effect_id": "coin_drop_clean",
+      "prompt": "单一、清脆、短促的硬币掉落声，无音乐、无人声、无环境声",
+      "cue_start_us": 1000000,
+      "cue_end_us": 2000000,
+      "volume": 0.8,
+      "status": "PLANNED"
+    }
+  ]
+}
+
+6. 音效计划校验规则：
+
+- 每个 shot_id 最多一个主音效；
+- sound_effect_plan 的 shot_id 必须与冻结镜头一一对应；
+- cue_start_us 不得小于镜头 start_us；
+- cue_end_us 不得大于镜头 end_us；
+- cue_end_us 必须大于 cue_start_us；
+- 音效主体不明确或置信度不足时输出 NEEDS_REVIEW，不得自动付费生成；
+- 数字人镜头默认不生成主体音效，除非明确存在动作或物件；
+- 音效计划不能修改任何视觉素材路由；
+- 音效真实时长和规划时间线必须分别保留；
+- 不得把视频时长错误地当成音效生成时长。
+
+三、增加独立音效生成业务模块
+
+新增：
+
+src\workflow_1256\sound_effect_production.py
+
+模块职责仅限：
+
+读取 v3.2 sound_effect_plan
+→ 选择音效库或 Seed-Audio 1.0
+→ 生成或获取音频
+→ 校验真实音频文件和时长
+→ 保存本地路径、远程 URL、任务 ID、来源和状态
+→ 输出逐镜音效结果
+
+不得让该模块调用图片、视频、数字人、TTS 或 BGM 生成器。
+
+输入至少包括：
+
+director_lock
+media_route_lock
+sound_effect_plan
+provider
+dry_run
+
+输出必须保持数组顺序和一一对应：
+
+{
+  "status": "SUCCEEDED",
+  "shot_results": [
+    {
+      "shot_id": "g01_s01",
+      "status": "succeeded",
+      "audio_url": "",
+      "local_path": "",
+      "duration_us": 1000000,
+      "provider": "seed_audio_1_0",
+      "task_id": "",
+      "error_type": "",
+      "error_message": "",
+      "retryable": false
+    }
+  ],
+  "audio_infos": [],
+  "generated_count": 1,
+  "failed_count": 0
+}
+
+必须支持：
+
+- dry-run，不调用外部服务；
+- transport 注入测试；
+- 成功、失败、超时、响应格式错误；
+- 请求状态不确定时禁止自动重复付费；
+- 真实音频不存在或无法读取时不得标记 succeeded；
+- API Key 只从环境变量读取；
+- API Key 不得进入代码、JSON、日志、fixture 或报告；
+- 单个镜头失败可以单独重试；
+- 已成功且内容哈希相同的音效不得重复生成；
+- 失败重试不得改变 shot_id 和时间线顺序。
+
+四、与素材生成和剪辑层协同
+
+只做最小接入，不修改现有视觉生成逻辑。
+
+1. real_asset_handoff.py 增加音效资产登记：
+
+asset_type = audio
+role = sound_effect
+shot_ids = [对应 shot_id]
+actual_timeline = 音效真实时间线
+metadata.source = sound_effect_production
+
+2. editing_layer.py 增加独立音效轨：
+
+track_name = 音效
+track_type = audio
+track_role = sound_effect
+
+不得把音效归入“解说”或“BGM”。
+
+3. 如果使用 CapCut Mate：
+
+- 使用现有 add_audios 接口；
+- audio_url 必须是 http/https；
+- start/end 使用微秒；
+- 使用最新 draft_url；
+- 写入后读取音频时间线核验；
+- 不得把 CapCut Mate 的成功响应当作完整工作流成功。
+
+4. 如果使用 Windows 原生剪映写入：
+
+- 必须使用真实 local_path；
+- 校验文件存在；
+- 校验真实音频时长；
+- 写入后读取最终 draft_content.json 或等效草稿结构；
+- 检查音效轨名称、音频数量、起止时间和文件映射。
+
+5. 不修改现有：
+
+- Image2 生成逻辑；
+- Seedance 生成逻辑；
+- 数字人生成逻辑；
+- TTS 链路；
+- BGM 链路；
+- 旧版 v1/v2/v3.1 编导包。
+
+五、控制台接入
+
+在 tools\video_production_console.py 中：
+
+1. 增加 v3.2 编导包展示和选择。
+2. 默认仍保持 v3.1，未通过验收前不得切换默认版本。
+3. 增加音效生成状态展示：
+
+未启用
+待审核
+待生成
+生成中
+生成成功
+部分失败
+需要人工审核
+
+4. 增加 dry-run 入口。
+5. 不得因为选择 v3.2 自动触发付费 API。
+6. 只有用户明确开始真实生成后，才允许调用外部音频服务。
+7. 维护等待期间，新业务请求必须返回 MAINTENANCE_WAITING。
+8. 服务重启只用于加载新代码，不得自动重跑历史任务。
+
+六、必须新增的测试和样例
+
+新增：
+
+tests\test_sound_effect_production.py
+tests\test_v32_package_registration.py
+tests\test_v32_asset_coordination.py
+tests\test_sound_effect_editing_track.py
+samples\synthetic\v3_2_sound_effect_plan.json
+samples\synthetic\v3_2_sound_effect_result.json
+docs\v3_2_sound_effect_convergence_report.md
+
+至少覆盖：
+
+1. v3.2 能被控制台列出。
+2. v3.1 仍然可正常加载。
+3. v3.2 输出五类媒体路由。
+4. 20 个镜头对应 20 个音效计划。
+5. 20 个镜头与 20 个结果顺序完全一致。
+6. 重复 shot_id 被拒绝。
+7. 音效时间线越界被拒绝。
+8. 主体置信度不足时不调用生成器。
+9. 生成失败不会伪装成功。
+10. 音效不会进入解说或 BGM 轨。
+11. 音效轨可以生成。
+12. dry-run 不产生外部请求。
+13. 重复运行的计划结果具有相同内容哈希。
+14. 重复运行不会生成重复音效资产。
+15. 部分失败可以精确重试失败镜头。
+16. 有业务任务运行时，升级不会开始。
+17. 有排队任务时，升级不会修改生产代码。
+18. 维护期间新任务会被拒绝或明确排队。
+19. 两个升级进程不能同时获得维护锁。
+20. 异常中断后不会遗留可误用的锁。
+21. 服务重启后 v3.1 和 v3.2 都可以加载。
+
+七、执行阶段
+
+阶段 1：等待和基线锁定
+
+- 设置 maintenance_requested；
+- 等待现有业务任务进入终态；
+- 获取 v32-upgrade.lock；
+- 记录源文件清单和 SHA-256；
+- 保存当前默认包和服务状态；
+- 完成基线测试。
+
+阶段 2：离线契约实现
+
+- 增加 v3.2 包注册；
+- 增加 sound_effect_plan Schema；
+- 增加音效模块及 transport 注入边界；
+- 增加 AssetRegistry、EditManifest 和音效轨契约；
+- 只运行 dry-run 和 synthetic 测试；
+- 不调用真实外部 API。
+
+阶段 3：业务链路接入
+
+执行以下链路：
+
+v3.2 编导锁定
+→ 现有图片/视频/数字人素材生成
+→ sound_effect_production
+→ real_asset_handoff
+→ editing_layer
+→ 音效独立轨道
+
+确认视觉素材仍由原有节点生成，音效模块只处理音效。
+
+阶段 4：真实小样本验证
+
+- 先使用 3–5 个真实镜头；
+- 每个镜头最多生成一个默认音效；
+- 明确记录是否真实调用 Seed-Audio 1.0；
+- 记录任务 ID、实际音频时长、URL/本地路径和费用；
+- 读取最终音频文件，不得只看接口响应。
+
+阶段 5：20 镜头验收
+
+- 使用约 1 分钟、20 个镜头的真实或脱敏输入；
+- 验证 20 个音效计划和 20 个结果一一对应；
+- 验证每个音效起止时间；
+- 验证音效、解说、BGM 三条音频职责分离；
+- 验证剪映最终草稿结构。
+
+阶段 6：切换默认版本
+
+只有所有上线门禁通过后，才能将默认包从 v3.1 切换到 v3.2。
+
+八、验收命令
+
+先运行新增测试：
+
+$env:PYTHONPATH="src"
+python -m pytest -q tests/test_v32_package_registration.py tests/test_sound_effect_production.py tests/test_v32_asset_coordination.py tests/test_sound_effect_editing_track.py --basetemp .pytest_v32_target
+
+再运行相关回归：
+
+$env:PYTHONPATH="src"
+python -m pytest -q tests/test_media_route_scoring_v3.py tests/test_shot_visual_arrangement.py tests/test_editing_layer.py tests/test_video_production_console_tasks.py --basetemp .pytest_v32_regression
+
+最后运行完整测试：
+
+$env:PYTHONPATH="src"
+python -m pytest -q --basetemp .pytest_v32_full
+
+如果项目存在 Windows 临时目录权限问题，优先使用项目本地 --basetemp，不要把权限错误误判成业务代码失败。
+
+九、收敛标准
+
+只有同时满足以下条件，才能报告“v3.2 代码实现完成”：
+
+- v3.2 注册成功；
+- v3.1 行为未改变；
+- 新增测试全部通过；
+- 相关回归没有新增失败；
+- 20 镜头输入输出严格一一对应；
+- 音效轨与解说、BGM 分离；
+- 所有音效时间线合法；
+- 失败状态、重试状态和费用保护可追踪；
+- dry-run 已验证；
+- 重复运行不会产生重复资产；
+- 维护锁的等待、互斥和释放已验证；
+- 服务重启后健康检查通过；
+- 真实外部音频生成和最终剪映写入已分别说明是否验证。
+
+如果缺少 API Key、Seed-Audio 服务权限、音频发布地址或剪映服务，必须报告：
+
+代码实现已完成，但尚未完成真实外部验证，因此不能报告最终可用。
+
+十、回滚标准
+
+如果 v3.2 失败、超时或外部服务不可用：
+
+- 不删除 v3.2 代码；
+- 不删除旧任务和旧草稿；
+- 将默认包恢复为 v3.1；
+- 停止新的 v3.2 业务任务；
+- 保留失败日志、测试结果和任务状态；
+- 释放维护锁；
+- 恢复新任务入口；
+- 不自动重跑旧业务任务。
+
+十一、交付报告必须包含
+
+- 修改文件清单；
+- 新增文件清单；
+- v3.1 与 v3.2 的字段和行为差异；
+- 音效模块输入输出契约；
+- 服务等待和维护锁验证结果；
+- 测试命令、退出状态和通过/失败数量；
+- 是否发生真实外部调用；
+- 是否产生费用；
+- 是否完成真实音频生成；
+- 是否完成最终剪映草稿写入；
+- 当前默认版本；
+- 回滚方法；
+- 未解决阻断项；
+- 生成的最终报告文件路径。
+
+禁止用“代码已写完”代替端到端完成。禁止用 Mock 结果代替真实验证。禁止在未通过全部门禁前把 v3.2 切换为默认版本。

@@ -1,0 +1,59 @@
+{
+  "synthetic": false,
+  "source": "Coze execution page",
+  "execute_id": "7668196429877870619",
+  "workflow": "Daily_Update_Te",
+  "batch_node": {
+    "node_id": "184922",
+    "name": "首帧生成",
+    "status": "success",
+    "duration_observed": "6m17s",
+    "configured_batch_size": 100,
+    "configured_concurrent_size": 10,
+    "upstream_prompt_count_observed": 17,
+    "upstream_ref_image_item_count_observed": 17,
+    "batch_output_field": "image_url_list",
+    "batch_output_value_fully_captured": false
+  },
+  "internal_observation": {
+    "create_image_task": {
+      "visible_item_count": 17,
+      "item_1_duration": "2.26s",
+      "input_fields": ["api_key", "image_urls", "prompt", "resolution", "size"],
+      "input_types": {
+        "api_key": "string",
+        "image_urls": "string[]",
+        "prompt": "string",
+        "resolution": "string",
+        "size": "string"
+      },
+      "input_sensitive_values": "redacted",
+      "output": {
+        "image_url": null,
+        "message": "任务创建成功！已转交下游处理",
+        "status": "processing",
+        "task_id": "redacted",
+        "code": 202
+      }
+    },
+    "get_task_result": {
+      "visible_item_count": 17,
+      "item_1_duration": "1.54min",
+      "input_fields": ["api_key", "task_id"],
+      "input_types": {"api_key": "string", "task_id": "string"},
+      "input_sensitive_values": "redacted",
+      "output": {
+        "code": 200,
+        "errorBody": null,
+        "image_url": "redacted_signed_url",
+        "isSuccess": true,
+        "message": null,
+        "status": "completed"
+      }
+    }
+  },
+  "limitations": [
+    "页面对 API key、task_id、签名图片 URL 和长 prompt 做了可见性限制；未保存这些值。",
+    "批处理容器的 image_url_list 汇总数组尚未从页面展开为完整 17 项值，因此不能宣称完整数组值和顺序已完成真实验收。"
+  ]
+}

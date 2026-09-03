@@ -1,0 +1,20 @@
+{
+  "segments": "这是用于测试时长规划的片段文本。",
+  "shots": [
+    {
+      "source_text": "人工智能正在改变工作方式",
+      "clip_role": "建立场景",
+      "story_beat": "提出变化"
+    },
+    {
+      "source_text": "会使用工具的人获得新的机会",
+      "clip_role": "推进观点",
+      "story_beat": "给出结论"
+    }
+  ],
+  "duration": 12.3,
+  "timelines": {
+    "start": 0,
+    "end": 12300000
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "explanation-render-request-v1",
+  "output_dir": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\remotion_validation",
+  "renders": [
+    {
+      "shot_id": "renderer_plain_check",
+      "shot_class": "explanation",
+      "template_id": "contrast_split",
+      "template_version": "v3.0",
+      "start_us": 0,
+      "end_us": 1500000,
+      "duration_us": 1500000,
+      "duration_frames": 45,
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "narration": "这是普通说明镜头的真实渲染验证",
+      "semantic_anchor": "普通说明镜头",
+      "relation_objects": ["原有状态", "变化结果"],
+      "style_lock_id": "validation-style",
+      "style_lock": {
+        "background_color": "#F7F4EE",
+        "surface_color": "#FFFFFF",
+        "text_color": "#172033",
+        "muted_color": "#667085",
+        "accent_color": "#D97745",
+        "accent_secondary": "#3B82A0",
+        "font_family": "Microsoft YaHei, Arial, sans-serif",
+        "title_font_size": 48,
+        "body_font_size": 28,
+        "pip_radius": 28,
+        "pip_object_fit": "cover"
+      }
+    },
+    {
+      "shot_id": "renderer_mixed_check",
+      "shot_class": "mixed_explanation",
+      "template_id": "causal_chain",
+      "template_version": "v3.0",
+      "start_us": 0,
+      "end_us": 2000000,
+      "duration_us": 2000000,
+      "duration_frames": 60,
+      "width": 1280,
+      "height": 720,
+      "fps": 30,
+      "narration": "这是混合说明镜头的真实渲染验证",
+      "semantic_anchor": "行动带来结果",
+      "relation_objects": ["行动", "支持", "结果"],
+      "style_lock_id": "validation-style",
+      "style_lock": {
+        "background_color": "#F7F4EE",
+        "surface_color": "#FFFFFF",
+        "text_color": "#172033",
+        "muted_color": "#667085",
+        "accent_color": "#D97745",
+        "accent_secondary": "#3B82A0",
+        "font_family": "Microsoft YaHei, Arial, sans-serif",
+        "title_font_size": 48,
+        "body_font_size": 28,
+        "pip_radius": 28,
+        "pip_object_fit": "cover"
+      },
+      "digital_human_video_path": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\director_story_reviews\\66ed2c402fb34545a2e033fbda7440fe\\asset_production\\59b8ef45d98348a7b7a8dcc09d823709\\digital_humans\\g05_s01.mp4"
+    }
+  ]
+}

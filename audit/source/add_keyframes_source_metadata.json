@@ -1,0 +1,18 @@
+{
+  "repository": "Hommy-master/capcut-mate",
+  "commit": "f2581bd989190ee61719f2bf50e118ab035dcc7f",
+  "source_files": [
+    "src/service/add_keyframes.py",
+    "src/schemas/add_keyframes.py",
+    "exceptions.py",
+    "docs/add_keyframes.zh.md"
+  ],
+  "github_blob_sha": {
+    "src/service/add_keyframes.py": "686aa69b011347c7ba7702285fdfd10c89eaa48d",
+    "src/schemas/add_keyframes.py": "f121c42c68dd91770ed140ed4fcfc43c8c56dd12",
+    "exceptions.py": "1ed972162910c66a304f015fc83590b03c0da356"
+  },
+  "read_only": true,
+  "credentials_saved": false,
+  "external_execution_performed": false
+}

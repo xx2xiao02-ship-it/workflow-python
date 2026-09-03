@@ -1,0 +1,28 @@
+{
+  "synthetic": false,
+  "redacted_structural_fixture": true,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "node": {
+    "node_id": "115723",
+    "node_name": "AIGC动画",
+    "interface": "video_infos",
+    "plugin_name": "剪映小助手数据生成器",
+    "status": "运行成功",
+    "duration_observed": "0.071s",
+    "input_fields_visible": ["timelines", "video_urls", "height", "mask", "transition", "transition_duration", "volume", "width"],
+    "output_fields_visible": ["infos"],
+    "output_type_visible": "String"
+  },
+  "workflow_config_projection": {
+    "timelines_source": {"node_id": "116616", "field": "timelines"},
+    "video_urls_source": {"node_id": "110697", "field": "public_video_url_list"},
+    "transition": "漫画撕纸",
+    "transition_duration": 1000000,
+    "volume": 0
+  },
+  "limitations": [
+    "页面结构确认了真实节点成功、字段、类型和耗时，但未保存真实视频 URL 或完整 infos 字符串。",
+    "页面可见的 height、width、mask 属于插件 Schema 展示字段，未将其未展开值当作工作流固定值。"
+  ]
+}

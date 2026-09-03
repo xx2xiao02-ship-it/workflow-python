@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://local.invalid/1256/add-effects-second.schema.json",
+  "title":"添加特效（节点1922689）输入输出契约",
+  "type":"object",
+  "properties":{"input":{"type":"object","properties":{"draft_url":{"type":"string"},"effect_infos":{"type":"string"}},"required":["draft_url","effect_infos"]},"output":{"type":"object","properties":{"draft_url":{"type":"string"},"effect_ids":{"type":"array"},"segment_ids":{"type":"array"},"track_id":{"type":"string"}},"required":["draft_url","effect_ids","segment_ids","track_id"]}},
+  "required":["input","output"]
+}

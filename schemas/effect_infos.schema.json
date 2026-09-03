@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/effect-infos.schema.json",
+  "title": "特效信息（节点197721）输入输出契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "effects": {"type": "array", "items": {"type": "string"}},
+        "timelines": {"type": "array", "items": {"$ref": "#/$defs/timeline"}}
+      },
+      "required": ["effects", "timelines"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {"infos": {"type": "string"}},
+      "required": ["infos"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false,
+  "$defs": {
+    "timeline": {
+      "type": "object",
+      "properties": {"start": {"type": "integer"}, "end": {"type": "integer"}},
+      "required": ["start", "end"],
+      "additionalProperties": true
+    }
+  }
+}

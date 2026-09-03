@@ -1,0 +1,74 @@
+{
+  "schema_version": "skill-governance-v1",
+  "policy": "第三方 Skill 只读、适配代码独立、未读取上游文件时不得声称已安装或 100% 适配。",
+  "skills": [
+    {
+      "skill_id": "cangjie",
+      "display_name": "仓颉知识方法包适配器",
+      "role": "knowledge_method_distillation",
+      "upstream_repo": "https://github.com/kangarooking/cangjie-skill",
+      "upstream_version": "v2.5.0",
+      "upstream_commit": "44692125abcdb93eab7b0e7a5ecd6ccadf92dc6f",
+      "license": "MIT",
+      "availability": "audited_read_only_not_installed",
+      "adapter_path": "src/workflow_1256/copywriting_adapters/cangjie_adapter.py",
+      "adapter_status": "boundary_only",
+      "source_policy": "只接受已写入 Obsidian 且可追踪的专业资料；不负责模仿博主口吻或最终去 AI 味。",
+      "evidence": "2026-08-31 已读取 README.zh-CN.md、SKILL.md、LICENSE 和仓库测试脚本；上游源码不纳入运行时，仅保留独立适配边界。"
+    },
+    {
+      "skill_id": "nuwa",
+      "display_name": "女娲账号思维包适配器",
+      "role": "account_thinking_distillation",
+      "upstream_repo": "https://github.com/alchaincyf/nuwa-skill",
+      "upstream_version": "main",
+      "upstream_commit": "fe0374687037c4cc51a65c1e0c145afe2981dc69",
+      "license": "MIT",
+      "availability": "audited_read_only_not_installed",
+      "adapter_path": "src/workflow_1256/copywriting_adapters/nuwa_adapter.py",
+      "adapter_status": "boundary_only",
+      "source_policy": "只接受 Obsidian 中已有作品卡，不接受未落盘链接或模型自行拼接的作品。",
+      "evidence": "2026-08-31 已读取 README.md、SKILL.md、LICENSE；仓库未提供测试目录。上游源码不纳入运行时，仅保留账号级适配边界。"
+    },
+    {
+      "skill_id": "writing-dna",
+      "display_name": "Writing-DNA 本地 Skill",
+      "role": "language_style_distillation",
+      "upstream_repo": "",
+      "local_path": "C:/Users/Administrator/.agents/skills/writing-dna-skill",
+      "upstream_version": "local",
+      "license": "not_verified",
+      "availability": "local_expected",
+      "adapter_path": "src/workflow_1256/copywriting_adapters/writing_dna_adapter.py",
+      "adapter_status": "sample_gate",
+      "minimum_complete_works": 30,
+      "recommended_complete_works": 80,
+      "source_policy": "少于 30 篇只能标记实验版，不能标记正式风格包。"
+    },
+    {
+      "skill_id": "human-writing",
+      "display_name": "human-writing 安全收口适配器",
+      "role": "final_prose_gate",
+      "upstream_repo": "https://github.com/KKKKhazix/human-writing",
+      "upstream_version": "1.1.0",
+      "upstream_commit": "4fda173f3fef7fb808f3eba991eeb2528ea4b189",
+      "license": "MIT",
+      "availability": "audited_read_only_not_installed",
+      "adapter_path": "src/workflow_1256/copywriting_adapters/human_writing_adapter.py",
+      "adapter_status": "safe_fallback",
+      "source_policy": "只在初稿之后运行；不得改变事实、数字、引语、核心观点或已审核账号规则。2026-08-31 已读取 README.md、human-writing/SKILL.md、LICENSE；仓库未提供测试目录。"
+    },
+    {
+      "skill_id": "copywriting-orchestrator",
+      "display_name": "项目自有文案编排 Skill",
+      "role": "fixed_execution_chain",
+      "upstream_repo": "",
+      "upstream_version": "project-v1",
+      "license": "project-owned",
+      "availability": "local",
+      "adapter_path": "skills/copywriting-orchestrator/SKILL.md",
+      "adapter_status": "implemented",
+      "source_policy": "固定执行顺序，模型不能自行跳过来源、审核或收口阶段。"
+    }
+  ]
+}

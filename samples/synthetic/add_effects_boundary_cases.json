@@ -1,0 +1,7 @@
+[
+  {"name":"empty_array","effect_infos":"[]"},
+  {"name":"invalid_json","effect_infos":"not-json"},
+  {"name":"missing_field","effect_infos":"[{\"effect_title\":\"dark\",\"start\":0}]"},
+  {"name":"negative_start","effect_infos":"[{\"effect_title\":\"dark\",\"start\":-1,\"end\":2}]"},
+  {"name":"invalid_end","effect_infos":"[{\"effect_title\":\"dark\",\"start\":2,\"end\":2}]"}
+]

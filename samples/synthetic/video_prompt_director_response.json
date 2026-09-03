@@ -1,0 +1,23 @@
+{
+  "visual_lock": "保持参考图的视觉媒介、人物外观、色彩、光影和空间构图一致。",
+  "plans": [
+    {
+      "shot_index": 0,
+      "duration": 5,
+      "stages": [
+        {"time_range": "0.0-2.5s", "action": "人物保持当前姿态，手指缓慢移动", "camera_motion": "固定机位"},
+        {"time_range": "2.5-5.0s", "action": "动作继续并稳定停留", "camera_motion": "固定机位"}
+      ]
+    },
+    {
+      "shot_index": 1,
+      "duration": 4,
+      "stages": [
+        {"time_range": "0.0-2.0s", "action": "视线沿动作方向移动", "camera_motion": "轻微推近"},
+        {"time_range": "2.0-4.0s", "action": "人物动作放缓并停在下一状态", "camera_motion": "轻微推近"}
+      ]
+    }
+  ],
+  "reasoning_content": "synthetic fixed response",
+  "visual_lock_unused_order_reference": "not part of normalized output"
+}

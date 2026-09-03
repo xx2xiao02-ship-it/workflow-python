@@ -1,0 +1,32 @@
+{
+  "source": "本地 CapCut Mate 真实写入验收，动态草稿 ID 已脱敏",
+  "execution": {
+    "service_base_url": "http://127.0.0.1:30000",
+    "draft_url": "<redacted-local-draft-url>",
+    "draft_directory": "D:\\jianying\\JianyingPro Drafts\\<redacted-draft-id>",
+    "steps": ["create_draft", "video_infos", "add_videos", "keyframes_infos", "add_keyframes", "get_draft"]
+  },
+  "input": {
+    "video_count": 1,
+    "segment_count": 1,
+    "keyframe_count": 2,
+    "ctype": "UNIFORM_SCALE",
+    "offsets": "0|100",
+    "values": "1|1.15"
+  },
+  "api_outputs": {
+    "add_keyframes_status": "success",
+    "get_draft_status": "success",
+    "get_draft_file_count": 7
+  },
+  "draft_content_observation": {
+    "video_segment_count_with_common_keyframes": 1,
+    "keyframe_list_count": 2,
+    "property_type": "KFTypeScaleX",
+    "time_offsets_microseconds": [0, 1000000],
+    "values": [1.0, 1.15],
+    "draft_json_files_checked": ["draft_content.json", "draft_info.json"],
+    "dynamic_ids_redacted": true
+  },
+  "scope": "single synthetic local video; not the 1256 real 18-segment full-chain acceptance"
+}

@@ -1,0 +1,15 @@
+{
+  "create_image_task": {
+    "api_key": "synthetic-api-key",
+    "prompt": "synthetic 首帧提示词",
+    "n": 1,
+    "size": "9:16",
+    "resolution": "1k",
+    "image_urls": ["synthetic://reference/1"],
+    "official_fallback": false
+  },
+  "get_task_result": {
+    "task_id": "synthetic-task-001",
+    "api_key": "synthetic-api-key"
+  }
+}

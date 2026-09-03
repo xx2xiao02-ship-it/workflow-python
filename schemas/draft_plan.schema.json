@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 DraftPlan",
+  "type": "object",
+  "required": ["width", "height", "timeline_unit", "duration_us", "effects_enabled", "draft_url", "tracks", "assets"],
+  "properties": {
+    "width": {"type": "integer", "minimum": 1},
+    "height": {"type": "integer", "minimum": 1},
+    "timeline_unit": {"type": "string", "const": "microseconds"},
+    "duration_us": {"type": "integer", "minimum": 0},
+    "effects_enabled": {"type": "boolean", "const": false},
+    "draft_url": {"type": "string"},
+    "tracks": {"type": "array", "items": {"type": "object"}},
+    "assets": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}

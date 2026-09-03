@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/keyframes-infos.schema.json",
+  "title": "关键帧信息（节点151394）输入输出契约",
+  "description": "来自1256工作流YAML、CapCut Mate OpenAPI和capcut-mate源码；时间单位为微秒。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "ctype": {"type": "string"},
+        "offsets": {"type": "string", "description": "以|分隔的百分比整数，例如0|100"},
+        "values": {"type": "string", "description": "以|分隔的数值，例如1|1.15"},
+        "segment_infos": {"type": "array", "items": {"$ref": "#/$defs/segment_info"}},
+        "height": {"type": ["integer", "null"]},
+        "width": {"type": ["integer", "null"]}
+      },
+      "required": ["ctype", "offsets", "values", "segment_infos"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {"keyframes_infos": {"type": "string"}},
+      "required": ["keyframes_infos"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false,
+  "$defs": {
+    "segment_info": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "start": {"type": "integer", "description": "微秒"},
+        "end": {"type": "integer", "description": "微秒"}
+      },
+      "required": ["id", "start", "end"],
+      "additionalProperties": false
+    }
+  }
+}

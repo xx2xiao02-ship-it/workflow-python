@@ -1,0 +1,11 @@
+{
+  "draft_url": "draft://synthetic-aigc-animation-result",
+  "segment_ids": ["segment-0", "segment-1", "segment-2"],
+  "segment_infos": [
+    {"end": 4000000, "id": "segment-0", "start": 0},
+    {"end": 8500000, "id": "segment-1", "start": 4000000},
+    {"end": 12000000, "id": "segment-2", "start": 8500000}
+  ],
+  "track_id": "track-synthetic-aigc",
+  "video_ids": ["video-0", "video-1", "video-2"]
+}

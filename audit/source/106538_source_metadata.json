@@ -1,0 +1,13 @@
+{
+  "node_id": "106538",
+  "node_name": "get_task_result",
+  "plugin_name": "（Image-2）生图增加重试",
+  "source_origin": "用户在当前会话粘贴的 Coze Python 源码",
+  "sanitized_copy": "audit/source/106538_coze_original_sanitized.py",
+  "sanitized_sha256": "B2E2D2291EB190717C0B3CF35472D8F8DB8BB96CFE9052B7F32F601CD9E35987",
+  "sanitized_line_count": 95,
+  "credentials_preserved": false,
+  "external_calls_executed": false,
+  "read_only_source_copy": true,
+  "format_note": "保存为脱敏只读副本；runtime.Args 仅由离线适配器注入。"
+}

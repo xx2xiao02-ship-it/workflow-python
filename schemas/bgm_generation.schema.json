@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/bgm-generation.schema.json",
+  "title": "BGM生成（gen_bgm）输入输出契约",
+  "description": "节点 186546；输入字段保持原 Coze 名称和数组顺序。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "Duration": {"type": "integer", "minimum": 1, "maximum": 120},
+        "Text": {"type": "string"},
+        "Genre": {"type": "array", "items": {"type": "string"}},
+        "Instrument": {"type": "array", "items": {"type": "string"}},
+        "Mood": {"type": "array", "items": {"type": "string"}},
+        "Theme": {"type": "string"}
+      },
+      "required": ["Duration", "Text", "Genre", "Instrument", "Mood"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "code": {"type": "number"},
+        "data": {
+          "type": "object",
+          "properties": {
+            "SongDetail": {
+              "type": "object",
+              "properties": {
+                "AudioUrl": {"type": "string", "format": "uri"},
+                "Duration": {"type": "number"},
+                "Genre": {"type": "string"},
+                "Instrument": {"type": "string"},
+                "Mood": {"type": "string"},
+                "Prompt": {"type": "string"},
+                "Theme": {"type": "string"},
+                "Captions": {"type": "string"},
+                "Lyrics": {"type": "string"}
+              },
+              "required": ["AudioUrl"]
+            }
+          },
+          "required": ["SongDetail"]
+        },
+        "log_id": {"type": "string"},
+        "msg": {"type": "string"},
+        "errorBody": {"type": "object"},
+        "isSuccess": {"type": "boolean"}
+      },
+      "required": ["code", "data", "log_id", "msg", "errorBody", "isSuccess"]
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

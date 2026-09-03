@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/8364/visual-intent.schema.json",
+  "title": "8364 全文视觉意图导演节点契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "segments": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "director_plan": {"type": "object"}
+      },
+      "required": ["segments", "director_plan"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "visual_core": {"type": "string"},
+              "visual_story": {"type": "string"}
+            },
+            "required": ["visual_core", "visual_story"],
+            "additionalProperties": false
+          }
+        },
+        "music_cues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "emotion": {"type": "string"},
+              "energy": {"type": "integer"},
+              "music_direction": {"type": "string"},
+              "music_role": {"type": "string"},
+              "transition_to_next": {"type": "string"}
+            },
+            "required": ["emotion", "energy", "music_direction", "music_role", "transition_to_next"],
+            "additionalProperties": false
+          }
+        },
+        "reasoning_content": {"type": "string"}
+      },
+      "required": ["items", "music_cues", "reasoning_content"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

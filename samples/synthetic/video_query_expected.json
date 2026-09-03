@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "msg": "\u89c6\u9891\u751f\u6210\u5b8c\u6210\uff08\u672a\u5f00\u542f TOS \u8f6c\u5b58\uff0c\u8fd4\u56de\u4e34\u65f6\u94fe\u63a5\uff09",
+  "public_video_url": "https://video.example/synthetic.mp4",
+  "temp_video_url": "https://video.example/synthetic.mp4",
+  "status": "\u751f\u6210\u5b8c\u6210",
+  "waited_seconds": 0,
+  "file_size_mb": 0.06,
+  "tip": "\u65b9\u821f\u67e5\u8be2\u8d26\u53f7\uff1a\u4e3b\u8d26\u53f7 (\u65b0\u9274\u6743)",
+  "raw_error": ""
+}

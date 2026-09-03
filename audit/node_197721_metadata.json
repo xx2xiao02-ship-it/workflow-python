@@ -1,0 +1,15 @@
+{
+  "node_id": "197721",
+  "name": "特效信息",
+  "api": "effect_infos",
+  "upstream": {"node_id": "165901", "field": "all_timelines"},
+  "downstream": {"node_id": "187358", "field": "effect_infos"},
+  "fixed_inputs": {"effects": ["暗角"]},
+  "source_readonly": ["audit/source/197721_coze_config.md", "audit/source/effect_infos_capcut_mate_original.py"],
+  "implementation": "src/workflow_1256/effect_infos.py",
+  "schema": "schemas/effect_infos.schema.json",
+  "adapter": "audit/coze_adapter_effect_infos.py",
+  "comparison": "audit/equivalence_effect_infos.py",
+  "tests": ["tests/test_effect_infos.py"],
+  "status": "code_level_equivalent_passed; local_17_item_route_passed; downstream_write_pending"
+}

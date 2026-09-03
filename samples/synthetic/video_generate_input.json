@@ -1,0 +1,12 @@
+{
+  "prompt": "synthetic video prompt",
+  "duration": 7,
+  "first_frame_url": "",
+  "generate_audio": false,
+  "last_frame_url": "",
+  "ratio": "9:16",
+  "resolution": "480p",
+  "watermark": false,
+  "pre_check_wait": 0,
+  "seed": -1
+}

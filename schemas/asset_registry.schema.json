@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 AssetRegistry",
+  "type": "object",
+  "required": ["project_id", "run_id", "source_plan_version", "asset_version", "records", "status", "mapping_notes"],
+  "properties": {
+    "project_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "source_plan_version": {"type": "string", "minLength": 1},
+    "asset_version": {"type": "string", "minLength": 1},
+    "records": {"type": "array", "items": {"$ref": "#/$defs/asset"}},
+    "status": {"enum": ["ASSETS_READY", "ASSETS_READY_WITH_WARNINGS", "ASSETS_PARTIAL", "ASSET_MAPPING_ONLY"]},
+    "mapping_notes": {"type": "array", "items": {"type": "string"}},
+    "digital_human_policy": {
+      "type": "object",
+      "description": "数字人镜头比例、连续性和串行生成策略；允许后续策略字段扩展。",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "time_window": {
+      "type": "object",
+      "required": ["start_us", "end_us", "duration_us"],
+      "properties": {
+        "start_us": {"type": "integer", "minimum": 0},
+        "end_us": {"type": "integer", "minimum": 1},
+        "duration_us": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false,
+      "description": "duration_us must equal end_us - start_us"
+    },
+    "asset": {
+      "type": "object",
+      "required": ["asset_id", "requirement_id", "group_id", "shot_ids", "asset_type", "role", "status", "source_node", "source_index", "asset_version", "asset_duration_us", "actual_timeline", "remote_url", "local_path", "evidence_level", "error_type", "error_message", "retryable", "metadata"],
+      "properties": {
+        "asset_id": {"type": "string", "minLength": 1},
+        "requirement_id": {"type": "string", "minLength": 1},
+        "group_id": {"type": ["string", "null"]},
+        "shot_ids": {"type": "array", "items": {"type": "string"}},
+        "asset_type": {"type": "string", "minLength": 1},
+        "role": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "source_node": {"type": "string", "minLength": 1},
+        "source_index": {"type": "integer", "minimum": 0},
+        "asset_version": {"type": "string", "minLength": 1},
+        "asset_duration_us": {"type": ["integer", "null"], "minimum": 0},
+        "actual_timeline": {"anyOf": [{"$ref": "#/$defs/time_window"}, {"type": "null"}]},
+        "remote_url": {"type": "string"},
+        "local_path": {"type": "string"},
+        "evidence_level": {"type": "string", "minLength": 1},
+        "error_type": {"type": "string"},
+        "error_message": {"type": "string"},
+        "retryable": {"type": "boolean"},
+        "metadata": {"type": "object"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/video-generate.schema.json",
+  "title": "video_generate 视频生成插件输入输出契约",
+  "description": "Workflow node 139653. Network and TOS are intentionally not executed by local tests.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "prompt": {"type": "string"},
+        "camera_fixed": {"type": "boolean"},
+        "draft": {"type": "boolean"},
+        "duration": {"type": "integer"},
+        "first_frame_url": {"type": "string"},
+        "generate_audio": {"type": "boolean"},
+        "last_frame_url": {"type": "string"},
+        "pre_check_wait": {"type": "integer"},
+        "ratio": {"type": "string"},
+        "resolution": {"type": "string"},
+        "seed": {},
+        "watermark": {"type": "boolean"},
+        "video_model": {
+          "enum": ["auto", "seedance_1_5_pro", "seedance_1_0_pro"],
+          "default": "auto",
+          "description": "auto/1.5 优先使用 Seedance 1.5 Pro；额度、权限或接入点不可用时自动降级到 1.0 Pro。"
+        }
+      },
+      "required": ["prompt", "duration", "first_frame_url", "generate_audio", "last_frame_url", "ratio", "resolution", "watermark"],
+      "additionalProperties": true
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "msg": {"type": "string"},
+        "success": {"type": "boolean"},
+        "task_id": {"type": "string"},
+        "tip": {"type": "string"}
+      },
+      "required": ["msg", "success", "task_id", "tip"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

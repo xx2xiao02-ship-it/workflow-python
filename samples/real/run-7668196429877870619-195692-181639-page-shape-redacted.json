@@ -1,0 +1,46 @@
+{
+  "synthetic": false,
+  "redacted_structural_fixture": true,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "batch_node": {
+    "node_id": "195692",
+    "node_name": "生成视频提示词撰写",
+    "status": "运行成功",
+    "duration_observed": "1m13s",
+    "batch_size": 100,
+    "concurrent_size": 10,
+    "item_count_observed": 9,
+    "output_field": "plan_out_list"
+  },
+  "internal_node": {
+    "node_id": "181639",
+    "node_name": "图生视频提示词导演",
+    "model": "豆包·2.0·lite",
+    "visible_item_count": 9,
+    "item_durations_observed": ["1.22min", "34.61s", "39.16s", "35.70s", "41.43s", "33.62s", "32.98s", "32.17s", "23.92s"],
+    "item_1_input": {
+      "items_type": "object",
+      "ref_image_type": "string[]",
+      "ref_image_count": 3,
+      "motion_seed_type": "object",
+      "motion_seed_count": 3,
+      "clip_duration_type": "object",
+      "clip_duration_count": 3,
+      "sensitive_values": "redacted"
+    },
+    "item_1_output": {
+      "visual_lock_type": "string",
+      "plans_count": 3,
+      "shot_indexes": [0, 1, 2],
+      "duration_values": [7, 7, 3],
+      "stage_counts": [2, 3, 2],
+      "stage_fields": ["time_range", "action", "camera_motion"],
+      "reasoning_content_type": "string"
+    }
+  },
+  "limitations": [
+    "页面对签名图片 URL、visual_lock、reasoning_content 和长 action 文本显示省略号；未保存完整值。",
+    "LLM 没有可执行原始 Python 源码，因此本节点只能完成配置/结构契约审计，不能宣称模型内部代码等价。"
+  ]
+}

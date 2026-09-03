@@ -1,0 +1,26 @@
+{
+  "LLM_list": [
+    {
+      "shots": [{"source_text": "第一段 synthetic", "clip_role": "状态建立", "story_beat": "状态已建立"}],
+      "reasoning_content": "synthetic reasoning 0"
+    },
+    {
+      "shots": [{"source_text": "第二段 synthetic", "clip_role": "信息触发", "story_beat": "变化已进入"}],
+      "reasoning_content": "synthetic reasoning 1"
+    }
+  ],
+  "Code_list": [
+    {
+      "shots": [{"source_text": "第一段 synthetic", "clip_role": "状态建立", "story_beat": "状态已建立", "clip_duration": 8.0}],
+      "clip_duration": [8.0],
+      "int_duration": [8],
+      "timelines": [{"start": 0, "end": 8000000}]
+    },
+    {
+      "shots": [{"source_text": "第二段 synthetic", "clip_role": "信息触发", "story_beat": "变化已进入", "clip_duration": 10.0}],
+      "clip_duration": [10.0],
+      "int_duration": [10],
+      "timelines": [{"start": 8000000, "end": 18000000}]
+    }
+  ]
+}

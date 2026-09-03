@@ -1,0 +1,37 @@
+{
+  "source": "本地 CapCut Mate synthetic 18 段结构验收，动态 ID 已脱敏",
+  "execution": {
+    "service_base_url": "http://127.0.0.1:30000",
+    "draft_url": "<redacted-local-draft-url>",
+    "draft_directory": "D:\\jianying\\JianyingPro Drafts\\<redacted-draft-id>",
+    "steps": ["create_draft", "video_infos", "add_videos", "keyframes_infos", "add_keyframes", "get_draft"]
+  },
+  "input": {
+    "segment_count": 18,
+    "keyframe_count": 36,
+    "time_source": "samples/real/run-7668196429877870619-116930-digital-human-real-values-redacted.json",
+    "video_source": "same local synthetic MP4 repeated 18 times",
+    "ctype": "UNIFORM_SCALE",
+    "offsets": "0|100",
+    "values": "1|1.15"
+  },
+  "api_outputs": {
+    "add_videos_code": 0,
+    "keyframes_infos_code": 0,
+    "add_keyframes_code": 0,
+    "get_draft_code": 0,
+    "get_draft_file_count": 24
+  },
+  "draft_content_observation": {
+    "video_track_segment_count": 18,
+    "segments_with_keyframe_groups": 18,
+    "total_keyframes": 36,
+    "first_segment_offsets_microseconds": [0, 6906732],
+    "last_segment_offsets_microseconds": [0, 2256000],
+    "every_group_property_type": "KFTypeScaleX",
+    "every_group_values": [1.0, 1.15],
+    "draft_json_files_checked": ["draft_content.json", "draft_info.json"],
+    "dynamic_ids_redacted": true
+  },
+  "scope": "synthetic video assets with real Coze segment timeline shape; not real media equivalence"
+}

@@ -1,0 +1,9 @@
+{
+  "ctype": "UNIFORM_SCALE",
+  "offsets": "0|100",
+  "values": "1|1.15",
+  "segment_infos": [
+    {"id": "second-seg-a", "start": 0, "end": 6906732},
+    {"id": "second-seg-b", "start": 6906732, "end": 13613268}
+  ]
+}

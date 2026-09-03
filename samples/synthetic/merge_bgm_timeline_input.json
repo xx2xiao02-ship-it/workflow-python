@@ -1,0 +1,11 @@
+{
+  "audio_urls": [
+    "https://synthetic.example/bgm-1.mp3",
+    "https://synthetic.example/bgm-2.mp3"
+  ],
+  "timelines": [
+    {"start": 0, "end": 40000000},
+    {"start": 36000000, "end": 80000000}
+  ],
+  "transition_schemes": ["crossfade"]
+}

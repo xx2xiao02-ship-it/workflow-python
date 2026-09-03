@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/directors-v2.schema.json",
+  "title": "1256 具体画面导演节点输入输出契约",
+  "description": "根据 Coze 导出配置和真实执行记录登记；插件内部导演逻辑尚未取得源码。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "text": {"type": "string"}
+      },
+      "required": ["text"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "director_plan": {
+          "type": "object",
+          "properties": {
+            "arc": {"type": "array", "items": {"type": "string"}},
+            "core": {"type": "string"},
+            "director_type": {"type": "string"},
+            "emo": {"type": "string"},
+            "expression_domains": {"type": "array", "items": {"type": "string"}},
+            "goal": {"type": "string"},
+            "open": {"type": "string"},
+            "rule": {"type": "string"},
+            "spine": {"type": "string"},
+            "tone": {"type": "string"},
+            "variation_focus": {"type": "array", "items": {"type": "string"}}
+          },
+          "required": ["arc", "core", "director_type", "emo", "expression_domains", "goal", "open", "rule", "spine", "tone", "variation_focus"],
+          "additionalProperties": false
+        },
+        "ok": {"type": "boolean"},
+        "segment_beats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "beats": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "expression_need": {"type": "string"},
+                    "relation": {"type": "string"},
+                    "route_candidates": {"type": "array", "items": {"type": "string"}}
+                  },
+                  "required": ["expression_need", "relation", "route_candidates"],
+                  "additionalProperties": false
+                }
+              },
+              "rhythm": {"type": "string"},
+              "segment_goal": {"type": "string"},
+              "segment_index": {"type": "integer"},
+              "segment_text": {"type": "string"}
+            },
+            "required": ["beats", "rhythm", "segment_goal", "segment_index", "segment_text"],
+            "additionalProperties": false
+          }
+        },
+        "segments": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["director_plan", "ok", "segment_beats", "segments"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

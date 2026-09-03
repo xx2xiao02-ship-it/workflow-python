@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/shot-refinement-batch.schema.json",
+  "title": "1256 镜头精细化批处理节点输入输出契约",
+  "description": "原始 Coze 批处理节点 103964；批体包含镜头精细化导演和时长计算时间线规划。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "duration": {"type": "array", "items": {"type": "number"}},
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "visual_core": {"type": "string"},
+              "visual_story": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
+        },
+        "segments": {"type": "array", "items": {"type": "string"}},
+        "timelines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {"type": "integer"},
+              "end": {"type": "integer"}
+            },
+            "required": ["start", "end"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["duration", "items", "segments", "timelines"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "LLM_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "shots": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source_text": {"type": "string"},
+                    "clip_role": {"type": "string"},
+                    "story_beat": {"type": "string"}
+                  },
+                  "required": ["source_text", "clip_role", "story_beat"],
+                  "additionalProperties": false
+                }
+              },
+              "reasoning_content": {"type": "string"}
+            },
+            "required": ["shots", "reasoning_content"],
+            "additionalProperties": false
+          }
+        },
+        "Code_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "shots": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source_text": {"type": "string"},
+                    "clip_role": {"type": "string"},
+                    "story_beat": {"type": "string"},
+                    "clip_duration": {"type": "number"}
+                  },
+                  "required": ["source_text", "clip_role", "story_beat", "clip_duration"],
+                  "additionalProperties": false
+                }
+              },
+              "clip_duration": {"type": "array", "items": {"type": "number"}},
+              "int_duration": {"type": "array", "items": {"type": "integer"}},
+              "timelines": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "start": {"type": "integer"},
+                    "end": {"type": "integer"}
+                  },
+                  "required": ["start", "end"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": ["shots", "clip_duration", "int_duration", "timelines"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["LLM_list", "Code_list"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

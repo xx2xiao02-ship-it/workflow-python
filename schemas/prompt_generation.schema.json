@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/prompt-generation.schema.json",
+  "title": "提示词生成输入输出契约",
+  "description": "Coze code node 113743. Canonical contract; the implementation also preserves the original JSON-string compatibility behavior.",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "plan_out_list": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/planGroup" }
+        },
+        "ref_image": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/refImageGroup" }
+        },
+        "clip_duration": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/durationGroup" }
+        },
+        "story_context": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "shot_metadata": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "digital_human_shot_indices": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        },
+        "use_frame_continuity": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": ["plan_out_list", "ref_image", "clip_duration"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "video_prompt": { "type": "array", "items": { "type": "string" } },
+        "int_duration": { "type": "array", "items": { "type": "integer" } },
+        "ref_image_f": { "type": "array", "items": { "type": "string" } },
+        "ref_image_e": { "type": "array", "items": { "type": "string" } },
+        "camera_fixed": { "type": "array", "items": { "type": "boolean" } },
+        "error": { "type": "string" },
+        "skipped_digital_human_shot_indices": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      },
+      "required": ["video_prompt", "int_duration", "ref_image_f", "ref_image_e", "camera_fixed", "error"],
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "planGroup": {
+      "type": "object",
+      "properties": {
+        "plans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/plan" }
+        },
+        "reasoning_content": { "type": "string" },
+        "visual_lock": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "plan": {
+      "type": "object",
+      "properties": {
+        "shot_index": { "type": "integer" },
+        "duration": { "type": "integer" },
+        "stages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/stage" }
+        }
+      },
+      "required": ["shot_index", "duration", "stages"],
+      "additionalProperties": true
+    },
+    "stage": {
+      "type": "object",
+      "properties": {
+        "time_range": { "type": "string" },
+        "action": { "type": "string" },
+        "camera_motion": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "refImageGroup": {
+      "type": "object",
+      "properties": {
+        "ref_image": { "type": "array", "items": { "type": ["string", "object"] } }
+      },
+      "required": ["ref_image"],
+      "additionalProperties": true
+    },
+    "durationGroup": {
+      "type": "object",
+      "properties": {
+        "clip_duration": { "type": "array", "items": {} }
+      },
+      "required": ["clip_duration"],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

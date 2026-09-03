@@ -1,0 +1,16 @@
+{
+  "source": "Coze 成功运行记录",
+  "execute_id": "7668196429877870619",
+  "node_name": "创建草稿",
+  "api_name": "create_draft",
+  "input": {
+    "height": 1920,
+    "width": 1080
+  },
+  "output": {
+    "draft_url": "https://ts.fyshark.com/#/cozeToJianyin?drafId=https://video-snot-12220.oss-cn-shanghai.aliyuncs.com/2026-07-30/draft/64018205-944d-43c2-8c68-842579b67216.json",
+    "tip_url": "快速入门必看指南，请访问：https://www.51aigc.cc/#/cozeTutorial/detail/13"
+  },
+  "synthetic": false,
+  "captured_from": "Coze 执行记录页面输出详情"
+}

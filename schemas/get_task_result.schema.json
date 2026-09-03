@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/get-task-result.schema.json",
+  "title": "1256 get_task_result 插件契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "task_id": {"type": "string"},
+        "api_key": {"type": "string"}
+      },
+      "required": ["task_id", "api_key"],
+      "additionalProperties": true
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "code": {"type": ["integer", "null"]},
+        "errorBody": {"type": ["object", "null"]},
+        "isSuccess": {"type": "boolean"},
+        "status": {"type": ["string", "null"]},
+        "image_url": {"type": ["string", "null"]},
+        "message": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "node_name": "具体画面导演",
+  "api_name": "directors_v2",
+  "source_path": "C:\\Users\\Administrator\\.codex\\attachments\\7762b458-7f30-4e28-b294-c93f9571cc4b\\pasted-text.txt",
+  "source_sha256": "F65F26BD1C50FEC6952CD771AECE3123011C30FDD56FE7E30EDDDC651B449662",
+  "source_lines": 1254,
+  "sanitized_copy": "audit/source/129109_coze_original_sanitized.py",
+  "credentials": "omitted",
+  "external_calls_during_audit": false,
+  "model_roles": {
+    "routing": "Ark text model via responses endpoint",
+    "director": "GPT Chat Completions text model"
+  },
+  "seedance_2_1_pro_change": {
+    "applied": false,
+    "reason": "Seedance 2.1 Pro is a separate video-generation behavior and cannot be substituted into this text-JSON director node without changing its contract and output behavior."
+  }
+}

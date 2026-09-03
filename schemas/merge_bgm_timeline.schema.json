@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/merge-bgm-timeline.schema.json",
+  "title": "1256 merge_bgm_timeline 输入输出契约",
+  "description": "节点 165818；仅定义原始字段契约，不实现音频下载或混音。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "audio_urls": {"type": "array", "items": {"type": "string", "format": "uri"}},
+        "timelines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["start", "end"],
+            "properties": {
+              "start": {"type": "integer", "minimum": 0},
+              "end": {"type": "integer", "minimum": 1}
+            },
+            "additionalProperties": true
+          }
+        },
+        "transition_schemes": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["audio_urls", "timelines", "transition_schemes"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "audio_url": {"type": "string", "format": "uri"},
+        "audio_url_list": {"type": "array", "items": {"type": "string", "format": "uri"}},
+        "duration": {"type": "number", "minimum": 0}
+      },
+      "required": ["audio_url", "audio_url_list", "duration"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

@@ -1,0 +1,14 @@
+{
+  "event_id": "event-smoke",
+  "title": "监管政策变化",
+  "verified_facts": ["监管部门发布新规"],
+  "source_refs": [
+    {
+      "source_id": "news-smoke",
+      "url": "https://news.example.com/smoke"
+    }
+  ],
+  "persons": [],
+  "occurred_at": "2026-08-27",
+  "controversies": []
+}

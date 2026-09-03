@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/create-image-task.schema.json",
+  "title": "1256 create_image_task 插件契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "api_key": {"type": "string"},
+        "prompt": {"type": "string"},
+        "n": {"type": ["integer", "string"], "default": 1},
+        "size": {"type": "string", "default": "auto"},
+        "resolution": {"type": "string", "default": "1k"},
+        "image_urls": {"type": "array", "items": {"type": "string"}, "default": []},
+        "official_fallback": {"type": "boolean", "default": false},
+        "image_model": {"enum": ["auto", "image2"], "default": "auto"}
+      },
+      "required": ["api_key", "prompt"],
+      "additionalProperties": true
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "code": {"type": ["integer", "null"]},
+        "image_url": {"type": ["string", "null"]},
+        "status": {"type": ["string", "null"]},
+        "task_id": {"type": ["string", "null"]},
+        "message": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

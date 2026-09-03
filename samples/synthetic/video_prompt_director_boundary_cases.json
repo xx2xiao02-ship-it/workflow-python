@@ -1,0 +1,7 @@
+[
+  {"name": "missing_items", "params": {"ref_image": [], "motion_seed": {}, "clip_duration": {}}},
+  {"name": "invalid_ref_image", "params": {"items": {}, "ref_image": [1], "motion_seed": {"motion_seed": []}, "clip_duration": {"clip_duration": []}}},
+  {"name": "json_wrapped_group", "params": "{\"items\":{\"visual_core\":\"c\"},\"ref_image\":[\"frame\"],\"motion_seed\":{\"motion_seed\":[\"seed\"]},\"clip_duration\":{\"clip_duration\":[2]}}"},
+  {"name": "batch_count_mismatch", "batch": {"items": [{}], "motion_seed": [], "ref_image": [], "clip_duration": []}},
+  {"name": "response_missing_stage_field", "response": {"visual_lock": "lock", "plans": [{"shot_index": 0, "duration": 2, "stages": [{"action": "a", "camera_motion": "固定机位"}]}], "reasoning_content": "r"}}
+]

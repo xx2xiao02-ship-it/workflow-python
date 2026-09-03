@@ -1,0 +1,23 @@
+{
+  "node_id": "115137",
+  "name": "添加关键帧",
+  "kind": "capcut-mate draft-write plugin interface",
+  "api": "add_keyframes",
+  "upstream": {"node_id": "151394", "field": "keyframes_infos"},
+  "downstream": {"node_id": "1904923", "relation": "next node in workflow"},
+  "source_readonly": [
+    "audit/source/115137_coze_config.md",
+    "audit/source/add_keyframes_capcut_mate_original.py",
+    "audit/source/add_keyframes_schema_capcut_mate_original.py",
+    "audit/source/exceptions_capcut_mate_original.py",
+    "audit/source/add_keyframes_source_metadata.json"
+  ],
+  "implementation": "src/workflow_1256/add_keyframes.py",
+  "schema": "schemas/add_keyframes.schema.json",
+  "adapter": "audit/coze_adapter_add_keyframes.py; src/workflow_1256/capcut_node_adapters.py",
+  "comparison": "audit/equivalence_add_keyframes.py",
+  "tests": ["tests/test_add_keyframes.py"],
+  "real_evidence": ["samples/real/run-7668196429877870619-workflow-node-dom-summary.json"],
+  "status": "parser_and_contract_equivalent_passed; 8364_single_segment_live_write_verified; 1256_full_fixture_pending",
+  "next_gate": "使用1256真实18个segment和36个keyframe做同输入写入对照；1904923上游分支单独验收"
+}

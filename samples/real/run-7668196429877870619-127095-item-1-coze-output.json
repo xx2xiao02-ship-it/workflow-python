@@ -1,0 +1,29 @@
+{
+  "shots": [
+    {
+      "source_text": "社会正在悄然发生变化，此前大众普遍认为AI是噱头",
+      "clip_role": "状态建立",
+      "story_beat": "提出社会正在完成大换血的观点，明确此前大众对AI的普遍认知是不实用的噱头",
+      "clip_duration": 6.9
+    },
+    {
+      "source_text": "当下AI已可替代文案、设计、剪辑、客服等大半岗位",
+      "clip_role": "信息触发",
+      "story_beat": "大众发现AI实际应用覆盖大量职业岗位，过往对AI的错误认知被打破",
+      "clip_duration": 6.7
+    },
+    {
+      "source_text": "大量职场人陷入焦虑，担忧自己的工作岗位保不住",
+      "clip_role": "结果落点",
+      "story_beat": "个体职业危机感被触发，停在大众对自身职业安全产生担忧的节点",
+      "clip_duration": 2.8
+    }
+  ],
+  "clip_duration": [6.9, 6.7, 2.8],
+  "int_duration": [7, 7, 4],
+  "timelines": [
+    {"start": 0, "end": 6906732},
+    {"start": 6906732, "end": 13613268},
+    {"start": 13613268, "end": 16416000}
+  ]
+}

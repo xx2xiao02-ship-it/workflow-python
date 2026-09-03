@@ -1,0 +1,28 @@
+{
+  "synthetic": false,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "node_id": "116616",
+  "node_name": "Shot_Visual_Arrangement",
+  "status": "运行成功",
+  "observed_input": {
+    "Code_list_groups": 9,
+    "segments_count": 9,
+    "ref_image_count": 2,
+    "debug": false
+  },
+  "observed_output": {
+    "prompt_count": 17,
+    "ref_image_count": 17,
+    "timelines_count": 17,
+    "motion_seed_count": 17,
+    "int_duration_count": 17,
+    "error": "",
+    "debug": false
+  },
+  "redaction": {
+    "ref_image_values": "signed URLs were not saved",
+    "long_prompt_values": "UI displayed ellipses and were not treated as complete values"
+  },
+  "note": "The full input fixture is reconstructed from saved upstream real fixtures; the model responses used for offline code comparison are explicitly deterministic audit fixtures, not captured Coze model responses."
+}

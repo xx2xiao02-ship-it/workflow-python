@@ -1,0 +1,47 @@
+[
+  {
+    "name": "empty_arrays",
+    "category": "boundary",
+    "params": {"video_urls": [], "timelines": [], "transition": "漫画撕纸", "transition_duration": 1000000, "volume": 0}
+  },
+  {
+    "name": "video_urls_shorter_truncates",
+    "category": "boundary",
+    "params": {"video_urls": ["synthetic://video/1.mp4"], "timelines": [{"start": 0, "end": 1000000}, {"start": 1000000, "end": 2000000}], "volume": 0}
+  },
+  {
+    "name": "timelines_shorter_truncates",
+    "category": "boundary",
+    "params": {"video_urls": ["synthetic://video/1.mp4", "synthetic://video/2.mp4"], "timelines": [{"start": 0, "end": 1000000}], "volume": 0}
+  },
+  {
+    "name": "optional_fields_and_nulls",
+    "category": "boundary",
+    "params": {"video_urls": ["synthetic://video/1.mp4"], "timelines": [{"start": 2000000, "end": 1000000}], "height": 1920, "width": 1080, "mask": null, "transition": null, "transition_duration": null, "volume": null}
+  },
+  {
+    "name": "json_string_input",
+    "category": "compatibility",
+    "params": "{\"video_urls\":[\"synthetic://video/1.mp4\"],\"timelines\":[{\"start\":0,\"end\":1000000}],\"volume\":0}"
+  },
+  {
+    "name": "nested_input_wrapper",
+    "category": "compatibility",
+    "params": {"input": {"video_urls": ["synthetic://video/1.mp4"], "timelines": [{"start": 0, "end": 1000000}], "volume": 0}}
+  },
+  {
+    "name": "missing_required_field",
+    "category": "exceptional input",
+    "params": {"timelines": [{"start": 0, "end": 1000000}]}
+  },
+  {
+    "name": "missing_timeline_field",
+    "category": "exceptional input",
+    "params": {"video_urls": ["synthetic://video/1.mp4"], "timelines": [{"start": 0}], "volume": 0}
+  },
+  {
+    "name": "invalid_timeline_arithmetic",
+    "category": "exceptional input",
+    "params": {"video_urls": ["synthetic://video/1.mp4"], "timelines": [{"start": "bad", "end": 1000000}], "volume": 0}
+  }
+]

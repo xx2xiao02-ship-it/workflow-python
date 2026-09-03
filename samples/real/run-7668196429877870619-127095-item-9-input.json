@@ -1,0 +1,15 @@
+{
+  "segments": "\n\n你的工作，被 AI 改变了多少？",
+  "shots": [
+    {
+      "clip_role": "信息触发",
+      "source_text": "你的工作，被AI改变了多少？",
+      "story_beat": "关于工作受AI影响程度的问题已提出，当前停在引导观众展开自我反思的节点。"
+    }
+  ],
+  "duration": 2.3,
+  "timelines": {
+    "start": 109416000,
+    "end": 111672000
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "source": "local CapCut Mate structural acceptance",
+  "node_id": "1962357",
+  "draft_id": "20260731050504a04f57f4",
+  "draft_url": "http://127.0.0.1:30000/openapi/capcut-mate/v1/get_draft?draft_id=20260731050504a04f57f4",
+  "input_segment_count": 17,
+  "input_keyframe_count": 34,
+  "add_keyframes_response": {
+    "code": 0,
+    "keyframes_added": 34,
+    "affected_segment_count": 17
+  },
+  "get_draft_file_count": 23,
+  "draft_content": {
+    "video_segment_count": 17,
+    "keyframe_group_count": 17,
+    "keyframe_count": 34,
+    "first_offsets": [0, 6906732],
+    "last_offsets": [0, 2256000],
+    "property_type": "KFTypeScaleX",
+    "value_pattern": [1.0, 1.15]
+  },
+  "redaction": ["video_url", "material_id", "segment_id", "dynamic_file_urls"]
+}

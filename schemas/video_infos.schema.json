@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/video-infos.schema.json",
+  "title": "AIGC动画（video_infos）输入输出契约",
+  "description": "节点 115723 的工作流映射。时间单位为微秒；infos 是 JSON 字符串，不是嵌套数组。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "video_urls": {"type": "array", "items": {"type": "string"}},
+        "timelines": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/timeline"}
+        },
+        "height": {"type": ["integer", "null"]},
+        "width": {"type": ["integer", "null"]},
+        "mask": {"type": ["string", "null"]},
+        "transition": {"type": ["string", "null"]},
+        "transition_duration": {"type": ["integer", "null"]},
+        "volume": {"type": ["number", "null"]}
+      },
+      "required": ["video_urls", "timelines"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "infos": {"type": "string"}
+      },
+      "required": ["infos"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false,
+  "$defs": {
+    "timeline": {
+      "type": "object",
+      "properties": {
+        "start": {"type": "integer"},
+        "end": {"type": "integer"}
+      },
+      "required": ["start", "end"],
+      "additionalProperties": false
+    }
+  }
+}

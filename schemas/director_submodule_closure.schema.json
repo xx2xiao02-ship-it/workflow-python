@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 Director Submodule Closure Report",
+  "type": "object",
+  "required": ["overall_status", "mapping_gate", "production_gate", "manifest_status", "manifest_unchanged", "node_count", "blocking_nodes", "submodules", "nodes"],
+  "properties": {
+    "overall_status": {"enum": ["CLOSED", "PARTIAL", "BLOCKED"]},
+    "mapping_gate": {"type": "boolean"},
+    "production_gate": {"type": "boolean"},
+    "manifest_status": {"const": "DIRECTOR_LOCKED"},
+    "manifest_unchanged": {"const": true},
+    "node_count": {"type": "integer", "minimum": 1},
+    "blocking_nodes": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "submodules": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["name", "node_ids", "status", "mapping_gate", "production_gate", "blocking_nodes", "nodes"],
+        "properties": {
+          "name": {"enum": ["narrative_intent", "timing_subtitles", "shot_breakdown", "visual_route"]},
+          "node_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "status": {"enum": ["CLOSED", "PARTIAL", "BLOCKED"]},
+          "mapping_gate": {"type": "boolean"},
+          "production_gate": {"type": "boolean"},
+          "blocking_nodes": {"type": "array", "items": {"type": "string", "minLength": 1}},
+          "nodes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/node"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "nodes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/node"}}
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["node_id", "name", "submodule", "node_kind", "input_fields", "output_fields", "data_role", "external_dependency", "status", "evidence", "transport_status", "production_closed", "source_refs", "note", "failure_semantics"],
+      "properties": {
+        "node_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "submodule": {"enum": ["narrative_intent", "timing_subtitles", "shot_breakdown", "visual_route"]},
+        "node_kind": {"type": "string", "minLength": 1},
+        "parent_node_id": {"type": ["string", "null"]},
+        "input_fields": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "output_fields": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "data_role": {"type": "string"},
+        "external_dependency": {"type": "string"},
+        "status": {"enum": ["contract_verified", "real_fixture_verified", "transport_pending", "blocked"]},
+        "evidence": {"type": "string", "minLength": 1},
+        "transport_status": {"enum": ["not_required", "verified_live_route", "transport_pending"]},
+        "production_closed": {"type": "boolean"},
+        "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "note": {"type": "string", "minLength": 1},
+        "failure_semantics": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

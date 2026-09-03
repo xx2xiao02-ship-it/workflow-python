@@ -1,0 +1,24 @@
+{
+  "LLM_list": [
+    {"shots": [{"id": "g01_s01"}, {"id": "g01_s02"}]},
+    {"items": [{"id": "g02_s01"}]}
+  ],
+  "motion_seed": [
+    {"motion_seed": "第一镜头动作"},
+    "第二镜头动作",
+    {"seed": "第三镜头动作"}
+  ],
+  "items": [
+    {"visual_core": "第一组核心", "visual_story": "第一组故事"},
+    {"visual_core": "第二组核心", "visual_story": "第二组故事"}
+  ],
+  "image_url_list": [
+    {"image_url": "synthetic://frame/1"},
+    {"url": "synthetic://frame/2"},
+    {"link": "synthetic://frame/3"}
+  ],
+  "Code_list": [
+    {"clip_duration": [4, 4.25]},
+    {"durations": [6]}
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "director_plan": {
+    "arc": ["hook", "end"],
+    "core": "synthetic core",
+    "director_type": "view_dir",
+    "emo": "synthetic emotion",
+    "expression_domains": ["work"],
+    "goal": "synthetic goal",
+    "open": "synthetic open",
+    "rule": "synthetic rule",
+    "spine": "synthetic spine",
+    "tone": "synthetic tone",
+    "variation_focus": ["viewpoint"]
+  },
+  "ok": true,
+  "segment_beats": [
+    {
+      "beats": [
+        {
+          "expression_need": "emotion",
+          "relation": "new",
+          "route_candidates": ["scene"]
+        }
+      ],
+      "rhythm": "hook",
+      "segment_goal": "synthetic goal 0",
+      "segment_index": 0,
+      "segment_text": "第一段 synthetic 文案。"
+    },
+    {
+      "beats": [
+        {
+          "expression_need": "conclusion",
+          "relation": "end",
+          "route_candidates": ["host"]
+        }
+      ],
+      "rhythm": "end",
+      "segment_goal": "synthetic goal 1",
+      "segment_index": 1,
+      "segment_text": "第二段 synthetic 文案。"
+    }
+  ],
+  "segments": ["第一段 synthetic 文案。", "第二段 synthetic 文案。"]
+}

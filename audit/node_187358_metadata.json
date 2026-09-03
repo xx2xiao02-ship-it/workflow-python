@@ -1,0 +1,9 @@
+{
+  "node_id":"187358","name":"添加特效","api":"add_effects",
+  "upstream":{"node_id":"197721","field":"infos"},
+  "downstream":{"node_id":"1922689","field":"draft_url"},
+  "source_readonly":["audit/source/187358_coze_config.md","audit/source/add_effects_capcut_mate_original.py"],
+  "implementation":"src/workflow_1256/add_effects.py","schema":"schemas/add_effects.schema.json",
+  "adapter":"audit/coze_adapter_add_effects.py","comparison":"audit/equivalence_add_effects.py",
+  "tests":["tests/test_add_effects.py"],"status":"code_level_equivalent_passed; local_17_item_write_passed; downstream_second_effect_pending"
+}

@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://local.invalid/1256/save-draft.schema.json",
+  "title":"保存草稿（节点143635）输入输出契约",
+  "type":"object",
+  "properties":{"input":{"type":"object","properties":{"draft_url":{"type":"string","minLength":1}},"required":["draft_url"]},"output":{"type":"object","properties":{"draft_url":{"type":"string"},"message":{"type":"string"}},"required":["draft_url","message"]}},
+  "required":["input","output"]
+}

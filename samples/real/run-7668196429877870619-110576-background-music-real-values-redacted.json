@@ -1,0 +1,48 @@
+{
+  "synthetic": false,
+  "redacted": true,
+  "source": {
+    "execution_id": "7668196429877870619",
+    "node_id": "110576",
+    "node_name": "背景音乐*",
+    "interface": "add_audios",
+    "captured_from": "Coze execution detail page",
+    "captured_at": "2026-07-31"
+  },
+  "input": {
+    "audio_infos": {
+      "type": "String(JSON)",
+      "item_count": 1,
+      "time_unit": "microseconds",
+      "items": [
+        {
+          "index": 0,
+          "keys": ["audio_url", "start", "end", "volume"],
+          "audio_url": {"present": true, "protocol": "https", "value_redacted": true},
+          "start": 0,
+          "end": 111672000,
+          "duration": 111672000,
+          "volume": 0.4
+        }
+      ]
+    },
+    "draft_url": {"type": "String", "present": true, "protocol": "https", "value_redacted": true}
+  },
+  "output": {
+    "audio_ids": {"type": "Array<String>", "count": 1, "order_preserved": true, "values_redacted": true},
+    "draft_url": {"type": "String", "present": true, "value_redacted": true},
+    "track_id": {"type": "String", "present": true, "value_redacted": true}
+  },
+  "observed": {
+    "status": "运行成功",
+    "duration": "0.220s",
+    "timeline_start": 0,
+    "timeline_end": 111672000,
+    "item_order": "0"
+  },
+  "redaction_reason": [
+    "audio_url removed",
+    "draft_url removed",
+    "audio_ids and track_id values removed"
+  ]
+}

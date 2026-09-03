@@ -1,0 +1,8 @@
+{
+  "audio_url": "https://synthetic.example/bgm-merged.mp3",
+  "audio_url_list": [
+    "https://synthetic.example/bgm-1.mp3",
+    "https://synthetic.example/bgm-2.mp3"
+  ],
+  "duration": 80000000
+}

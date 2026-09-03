@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/8364/host-shot-recognition.schema.json",
+  "title": "8364 host 镜头识别节点契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "host_llm_input": {"type": "object"}
+      },
+      "required": ["host_llm_input"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "host_idxs": {
+          "type": "array",
+          "items": {"type": "integer"},
+          "uniqueItems": true
+        },
+        "reasoning_content": {"type": "string"}
+      },
+      "required": ["host_idxs", "reasoning_content"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

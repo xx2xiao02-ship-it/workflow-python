@@ -1,0 +1,5 @@
+{
+  "draft_url": "draft://synthetic-digital-human",
+  "video_infos": "[{\"video_url\":\"https://synthetic.invalid/host-01.mp4\",\"width\":1024,\"height\":1024,\"start\":0,\"end\":4000000,\"duration\":4000000,\"mask\":\"\",\"volume\":0,\"transition\":\"胶片定格\",\"transition_duration\":1000000},{\"video_url\":\"https://synthetic.invalid/host-02.mp4\",\"width\":1024,\"height\":1024,\"start\":4000000,\"end\":8500000,\"duration\":4500000,\"mask\":\"\",\"volume\":0,\"transition\":\"胶片定格\",\"transition_duration\":1000000},{\"video_url\":\"https://synthetic.invalid/host-03.mp4\",\"width\":1024,\"height\":1024,\"start\":8500000,\"end\":12000000,\"duration\":3500000,\"mask\":\"\",\"volume\":0,\"transition\":\"胶片定格\",\"transition_duration\":1000000}]"
+}
+

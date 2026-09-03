@@ -1,0 +1,14 @@
+{
+  "node_id": "116616",
+  "node_name": "Shot_Visual_Arrangement",
+  "plugin_name": "全局视觉序列编排器",
+  "source_attachment": "C:\\Users\\Administrator\\.codex\\attachments\\471fdc43-ece1-4c8f-afc1-96c49025aab7\\pasted-text.txt",
+  "source_sha256": "1F259716B8F327803FC04D98698605E3EDFE3B35DC2B1C4848E768A82E841060",
+  "source_line_count": 1147,
+  "sanitized_copy": "audit/source/116616_coze_original_sanitized.py",
+  "sanitized_sha256": "CCA3DED05DD9D99411FFE9C5C88B28061F7BFDD6923C96B79A3601DE13685E75",
+  "sanitized_line_count": 1147,
+  "credentials_preserved": false,
+  "external_calls_executed": false,
+  "read_only_source_copy": true
+}

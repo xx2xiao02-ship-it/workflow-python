@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "msg": "\u4efb\u52a1\u521b\u5efa\u6210\u529f\uff0c\u5df2\u4f7f\u7528\uff1a\u4e3b\u8d26\u53f7\u3002",
+  "task_id": "synthetic-video-task-001",
+  "generate_audio": false,
+  "first_frame_tos_url": "",
+  "last_frame_tos_url": "",
+  "tip": "\u5df2\u8f6c\u4ea4\u4e0b\u6e38\u4efb\u52a1\u67e5\u8be2\u8282\u70b9\u3002"
+}

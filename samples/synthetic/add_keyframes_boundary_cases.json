@@ -1,0 +1,13 @@
+[
+  {"name":"empty_keyframes","category":"boundary","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[]"}},
+  {"name":"malformed_json","category":"exceptional input","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"not-json"}},
+  {"name":"top_level_object","category":"exceptional input","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"{}"}},
+  {"name":"missing_item_field","category":"exceptional input","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[{\"segment_id\":\"s\",\"property\":\"UNIFORM_SCALE\",\"offset\":0}]"}},
+  {"name":"unsupported_property","category":"exceptional input","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[{\"segment_id\":\"s\",\"property\":\"UNKNOWN\",\"offset\":0,\"value\":1}]"}},
+  {"name":"negative_offset","category":"exceptional input","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[{\"segment_id\":\"s\",\"property\":\"UNIFORM_SCALE\",\"offset\":-1,\"value\":1}]"}},
+  {"name":"offset_above_one_is_source_accepted","category":"source behavior","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[{\"segment_id\":\"s\",\"property\":\"UNIFORM_SCALE\",\"offset\":6906732,\"value\":1.15}]"}},
+  {"name":"value_wrong_type","category":"exceptional input","params":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[{\"segment_id\":\"s\",\"property\":\"UNIFORM_SCALE\",\"offset\":0,\"value\":\"1\"}]"}},
+  {"name":"json_string_wrapped_input","category":"compatibility","params":"{\"draft_url\":\"http://synthetic.local/get_draft?draft_id=kf\",\"keyframes\":\"[{\\\"segment_id\\\":\\\"s\\\",\\\"property\\\":\\\"UNIFORM_SCALE\\\",\\\"offset\\\":0,\\\"value\\\":1}]\"}"},
+  {"name":"nested_input_wrapper","category":"compatibility","params":{"input":{"draft_url":"http://synthetic.local/get_draft?draft_id=kf","keyframes":"[{\"segment_id\":\"s\",\"property\":\"UNIFORM_SCALE\",\"offset\":0,\"value\":1}]"}}},
+  {"name":"missing_draft_url","category":"exceptional input","params":{"keyframes":"[]"}}
+]

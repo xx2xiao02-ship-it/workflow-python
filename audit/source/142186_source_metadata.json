@@ -1,0 +1,13 @@
+{
+  "node_id": "142186",
+  "node_name": "create_image_task",
+  "plugin_name": "（Image-2）生图增加重试",
+  "source_origin": "用户在当前会话粘贴的 Coze Python 源码",
+  "sanitized_copy": "audit/source/142186_coze_original_sanitized.py",
+  "sanitized_sha256": "128E4151D4F3259C77445174ECC52BE972792E95E42AA8BBF063DBF150FCF60",
+  "sanitized_line_count": 113,
+  "credentials_preserved": false,
+  "external_calls_executed": false,
+  "read_only_source_copy": true,
+  "format_note": "原消息中的 __dict__ 在界面显示为 Markdown 加粗痕迹，按 Python 原意保存为 __dict__；适配器仅注入 runtime.Args。"
+}

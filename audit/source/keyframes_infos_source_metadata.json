@@ -1,0 +1,24 @@
+{
+  "repository": "Hommy-master/capcut-mate",
+  "commit": "f2581bd989190ee61719f2bf50e118ab035dcc7f",
+  "source_files": [
+    "src/service/keyframes_infos.py",
+    "src/schemas/keyframes_infos.py",
+    "src/utils/keyframe_value.py",
+    "docs/keyframes_infos.zh.md"
+  ],
+  "source_urls": [
+    "https://github.com/Hommy-master/capcut-mate/blob/f2581bd989190ee61719f2bf50e118ab035dcc7f/src/service/keyframes_infos.py",
+    "https://github.com/Hommy-master/capcut-mate/blob/f2581bd989190ee61719f2bf50e118ab035dcc7f/src/schemas/keyframes_infos.py",
+    "https://github.com/Hommy-master/capcut-mate/blob/f2581bd989190ee61719f2bf50e118ab035dcc7f/src/utils/keyframe_value.py"
+  ],
+  "github_blob_sha": {
+    "src/service/keyframes_infos.py": "c3c403ad768f586caf728dff4c2309a5c650a481",
+    "src/schemas/keyframes_infos.py": "719a8aa288d9d7751647be9a14060c61ed668ff3",
+    "src/utils/keyframe_value.py": "e82fdaec8409f25180c1953baa7f54b846267ad7",
+    "docs/keyframes_infos.zh.md": "c5aa2187de56f4cc3bc502fc2ab5970c8c36c895"
+  },
+  "read_only": true,
+  "credentials_saved": false,
+  "external_execution_performed": false
+}

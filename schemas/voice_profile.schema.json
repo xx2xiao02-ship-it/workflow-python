@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workflow.local/schemas/voice_profile.schema.json",
+  "title": "Workflow Voice Catalog",
+  "type": "object",
+  "required": ["schema_version", "version", "defaults", "voices"],
+  "properties": {
+    "status": {"const": "ready"},
+    "schema_version": {"const": "voice-catalog-v1"},
+    "version": {"type": "string", "minLength": 1},
+    "defaults": {"type": "object", "additionalProperties": {"type": "string"}},
+    "voices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "voice_key", "display_name", "provider", "voice_type", "speaker_id",
+          "resource_id", "model", "gender", "languages", "style_tags", "enabled",
+          "verified", "training_status", "authorization_status", "preview_url",
+          "catalog_version", "created_at", "updated_at"
+        ],
+        "properties": {
+          "voice_key": {"type": "string", "minLength": 1},
+          "display_name": {"type": "string", "minLength": 1},
+          "provider": {"type": "string", "minLength": 1},
+          "voice_type": {"const": "official"},
+          "billing_mode": {"const": "official"},
+          "slot_source": {"type": "string"},
+          "speaker_id": {"type": "string", "minLength": 1},
+          "resource_id": {"const": "seed-tts-2.0"},
+          "model": {"type": "string", "minLength": 1},
+          "gender": {"enum": ["male", "female", "neutral"]},
+          "languages": {"type": "array", "items": {"type": "string"}},
+          "style_tags": {"type": "array", "items": {"type": "string"}},
+          "enabled": {"type": "boolean"},
+          "verified": {"type": "boolean"},
+          "training_status": {"type": "string"},
+          "authorization_status": {"type": "string"},
+          "preview_url": {"type": "string"},
+          "catalog_version": {"type": "string"},
+          "created_at": {"type": "string"},
+          "updated_at": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

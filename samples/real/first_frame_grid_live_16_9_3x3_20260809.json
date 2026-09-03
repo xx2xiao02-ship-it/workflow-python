@@ -1,0 +1,33 @@
+{
+  "evidence_level": "real_external_image2",
+  "status": "completed",
+  "model": "image2",
+  "layout": "3x3",
+  "aspect_ratio": "16:9",
+  "task_id": "task_01KZJEDZ3F4X0DG8FDVPMSZCDA",
+  "raw_grid": {
+    "path": "samples/first_frame_grid_live_16_9_3x3_20260809/first_frame_grid_001_raw.png",
+    "width": 1672,
+    "height": 941,
+    "ratio_observed": "约16:9"
+  },
+  "grid_config": {
+    "aspect_ratio": "16:9",
+    "cell_aspect_ratio": "16:9",
+    "canvas_aspect_ratio": "16:9",
+    "crop_inset_px": 3,
+    "separator_trim_px": 0,
+    "auto_trim_separators": true
+  },
+  "cropped_assets": {
+    "valid_shot_count": 4,
+    "size": [551, 307],
+    "paths": [
+      "samples/first_frame_grid_live_16_9_3x3_20260809/first_frame_shot_001.png",
+      "samples/first_frame_grid_live_16_9_3x3_20260809/first_frame_shot_002.png",
+      "samples/first_frame_grid_live_16_9_3x3_20260809/first_frame_shot_003.png",
+      "samples/first_frame_grid_live_16_9_3x3_20260809/first_frame_shot_004.png"
+    ]
+  },
+  "secret_values_included": false
+}

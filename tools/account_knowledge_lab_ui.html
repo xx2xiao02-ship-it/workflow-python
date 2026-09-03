@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>账号认知知识库 · V2 Lab</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif; background: #f4f6f8; color: #17202a; }
+    body { margin: 0; padding: 24px; }
+    main { max-width: 1180px; margin: auto; }
+    header { background: #17202a; color: white; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px; }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    h2 { font-size: 18px; margin: 0 0 12px; }
+    p { margin: 6px 0; line-height: 1.5; }
+    .notice { color: #ffd166; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+    section { background: white; border: 1px solid #dfe5eb; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px #17202a10; }
+    label { display: block; font-size: 13px; font-weight: 600; margin: 10px 0 4px; }
+    input, textarea, select, button { box-sizing: border-box; width: 100%; border: 1px solid #cbd5df; border-radius: 7px; padding: 9px 10px; font: inherit; }
+    textarea { min-height: 110px; resize: vertical; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+    button { margin-top: 12px; background: #216eaa; color: white; border: 0; cursor: pointer; font-weight: 700; }
+    button.secondary { background: #5d6873; }
+    button:hover { filter: brightness(1.08); }
+    pre { background: #111820; color: #d9e6f2; border-radius: 8px; padding: 12px; overflow: auto; max-height: 330px; white-space: pre-wrap; word-break: break-word; font-size: 12px; }
+    .wide { grid-column: 1 / -1; }
+    .inline { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .inline input { width: auto; }
+    #lab-tools[hidden] { display: none; }
+    .gate { text-align: center; margin-bottom: 16px; }
+    .gate button { max-width: 320px; margin-top: 8px; }
+    @media (max-width: 520px) { body { padding: 10px; } section { padding: 13px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>账号认知知识库 · 文案 V2 Lab</h1>
+    <p>Obsidian 原文 → 作品/账号认知 → 选题方案 → 风格适配 → 人工审核</p>
+    <p class="notice">此页默认隐藏高级工具，不会因打开页面或点击按钮调用模型。</p>
+  </header>
+
+  <section class="gate">
+    <h2>账号知识库工具</h2>
+    <p>日常文案不需要打开此页；需要排查或升级风格包时再展开。</p>
+    <button id="activate-button" onclick="toggleLabTools()" aria-expanded="false">显示高级工具</button>
+  </section>
+
+  <div class="grid" id="lab-tools" hidden>
+    <section>
+      <h2>服务状态</h2>
+      <p>独立端口：127.0.0.1:8790；生产端口：8768（不触碰）。</p>
+      <button class="secondary" onclick="call('/health', 'GET', null, 'health-output')">检查状态</button>
+      <pre id="health-output">尚未检查</pre>
+    </section>
+
+    <section>
+      <h2>重建本地索引</h2>
+      <label>账号 ID（留空表示全部账号）</label>
+      <input id="index-account" placeholder="creator_a">
+      <button onclick="rebuildIndex()">重建索引</button>
+      <pre id="index-output">尚未执行</pre>
+    </section>
+
+    <section>
+      <h2>风格包升级支线</h2>
+      <label>目标账号 ID</label><input id="upgrade-account" value="creator_a">
+      <label>style_profile_id</label><input id="upgrade-profile" placeholder="style_xxx">
+      <div class="inline"><input id="upgrade-archived" type="checkbox" checked><span>包含历史归档改写记录</span></div>
+      <button onclick="upgradeProfile()">生成候选升级包（离线）</button>
+      <pre id="upgrade-output">只写入派生作品和候选报告，不调用模型</pre>
+    </section>
+
+    <section>
+      <h2>C 级避错检索</h2>
+      <label>账号 ID</label><input id="negative-account" value="creator_a">
+      <label>检索问题</label><input id="negative-query" placeholder="哪些表达容易造成误判">
+      <button class="secondary" onclick="negativeSearch()">只检索失败案例</button>
+      <pre id="negative-output">不会进入正常选题角度</pre>
+    </section>
+
+    <section class="wide">
+      <h2>选题中心 V2</h2>
+      <label>Event Card JSON</label>
+      <textarea id="event-json">{
+  "event_id": "event-demo",
+  "title": "监管政策变化",
+  "verified_facts": ["监管部门发布新规"],
+  "source_refs": [{"source_id": "news-1", "url": "https://news.example.com/1"}],
+  "controversies": []
+}</textarea>
+      <label>目标账号 ID</label>
+      <input id="target-account" value="creator_a">
+      <label>参考账号 ID（逗号分隔，可留空）</label>
+      <input id="reference-accounts" placeholder="creator_b,creator_c">
+      <label>检索策略 JSON（支持 domain / published_after）</label>
+      <textarea id="policy-json">{"top_k_per_account": 5, "allowed_content_grades": ["S", "A", "B"], "domain": "", "published_after": ""}</textarea>
+      <div class="inline"><input id="synthesize" type="checkbox"><span>显式调用内容分析模型综合角度（会产生模型请求）</span></div>
+      <button onclick="makeTopicPlan()">生成选题方案</button>
+      <pre id="topic-output">尚未执行</pre>
+    </section>
+
+    <section>
+      <h2>文案创作 V2</h2>
+      <label>Topic Plan JSON</label>
+      <textarea id="topic-input" placeholder="可把上方返回的 topic_plan 粘贴到这里"></textarea>
+      <label>style_profile_id</label>
+      <input id="style-id" placeholder="style_xxx">
+      <label>模式</label>
+      <select id="draft-mode"><option value="injected_test">injected_test（不调用模型）</option><option value="runtime">runtime（调用模型）</option></select>
+      <label>测试 Provider Result JSON（仅 injected_test 使用）</label>
+      <textarea id="provider-result">{"draft_copy":"先确认事实，再解释规则变化。","knowledge_refs":[]}</textarea>
+      <button onclick="makeDraft()">生成 V2 草稿</button>
+      <pre id="draft-output">尚未执行</pre>
+    </section>
+
+    <section>
+      <h2>人工评级</h2>
+      <label>账号 ID</label><input id="grade-account" value="creator_a">
+      <label>作品 ID</label><input id="grade-work" placeholder="work-...">
+      <label>内容等级</label><select id="content-grade"><option>S</option><option>A</option><option>B</option><option>C</option></select>
+      <label>传播等级</label><select id="performance-grade"><option>UNRATED</option><option>S</option><option>A</option><option>B</option><option>C</option></select>
+      <label>审核人</label><input id="reviewer" placeholder="editor">
+      <label>备注</label><textarea id="grade-notes"></textarea>
+      <button onclick="gradeWork()">写回评级</button>
+      <pre id="grade-output">尚未执行</pre>
+    </section>
+  </div>
+</main>
+<script>
+  const out = (id, value) => { document.getElementById(id).textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2); };
+  function toggleLabTools() {
+    const tools = document.getElementById('lab-tools');
+    const button = document.getElementById('activate-button');
+    const show = tools.hidden;
+    tools.hidden = !show;
+    button.textContent = show ? '收起高级工具' : '显示高级工具';
+    button.setAttribute('aria-expanded', String(show));
+  }
+  async function call(path, method, body, outputId) {
+    try {
+      const response = await fetch(path, { method, headers: body ? {'Content-Type': 'application/json'} : {}, body: body ? JSON.stringify(body) : undefined });
+      const value = await response.json();
+      out(outputId, value);
+      return value;
+    } catch (error) { out(outputId, {status: 'blocked', message: String(error)}); }
+  }
+  const json = id => JSON.parse(document.getElementById(id).value || '{}');
+  async function rebuildIndex() { await call('/v1/index/rebuild', 'POST', {account_ids: document.getElementById('index-account').value.trim() ? [document.getElementById('index-account').value.trim()] : []}, 'index-output'); }
+  async function upgradeProfile() {
+    await call('/v1/profile-upgrade', 'POST', {
+      account_id: document.getElementById('upgrade-account').value.trim(),
+      style_profile_id: document.getElementById('upgrade-profile').value.trim(),
+      include_archived: document.getElementById('upgrade-archived').checked
+    }, 'upgrade-output');
+  }
+  async function negativeSearch() { await call('/v1/negative-cases/search', 'POST', {account_id: document.getElementById('negative-account').value.trim(), query: document.getElementById('negative-query').value.trim(), top_k: 5}, 'negative-output'); }
+  async function makeTopicPlan() {
+    const refs = document.getElementById('reference-accounts').value.split(',').map(v => v.trim()).filter(Boolean);
+    const value = await call('/v1/topic-plan', 'POST', {event_card: json('event-json'), target_account_id: document.getElementById('target-account').value.trim(), reference_account_ids: refs, retrieval_policy: json('policy-json'), synthesize: document.getElementById('synthesize').checked}, 'topic-output');
+    if (value && value.topic_plan) document.getElementById('topic-input').value = JSON.stringify(value.topic_plan, null, 2);
+  }
+  async function makeDraft() {
+    const payload = {topic_plan: json('topic-input'), style_profile_id: document.getElementById('style-id').value.trim(), provider_mode: document.getElementById('draft-mode').value};
+    if (payload.provider_mode === 'injected_test') payload.provider_result = json('provider-result');
+    await call('/v1/draft', 'POST', payload, 'draft-output');
+  }
+  async function gradeWork() {
+    await call('/v1/grade-work', 'POST', {account_id: document.getElementById('grade-account').value.trim(), work_id: document.getElementById('grade-work').value.trim(), content_grade: document.getElementById('content-grade').value, performance_grade: document.getElementById('performance-grade').value, reviewer: document.getElementById('reviewer').value.trim(), notes: document.getElementById('grade-notes').value}, 'grade-output');
+  }
+</script>
+</body>
+</html>

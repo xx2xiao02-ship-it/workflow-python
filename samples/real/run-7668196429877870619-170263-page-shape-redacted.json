@@ -1,0 +1,31 @@
+{
+  "synthetic": false,
+  "redacted_structural_fixture": true,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "node_id": "170263",
+  "node_name": "首尾帧顺延",
+  "status": "运行成功",
+  "duration_observed": "58ms",
+  "input": {
+    "group_count": 9,
+    "shot_counts": [3, 2, 3, 2, 2, 2, 1, 1, 1],
+    "items_count": 9,
+    "motion_seed_count": 17,
+    "image_url_list_count": 17,
+    "sensitive_and_long_values": "redacted"
+  },
+  "output": {
+    "items_count": 9,
+    "motion_seed_group_counts": [3, 2, 3, 2, 2, 2, 1, 1, 1],
+    "clip_duration_group_counts": [3, 2, 3, 2, 2, 2, 1, 1, 1],
+    "ref_image_group_counts": [3, 2, 3, 2, 2, 2, 1, 1, 1],
+    "ref_image_f_group_counts": [3, 2, 3, 2, 2, 2, 1, 1, 1],
+    "ref_image_e_group_counts": [2, 1, 2, 1, 1, 1, 0, 0, 0],
+    "error": ""
+  },
+  "limitations": [
+    "页面对图片 URL 和长文本显示省略号；本文件只保存字段、类型、组数和数组顺序证据。",
+    "未把页面签名 URL、完整 visual_story、reasoning_content 写入项目。"
+  ]
+}

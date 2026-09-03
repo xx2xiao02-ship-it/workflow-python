@@ -1,0 +1,12 @@
+{
+  "duration": [8.0, 10.0],
+  "items": [
+    {"visual_core": "建立状态", "visual_story": "任务刚开始"},
+    {"visual_core": "推动变化", "visual_story": "新的要求进入"}
+  ],
+  "segments": ["第一段 synthetic", "第二段 synthetic"],
+  "timelines": [
+    {"start": 0, "end": 8000000},
+    {"start": 8000000, "end": 18000000}
+  ]
+}

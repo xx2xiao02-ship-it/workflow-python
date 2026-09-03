@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/workflow-1256/first-frame-grid.schema.json",
+  "title": "1256 首帧等尺寸多宫格与数字人跳过契约",
+  "type": "object",
+  "required": ["shots"],
+  "properties": {
+    "shots": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "required": ["shot_id", "prompt"],
+        "properties": {
+          "shot_id": {"type": "string", "minLength": 1},
+          "prompt": {"type": "string", "minLength": 1},
+          "ref_images": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "is_digital_human": {"type": "boolean"},
+          "selected_route": {"type": "string"},
+          "route_candidates": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "cells_per_grid": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9,
+      "default": 4
+    },
+    "grid_layout": {
+      "type": "string",
+      "enum": ["2x2", "3x3"],
+      "default": "2x2",
+      "description": "用户选择的最大多宫格布局；2x2 最多 4 格，3x3 最多 9 格。实际批次会按剩余普通镜头数自动选择最小可容纳布局。"
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": ["9:16", "16:9", "1:1"],
+      "default": "9:16",
+      "description": "编导层传入的项目级画幅；多宫格单格和整体画布必须使用同一比例。"
+    },
+    "cell_width": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "旧调用兼容字段；业务调用不需要填写，由 aspect_ratio 自动派生。"
+    },
+    "cell_height": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "旧调用兼容字段；业务调用不需要填写，由 aspect_ratio 自动派生。"
+    },
+    "columns": {
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "digital_human_shot_indices": {
+      "type": "array",
+      "items": {"type": "integer", "minimum": 0}
+    },
+    "crop_inset_px": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 3,
+      "description": "Uniform inset applied to all four sides of every cropped cell; use 3 or 4 pixels."
+    },
+    "separator_trim_px": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Additional per-side safety inset for a detected center separator band."
+    },
+    "auto_trim_separators": {
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically detect neutral black or white separator bands near internal boundaries."
+    },
+    "shot_metadata": {
+      "type": "array",
+      "items": {"type": "object"}
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,25 @@
+{
+  "node_id": "113743",
+  "node_name": "提示词生成",
+  "node_type": "code",
+  "source_origin": "Workflow-Daily_Update_Te-draft-1256.zip 内 YAML 配置",
+  "archive_path": "Workflow-Daily_Update_Te-draft-1256/workflow/Daily_Update_Te-draft.yaml",
+  "source_copy": "audit/source/113743_coze_original.py",
+  "source_sha256": "746EA773C04A9BA00A911C551A699CF7A0488E588F2C3D9A70D87DE74B18F1CB",
+  "read_only_source_copy": true,
+  "credentials_preserved": false,
+  "external_calls_executed": false,
+  "upstream": {
+    "plan_out_list": {"node_id": "195692", "node_name": "生成视频提示词撰写", "path": "plan_out_list"},
+    "ref_image": {"node_id": "170263", "node_name": "首尾帧顺延", "path": "ref_image"},
+    "clip_duration": {"node_id": "170263", "node_name": "首尾帧顺延", "path": "clip_duration"}
+  },
+  "downstream": {
+    "node_id": "110697",
+    "node_name": "批处理",
+    "paths": ["video_prompt", "int_duration", "ref_image_f", "ref_image_e"]
+  },
+  "code_level_equivalence": true,
+  "audit_cases": 9,
+  "audit_mismatches": 0
+}

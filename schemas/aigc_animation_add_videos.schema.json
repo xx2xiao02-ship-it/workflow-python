@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 AIGC动画* add_videos contract",
+  "type": "object",
+  "required": ["draft_url", "video_infos"],
+  "properties": {
+    "draft_url": {"type": "string", "minLength": 1},
+    "video_infos": {"type": "string"},
+    "scene_timelines": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": ["start", "end"],
+        "properties": {
+          "start": {"type": "integer"},
+          "end": {"type": "integer"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "alpha": {"type": "number", "default": 1.0},
+    "scale_x": {"type": "number", "default": 1.0},
+    "scale_y": {"type": "number", "default": 1.0},
+    "transform_x": {"type": "integer", "default": 0},
+    "transform_y": {"type": "integer", "default": 0}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "segment_info": {
+      "type": "object",
+      "required": ["end", "id", "start"],
+      "properties": {
+        "end": {"type": "integer"},
+        "id": {"type": "string"},
+        "start": {"type": "integer"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "x-output": {
+    "type": "object",
+    "required": ["draft_url", "segment_ids", "segment_infos", "track_id", "video_ids"],
+    "properties": {
+      "draft_url": {"type": "string"},
+      "segment_ids": {"type": "array", "items": {"type": "string"}},
+      "segment_infos": {"type": "array", "items": {"$ref": "#/$defs/segment_info"}},
+      "track_id": {"type": "string"},
+      "video_ids": {"type": "array", "items": {"type": "string"}}
+    },
+    "x-field-order": ["draft_url", "segment_ids", "segment_infos", "track_id", "video_ids"]
+  },
+  "x-time-unit": "microseconds"
+}

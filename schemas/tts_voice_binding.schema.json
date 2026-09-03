@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://workflow.local/schemas/tts_voice_binding.schema.json",
+  "title": "Versioned TTS Voice Binding",
+  "type": "object",
+  "required": ["schema_version", "voice", "audio", "auth_slots", "voice_bindings", "timing_authority"],
+  "properties": {
+    "schema_version": {"const": "tts-voice-binding-v1"},
+    "voice": {
+      "type": "object",
+      "required": ["voice_key", "speaker_id", "resource_id", "model", "voice_type"],
+      "properties": {
+        "voice_key": {"type": "string", "minLength": 1},
+        "speaker_id": {"type": "string", "minLength": 1},
+        "resource_id": {"const": "seed-tts-2.0"},
+        "model": {"type": "string", "minLength": 1},
+        "voice_type": {"const": "official"},
+        "authorization_status": {"type": "string"},
+        "training_status": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "audio": {
+      "type": "object",
+      "required": ["paths", "sha256", "actual_durations_s"],
+      "properties": {
+        "paths": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "sha256": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "actual_durations_s": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0}}
+      },
+      "additionalProperties": false
+    },
+    "auth_slots": {"type": "array", "items": {"enum": ["primary", "backup"]}},
+    "voice_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["speaker_id", "resource_id", "model"],
+        "properties": {
+          "speaker_id": {"type": "string", "minLength": 1},
+          "resource_id": {"const": "seed-tts-2.0"},
+          "model": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "timing_authority": {"const": "capcut_stt_required"}
+  },
+  "additionalProperties": false
+}

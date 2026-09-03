@@ -1,0 +1,7 @@
+[
+  {"name":"empty_both","params":{"effects":[],"timelines":[]}},
+  {"name":"effects_shorter","params":{"effects":["暗角"],"timelines":[{"start":0,"end":1},{"start":1,"end":2}]}},
+  {"name":"timelines_shorter","params":{"effects":["暗角","暗角"],"timelines":[{"start":0,"end":1}]}},
+  {"name":"json_string_input","params":"{\"effects\":[\"暗角\"],\"timelines\":[{\"start\":0,\"end\":1000000}]}"},
+  {"name":"missing_timeline_field","params":{"effects":["暗角"],"timelines":[{"start":0}]}}
+]

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/keyframes-infos-second.schema.json",
+  "title": "关键帧信息（节点1904923）输入输出契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "ctype": {"type": "string"},
+        "offsets": {"type": "string"},
+        "values": {"type": "string"},
+        "segment_infos": {"type": "array", "items": {"$ref": "#/$defs/segment_info"}},
+        "height": {"type": ["integer", "null"]},
+        "width": {"type": ["integer", "null"]}
+      },
+      "required": ["ctype", "offsets", "values", "segment_infos"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {"keyframes_infos": {"type": "string"}},
+      "required": ["keyframes_infos"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false,
+  "$defs": {
+    "segment_info": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string"},
+        "start": {"type": "integer"},
+        "end": {"type": "integer"}
+      },
+      "required": ["id", "start", "end"],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "node_id": "170263",
+  "node_name": "首尾帧顺延",
+  "source_origin": "Workflow-Daily_Update_Te-draft-1256.zip 内 workflow/Daily_Update_Te-draft.yaml 的 code 字段",
+  "source_archive": "C:\\Users\\Administrator\\Downloads\\Workflow-Daily_Update_Te-draft-1256.zip",
+  "source_yaml_lines": "3668-3984",
+  "source_sha256": "34517556F25C2BE77A4AD5C827AAA8D56852EB8AC5C500CD85B58026E47DDA21",
+  "source_line_count": 317,
+  "read_only_source_copy": true,
+  "external_calls_executed": false,
+  "credentials_preserved": false
+}

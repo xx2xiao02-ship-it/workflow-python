@@ -1,0 +1,7 @@
+{
+  "task_id": "synthetic-task-001",
+  "max_wait": 175,
+  "check_interval": 10,
+  "enable_tos_upload": false,
+  "tos_path_prefix": "synthetic-videos"
+}

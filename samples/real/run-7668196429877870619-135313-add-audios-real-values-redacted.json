@@ -1,0 +1,48 @@
+{
+  "synthetic": false,
+  "redacted": true,
+  "source": {
+    "execution_id": "7668196429877870619",
+    "node_id": "135313",
+    "node_name": "解说*",
+    "interface": "add_audios",
+    "captured_from": "Coze execution detail page",
+    "captured_at": "2026-07-31"
+  },
+  "input": {
+    "audio_infos": {
+      "type": "String(JSON)",
+      "item_count": 9,
+      "time_unit": "microseconds",
+      "items": [
+        {"index":0,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":0,"end":16416000,"duration":16416000,"audio_effect":"人声增强","volume":1.2},
+        {"index":1,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":16416000,"end":30840000,"duration":14424000,"audio_effect":"人声增强","volume":1.2},
+        {"index":2,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":30840000,"end":53592000,"duration":22752000,"audio_effect":"人声增强","volume":1.2},
+        {"index":3,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":53592000,"end":66960000,"duration":13368000,"audio_effect":"人声增强","volume":1.2},
+        {"index":4,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":66960000,"end":81168000,"duration":14208000,"audio_effect":"人声增强","volume":1.2},
+        {"index":5,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":81168000,"end":92112000,"duration":10944000,"audio_effect":"人声增强","volume":1.2},
+        {"index":6,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":92112000,"end":100656000,"duration":8544000,"audio_effect":"人声增强","volume":1.2},
+        {"index":7,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":100656000,"end":109416000,"duration":8760000,"audio_effect":"人声增强","volume":1.2},
+        {"index":8,"keys":["audio_url","start","end","audio_effect","volume"],"audio_url":{"present":true,"protocol":"https","value_redacted":true},"start":109416000,"end":111672000,"duration":2256000,"audio_effect":"人声增强","volume":1.2}
+      ]
+    },
+    "draft_url": {"type":"String","present":true,"protocol":"https","value_redacted":true}
+  },
+  "output": {
+    "audio_ids": {"type":"Array<String>","count":9,"order_preserved":true,"values_redacted":true},
+    "draft_url": {"type":"String","present":true,"value_redacted":true},
+    "track_id": {"type":"String","present":true,"value_redacted":true}
+  },
+  "observed": {
+    "status": "运行成功",
+    "duration": "0.457s",
+    "timeline_start": 0,
+    "timeline_end": 111672000,
+    "item_order": "0..8"
+  },
+  "redaction_reason": [
+    "audio_url query signatures removed",
+    "draft_url removed",
+    "audio_ids and track_id values removed"
+  ]
+}

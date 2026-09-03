@@ -1,0 +1,37 @@
+{
+  "source": "Coze 成功运行页面可见状态",
+  "execute_id": "7668196429877870619",
+  "node_name": "创建草稿",
+  "api_name": "create_draft",
+  "run_status": "success",
+  "duration_display": "0.162s",
+  "visible_inputs": {
+    "height": 1920,
+    "width": 1080,
+    "user_id": {
+      "value_visible": false,
+      "note": "页面显示该输入行，但当前为空；原始导出配置未登记该字段。"
+    }
+  },
+  "visible_outputs": [
+    {
+      "name": "draft_url",
+      "type": "String",
+      "value_visible": true,
+      "value": "https://ts.fyshark.com/#/cozeToJianyin?drafId=https://video-snot-12220.oss-cn-shanghai.aliyuncs.com/2026-07-30/draft/64018205-944d-43c2-8c68-842579b67216.json"
+    },
+    {
+      "name": "tip_url",
+      "type": "String",
+      "value_visible": true,
+      "value": "快速入门必看指南，请访问：https://www.51aigc.cc/#/cozeTutorial/detail/13"
+    }
+  ],
+  "verification": {
+    "real_coze_execution_confirmed": true,
+    "real_output_values_captured": true,
+    "behavior_equivalence_accepted": false,
+    "capture_method": "从成功执行页面的创建草稿输出详情和链接 DOM 读取",
+    "reason": "已取得本次执行的真实输出值；插件行为等价仍需同一入参、插件响应和草稿文件结果进一步验证。"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source":"local CapCut Mate structural acceptance",
+  "node_id":"182422",
+  "draft_id":"20260731053749cc6e9a92",
+  "http_status":200,
+  "input":{"height":1920,"width":1080},
+  "output":{"draft_url":"http://127.0.0.1:30000/openapi/capcut-mate/v1/get_draft?draft_id=20260731053749cc6e9a92","tip_url_present":true},
+  "draft_content":{"canvas_width":1080,"canvas_height":1920,"file_count":6},
+  "redaction":["tip_url_value","dynamic_file_urls"]
+}

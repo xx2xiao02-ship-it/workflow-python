@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://local.invalid/1256/effect-infos-second.schema.json",
+  "title":"特效信息（节点1765956）输入输出契约",
+  "type":"object",
+  "properties":{"input":{"type":"object","properties":{"effects":{"type":"array","items":{"type":"string"}},"timelines":{"type":"array","items":{"type":"object"}}},"required":["effects","timelines"]},"output":{"type":"object","properties":{"infos":{"type":"string"}},"required":["infos"]}},
+  "required":["input","output"]
+}

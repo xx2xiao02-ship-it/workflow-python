@@ -1,0 +1,10 @@
+[
+  {"name": "empty_audio_array", "category": "boundary", "audio_infos": "[]"},
+  {"name": "json_string_invalid", "category": "exceptional input", "audio_infos": "{bad json"},
+  {"name": "json_object_not_list", "category": "exceptional input", "audio_infos": "{}"},
+  {"name": "missing_audio_url", "category": "exceptional input", "audio_infos": "[{\"start\":0,\"end\":1000000}]"},
+  {"name": "invalid_audio_url_scheme", "category": "exceptional input", "audio_infos": "[{\"audio_url\":\"synthetic://audio.mp3\",\"start\":0,\"end\":1000000}]"},
+  {"name": "invalid_time_range", "category": "exceptional input", "audio_infos": "[{\"audio_url\":\"https://synthetic.example/a.mp3\",\"start\":2000000,\"end\":1000000}]"},
+  {"name": "out_of_range_volume_resets", "category": "boundary", "audio_infos": "[{\"audio_url\":\"https://synthetic.example/a.mp3\",\"start\":0.9,\"end\":2000000.9,\"volume\":9}]"},
+  {"name": "missing_optional_fields", "category": "boundary", "audio_infos": "[{\"audio_url\":\"https://synthetic.example/a.mp3\",\"start\":0,\"end\":1000000}]"}
+]

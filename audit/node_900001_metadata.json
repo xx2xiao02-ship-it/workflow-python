@@ -1,0 +1,1 @@
+{"node_id":"900001","name":"结束","kind":"workflow end","upstream":{"node_id":"143635","field":"draft_url"},"implementation":"src/workflow_1256/workflow_end.py","schema":"schemas/workflow_end.schema.json","adapter":"audit/coze_adapter_workflow_end.py","comparison":"audit/equivalence_workflow_end.py","tests":["tests/test_workflow_end_audit.py"],"status":"in_progress"}

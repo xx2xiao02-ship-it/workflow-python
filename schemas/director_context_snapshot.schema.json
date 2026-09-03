@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 DirectorContext Snapshot",
+  "type": "object",
+  "required": ["segments_count", "group_timeline_count", "caption_count", "shot_group_count", "visual_intent_count", "visual_route_ready", "director_lock_status", "contains_final_prompt"],
+  "properties": {
+    "segments_count": {"type": "integer", "minimum": 0},
+    "group_timeline_count": {"type": "integer", "minimum": 0},
+    "caption_count": {"type": "integer", "minimum": 0},
+    "shot_group_count": {"type": "integer", "minimum": 0},
+    "visual_intent_count": {"type": "integer", "minimum": 0},
+    "visual_route_ready": {"type": "boolean"},
+    "director_lock_status": {"enum": ["UNLOCKED", "DIRECTOR_LOCKED"]},
+    "contains_final_prompt": {"const": false}
+  },
+  "additionalProperties": false
+}

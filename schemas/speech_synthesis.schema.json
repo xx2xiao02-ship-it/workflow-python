@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/8364/speech-synthesis.schema.json",
+  "title": "8364 speech_synthesis 节点契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "speed_ratio": {"type": "number"},
+        "voice_id": {"type": "string", "minLength": 1},
+        "emotion": {"type": "string"},
+        "emotion_scale": {"type": "number"},
+        "language": {"type": "string"},
+        "speaker_id": {"type": "string"},
+        "loudness_rate": {"type": "integer", "minimum": -50, "maximum": 100},
+        "pitch": {"type": "integer", "minimum": -12, "maximum": 12},
+        "silence_duration": {"type": "integer", "minimum": 0, "maximum": 30000},
+        "dialect": {"type": "string"},
+        "resource_id": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1}
+      },
+      "required": ["text", "speed_ratio", "voice_id"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "code": {"type": "number"},
+        "data": {
+          "type": "object",
+          "properties": {
+            "duration": {"type": "number", "minimum": 0},
+            "link": {"type": "string", "minLength": 1}
+          },
+          "required": ["duration", "link"],
+          "additionalProperties": false
+        },
+        "log_id": {"type": "string"},
+        "msg": {"type": "string"}
+      },
+      "required": ["code", "data", "log_id", "msg"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

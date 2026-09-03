@@ -1,0 +1,4 @@
+interface:
+  display_name: "Daily Update Te 8364"
+  short_description: "审计并执行已验证的 Daily_Update_Te 节点与 CapCut 链路"
+  default_prompt: "Use $daily-update-te to audit readiness, run only verified workflow nodes, and report external blockers with evidence."

@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://local.invalid/1256/workflow-end.schema.json",
+  "title":"结束节点（900001）输入输出契约",
+  "type":"object",
+  "properties":{"input":{"type":"object","properties":{"draft_url":{"type":"string","minLength":1}},"required":["draft_url"]},"output":{"type":"object","properties":{"content":{"type":"string"}},"required":["content"]}},
+  "required":["input","output"]
+}

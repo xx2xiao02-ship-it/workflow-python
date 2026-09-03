@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "1256 DirectorPlan",
+  "type": "object",
+  "required": ["text", "director_plan", "segment_beats", "segments", "source_node"],
+  "properties": {
+    "text": {"type": "string", "minLength": 1},
+    "director_plan": {"type": "object"},
+    "segment_beats": {"type": "array", "items": {"type": "object"}},
+    "segments": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "source_node": {"type": "string", "const": "具体画面导演"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/background-music-add-audios.schema.json",
+  "title": "背景音乐*（add_audios）输入输出契约",
+  "description": "节点 110576；audio_infos 是 JSON 字符串，时间单位为微秒。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "draft_url": {"type": "string"},
+        "audio_infos": {"type": "string"}
+      },
+      "required": ["draft_url", "audio_infos"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "audio_ids": {"type": "array", "items": {"type": "string"}},
+        "draft_url": {"type": "string"},
+        "track_id": {"type": "string"}
+      },
+      "required": ["audio_ids", "draft_url", "track_id"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

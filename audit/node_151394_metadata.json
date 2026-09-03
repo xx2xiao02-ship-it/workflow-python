@@ -1,0 +1,25 @@
+{
+  "node_id": "151394",
+  "name": "关键帧信息",
+  "kind": "capcut-mate plugin interface",
+  "api": "keyframes_infos",
+  "upstream": {"node_id": "116930", "field": "segment_infos"},
+  "downstream": {"node_id": "115137", "field": "keyframes"},
+  "source_readonly": [
+    "audit/source/151394_coze_config.md",
+    "audit/source/keyframes_infos_capcut_mate_original.py",
+    "audit/source/keyframe_value_capcut_mate_original.py",
+    "audit/source/keyframes_infos_source_metadata.json"
+  ],
+  "implementation": "src/workflow_1256/keyframes_infos.py",
+  "schema": "schemas/keyframes_infos.schema.json",
+  "adapter": "audit/coze_adapter_keyframes_infos.py; src/workflow_1256/capcut_node_adapters.py",
+  "comparison": "audit/equivalence_keyframes_infos.py",
+  "tests": ["tests/test_keyframes_infos.py"],
+  "real_evidence": [
+    "samples/real/run-7668196429877870619-116930-digital-human-real-values-redacted.json",
+    "samples/real/run-7668196429877870619-workflow-node-dom-summary.json"
+  ],
+  "status": "code_level_equivalent_passed; remote_write_not_run",
+  "do_not_advance_to": "添加关键帧（115137）"
+}

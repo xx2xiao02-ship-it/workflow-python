@@ -1,0 +1,50 @@
+{
+  "LLM_list": [
+    {"shots": [{}, {}, {}]},
+    {"shots": [{}, {}]},
+    {"shots": [{}, {}, {}]},
+    {"shots": [{}, {}]},
+    {"shots": [{}, {}]},
+    {"shots": [{}, {}]},
+    {"shots": [{}]},
+    {"shots": [{}]},
+    {"shots": [{}]}
+  ],
+  "motion_seed": [
+    "redacted-motion-seed-01", "redacted-motion-seed-02", "redacted-motion-seed-03",
+    "redacted-motion-seed-04", "redacted-motion-seed-05",
+    "redacted-motion-seed-06", "redacted-motion-seed-07", "redacted-motion-seed-08",
+    "redacted-motion-seed-09", "redacted-motion-seed-10", "redacted-motion-seed-11",
+    "redacted-motion-seed-12", "redacted-motion-seed-13", "redacted-motion-seed-14",
+    "redacted-motion-seed-15", "redacted-motion-seed-16", "redacted-motion-seed-17"
+  ],
+  "items": [
+    {"visual_core": "redacted-item-01", "visual_story": "redacted-item-01"},
+    {"visual_core": "redacted-item-02", "visual_story": "redacted-item-02"},
+    {"visual_core": "redacted-item-03", "visual_story": "redacted-item-03"},
+    {"visual_core": "redacted-item-04", "visual_story": "redacted-item-04"},
+    {"visual_core": "redacted-item-05", "visual_story": "redacted-item-05"},
+    {"visual_core": "redacted-item-06", "visual_story": "redacted-item-06"},
+    {"visual_core": "redacted-item-07", "visual_story": "redacted-item-07"},
+    {"visual_core": "redacted-item-08", "visual_story": "redacted-item-08"},
+    {"visual_core": "redacted-item-09", "visual_story": "redacted-item-09"}
+  ],
+  "image_url_list": [
+    "redacted-image-01", "redacted-image-02", "redacted-image-03", "redacted-image-04",
+    "redacted-image-05", "redacted-image-06", "redacted-image-07", "redacted-image-08",
+    "redacted-image-09", "redacted-image-10", "redacted-image-11", "redacted-image-12",
+    "redacted-image-13", "redacted-image-14", "redacted-image-15", "redacted-image-16",
+    "redacted-image-17"
+  ],
+  "Code_list": [
+    {"clip_duration": [6.9, 6.7, 2.8]},
+    {"clip_duration": [9.2, 5.2]},
+    {"clip_duration": [9, 9.7, 4.1]},
+    {"clip_duration": [7.8, 5.6]},
+    {"clip_duration": [10, 4.2]},
+    {"clip_duration": [7.8, 3.1]},
+    {"clip_duration": [8.5]},
+    {"clip_duration": [8.8]},
+    {"clip_duration": [2.3]}
+  ]
+}

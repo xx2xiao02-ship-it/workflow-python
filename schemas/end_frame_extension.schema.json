@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/end-frame-extension.schema.json",
+  "title": "1256 首尾帧顺延节点契约",
+  "description": "节点 170263 的原始输入输出契约，时间字段来自上游但本节点只重组图片和镜头组数据。",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "LLM_list": {"type": "array", "items": {"type": "object"}},
+        "motion_seed": {"type": "array"},
+        "items": {"type": "array", "items": {"type": "object"}},
+        "image_url_list": {"type": "array", "items": {"type": "string"}},
+        "Code_list": {"type": "array", "items": {"type": "object"}},
+        "story_context": {"type": "array", "items": {"type": "object"}},
+        "shot_metadata": {"type": "array", "items": {"type": "object"}},
+        "digital_human_shot_indices": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+        "use_frame_continuity": {"type": "boolean", "default": false}
+      },
+      "required": ["LLM_list", "motion_seed", "items", "image_url_list", "Code_list"],
+      "additionalProperties": true
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "items": {"type": "array", "items": {"type": "object"}},
+        "motion_seed": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"motion_seed": {"type": "array", "items": {"type": "string"}}}}
+        },
+        "clip_duration": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"clip_duration": {"type": "array", "items": {"type": "number"}}}}
+        },
+        "ref_image": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"ref_image": {"type": "array", "items": {"type": "string"}}}}
+        },
+        "ref_image_f": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"ref_image_f": {"type": "array", "items": {"type": "string"}}}}
+        },
+        "ref_image_e": {
+          "type": "array",
+          "items": {"type": "object", "properties": {"ref_image_e": {"type": "array", "items": {"type": "string"}}}}
+        },
+        "story_context": {"type": "array", "items": {"type": "object"}},
+        "error": {"type": "string"},
+        "skipped_digital_human_shot_indices": {"type": "array", "items": {"type": "integer", "minimum": 0}}
+      },
+      "required": ["items", "motion_seed", "clip_duration", "ref_image", "ref_image_f", "ref_image_e", "error"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "synthetic": false,
+  "redacted_structural_fixture": true,
+  "source": "Coze execution detail page",
+  "execute_id": "7668196429877870619",
+  "node": {
+    "node_id": "135313",
+    "node_name": "解说*",
+    "interface": "add_audios",
+    "plugin_name": "视频合成_剪映小助手",
+    "status": "运行成功",
+    "duration_observed": "0.457s",
+    "input_fields_visible": ["audio_infos", "draft_url"],
+    "output_fields_visible": ["audio_ids", "draft_url", "track_id"]
+  },
+  "limitations": [
+    "页面结构确认真实节点成功、输入输出字段和耗时，但没有保存 draft_url、audio_infos、audio_ids 或 track_id 的具体值。",
+    "本地实现没有调用草稿服务、音频下载器或剪映运行时。"
+  ]
+}

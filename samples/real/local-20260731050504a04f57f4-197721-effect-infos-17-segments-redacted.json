@@ -1,0 +1,15 @@
+{
+  "source": "local CapCut Mate structural acceptance",
+  "node_id": "197721",
+  "draft_id": "20260731050504a04f57f4",
+  "effects_count": 17,
+  "timelines_count": 17,
+  "output_field": "infos",
+  "output_type": "String",
+  "output_item_count": 17,
+  "item_field_order": ["effect_title", "start", "end"],
+  "first_timeline": {"start": 0, "end": 6906732},
+  "last_timeline": {"start": 109416000, "end": 111672000},
+  "effect_name": "暗角",
+  "redaction": ["dynamic_ids", "draft_files"]
+}

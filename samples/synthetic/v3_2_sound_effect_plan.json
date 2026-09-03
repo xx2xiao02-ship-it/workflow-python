@@ -1,0 +1,1 @@
+{"shots":[{"shot_id":"g01_s01","timeline":{"start_us":0,"end_us":3000000}}],"sound_effect_plan":[{"shot_id":"g01_s01","enabled":true,"subject":"金币","subject_confidence":0.95,"sound_effect_id":"coin_drop_clean","prompt":"单一清脆硬币掉落声","cue_start_us":1000000,"cue_end_us":2000000,"volume":0.8,"status":"PLANNED"}]}

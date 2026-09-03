@@ -1,0 +1,20 @@
+{
+  "name": "workflow-1256-remotion-explanation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "render": "node render.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.518",
+    "@remotion/renderer": "4.0.518",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "remotion": "4.0.518"
+  }
+}

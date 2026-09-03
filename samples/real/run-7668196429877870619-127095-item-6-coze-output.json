@@ -1,0 +1,22 @@
+{
+  "shots": [
+    {
+      "source_text": "普通人靠AI工具就能获得此前不敢想的发展机会",
+      "clip_role": "现象建立",
+      "story_beat": "AI时代为普通人带来全新发展机遇的属性已经明确。",
+      "clip_duration": 7.8
+    },
+    {
+      "source_text": "原地踏步的人会被时代悄无声息地淘汰",
+      "clip_role": "矛盾揭露",
+      "story_beat": "AI时代同时存在的残酷淘汰规则已经清晰呈现。",
+      "clip_duration": 3.1
+    }
+  ],
+  "clip_duration": [7.8, 3.1],
+  "int_duration": [8, 4],
+  "timelines": [
+    {"start": 81168000, "end": 88999486},
+    {"start": 88999486, "end": 92112000}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "node_id": "1904923",
+  "name": "关键帧信息",
+  "kind": "capcut-mate plugin interface",
+  "api": "keyframes_infos",
+  "upstream": {"node_id": "174651", "field": "segment_infos"},
+  "downstream": {"node_id": "1962357", "field": "keyframes"},
+  "source_readonly": ["audit/source/1904923_coze_config.md", "audit/source/keyframes_infos_capcut_mate_original.py"],
+  "implementation": "src/workflow_1256/keyframes_infos_second.py",
+  "schema": "schemas/keyframes_infos_second.schema.json",
+  "adapter": "audit/coze_adapter_keyframes_infos_second.py",
+  "comparison": "audit/equivalence_keyframes_infos_second.py",
+  "tests": ["tests/test_keyframes_infos_second.py"],
+  "real_evidence": ["samples/real/run-7668196429877870619-174651-aigc-animation-real-values-redacted.json"],
+  "status": "code_level_equivalent_passed; downstream_write_pending"
+}

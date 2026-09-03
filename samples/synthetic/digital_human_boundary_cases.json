@@ -1,0 +1,14 @@
+[
+  {"name": "empty-array", "params": {"draft_url": "draft://synthetic", "video_infos": "[]"}},
+  {"name": "invalid-json", "params": {"draft_url": "draft://synthetic", "video_infos": "{bad json"}},
+  {"name": "json-object-not-array", "params": {"draft_url": "draft://synthetic", "video_infos": "{}"}},
+  {"name": "missing-video-url", "params": {"draft_url": "draft://synthetic", "video_infos": "[{\"start\":0,\"end\":1}]"}},
+  {"name": "missing-start", "params": {"draft_url": "draft://synthetic", "video_infos": "[{\"video_url\":\"https://synthetic.invalid/a.mp4\",\"end\":1}]"}},
+  {"name": "invalid-timeline", "params": {"draft_url": "draft://synthetic", "video_infos": "[{\"video_url\":\"https://synthetic.invalid/a.mp4\",\"start\":0,\"end\":10}]", "scene_timelines": [{"start":5,"end":5}]}},
+  {"name": "json-string-params", "params": "{\"draft_url\":\"draft://synthetic\",\"video_infos\":\"[{\\\"video_url\\\":\\\"https://synthetic.invalid/a.mp4\\\",\\\"start\\\":0,\\\"end\\\":10}]\"}"},
+  {"name": "missing-video-infos", "params": {"draft_url": "draft://synthetic"}},
+  {"name": "non-string-video-infos", "params": {"draft_url": "draft://synthetic", "video_infos": null}},
+  {"name": "invalid-volume-type", "params": {"draft_url": "draft://synthetic", "video_infos": "[{\"video_url\":\"https://synthetic.invalid/a.mp4\",\"start\":0,\"end\":10,\"volume\":\"loud\"}]"}},
+  {"name": "fractional-times-collapse-after-int", "params": {"draft_url": "draft://synthetic", "video_infos": "[{\"video_url\":\"https://synthetic.invalid/a.mp4\",\"start\":0.9,\"end\":0.95}]"}}
+]
+

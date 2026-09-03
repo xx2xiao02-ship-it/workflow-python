@@ -1,0 +1,127 @@
+{
+  "report_version": "topic-governance-migration-dry-run-v1",
+  "generated_at": "2026-08-26T18:01:15+00:00",
+  "mode": "read_only",
+  "safe_to_delete": false,
+  "current_v2": {
+    "schema_version": "topic-writing-governance-v2",
+    "selection_count": 8,
+    "source_count": 7,
+    "selection_ids": [
+      "topic-1b530b7aaca0",
+      "topic-5065b6551d5f",
+      "topic-75e35161bd8e",
+      "topic-81a8ffea7d61",
+      "topic-c1a20dee9857",
+      "topic-live-article-20260826",
+      "topic-live-governance-final-20260826",
+      "topic-trendradar-e1a4e7048e33e2ca4f46"
+    ],
+    "projection_sha256": {
+      "topic-live-article-20260826": "3082f26dcf1be52dc1a5dd5c19830185e0d6c0273ba09c390c88d705db32f790",
+      "topic-live-governance-final-20260826": "12b0783a761ad0ebbfcd5b8caa7ca8d112a816532feca1d088c28474e200ef63",
+      "topic-trendradar-e1a4e7048e33e2ca4f46": "686560efdba49bbd1870c8e443655b79cf3a9578f26b33e456f3d36513af19ba",
+      "topic-1b530b7aaca0": "7059b83a59946aee796b0f0c7a1cff8ac762ae9a10e37a8be7e6a58fa295bc7a",
+      "topic-5065b6551d5f": "8c7c4fac6e8e0d8193524e480662d654d364399a2a6f2e81c3749c98a9c7513c",
+      "topic-75e35161bd8e": "92c83369278e4338f4e40878c3405cabd37422e44e44ecb92ed6b5423ece9b93",
+      "topic-81a8ffea7d61": "75536b7b9a69caadc6e81bee63e868739bbb50f42eb12adfdef6dceaf52963dc",
+      "topic-c1a20dee9857": "aae59be2f503a4643ff74292093a44f39f0a5081b22f93ffefbb22305306e231"
+    }
+  },
+  "legacy": {
+    "archive_item_count": 5,
+    "queue_item_count": 3,
+    "unique_selection_count": 8,
+    "selection_ids": [
+      "topic-1b530b7aaca0",
+      "topic-5065b6551d5f",
+      "topic-75e35161bd8e",
+      "topic-81a8ffea7d61",
+      "topic-c1a20dee9857",
+      "topic-live-article-20260826",
+      "topic-live-governance-final-20260826",
+      "topic-trendradar-e1a4e7048e33e2ca4f46"
+    ],
+    "projection_sha256": {
+      "topic-81a8ffea7d61": "75536b7b9a69caadc6e81bee63e868739bbb50f42eb12adfdef6dceaf52963dc",
+      "topic-c1a20dee9857": "aae59be2f503a4643ff74292093a44f39f0a5081b22f93ffefbb22305306e231",
+      "topic-live-article-20260826": "3082f26dcf1be52dc1a5dd5c19830185e0d6c0273ba09c390c88d705db32f790",
+      "topic-live-governance-final-20260826": "12b0783a761ad0ebbfcd5b8caa7ca8d112a816532feca1d088c28474e200ef63",
+      "topic-trendradar-e1a4e7048e33e2ca4f46": "90ff06a9e9077b4bd5b40a465f6a3d3b9cf707b522fe94145e18a8031a5c9148",
+      "topic-1b530b7aaca0": "7059b83a59946aee796b0f0c7a1cff8ac762ae9a10e37a8be7e6a58fa295bc7a",
+      "topic-5065b6551d5f": "8c7c4fac6e8e0d8193524e480662d654d364399a2a6f2e81c3749c98a9c7513c",
+      "topic-75e35161bd8e": "92c83369278e4338f4e40878c3405cabd37422e44e44ecb92ed6b5423ece9b93"
+    },
+    "decision_candidate_count": 8,
+    "decision_selection_ids": [
+      "topic-1b530b7aaca0",
+      "topic-5065b6551d5f",
+      "topic-75e35161bd8e",
+      "topic-81a8ffea7d61",
+      "topic-c1a20dee9857",
+      "topic-live-article-20260826",
+      "topic-live-governance-final-20260826",
+      "topic-trendradar-e1a4e7048e33e2ca4f46"
+    ],
+    "collection_result_topic_count": 2
+  },
+  "comparison": {
+    "common_ids": [
+      "topic-1b530b7aaca0",
+      "topic-5065b6551d5f",
+      "topic-75e35161bd8e",
+      "topic-81a8ffea7d61",
+      "topic-c1a20dee9857",
+      "topic-live-article-20260826",
+      "topic-live-governance-final-20260826",
+      "topic-trendradar-e1a4e7048e33e2ca4f46"
+    ],
+    "missing_in_v2": [],
+    "extra_in_v2": [],
+    "hash_mismatches": [
+      "topic-trendradar-e1a4e7048e33e2ca4f46"
+    ],
+    "duplicate_conflicts": []
+  },
+  "files": {
+    "governance.json": {
+      "path": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\topic_center\\governance.json",
+      "exists": true,
+      "bytes": 24004,
+      "sha256_raw": "841720f9bb4b4869f5e3acc75e0d8d7e6e8fdb364808c137db93cecaf5c8eb96",
+      "record_count": 8
+    },
+    "selection_archive.json": {
+      "path": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\topic_center\\selection_archive.json",
+      "exists": true,
+      "bytes": 6132,
+      "sha256_raw": "6ffc7432d68e6c649d3a1600a28d7f9939d8b13b00ae0f423689b5e6fdb24ae7",
+      "record_count": 5
+    },
+    "collection_queue.json": {
+      "path": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\topic_center\\collection_queue.json",
+      "exists": true,
+      "bytes": 3845,
+      "sha256_raw": "a707db29cca38562b6c7b6c74c3dc88084aa36d77ffd2a8ff43e40dd78a03588",
+      "record_count": 3
+    },
+    "collection_results.json": {
+      "path": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\topic_center\\collection_results.json",
+      "exists": true,
+      "bytes": 1637,
+      "sha256_raw": "f48c00231eaceeefb384e7e282a241bedebfe91668aaa678e0aa1aefc4e91490",
+      "record_count": 2
+    },
+    "topic_decisions.json": {
+      "path": "C:\\Users\\Administrator\\Documents\\工作流py化\\outputs\\topic_center\\topic_decisions.json",
+      "exists": true,
+      "bytes": 299,
+      "sha256_raw": "7a0d3fdccc01f7aa24fe2f40bffab4806a6ac5d7cd51b0f646ca308476bee658",
+      "record_count": 8
+    }
+  },
+  "deletion_gate": {
+    "requires_user_confirmation": true,
+    "blocked_reason": "存在未迁移历史记录或哈希冲突"
+  }
+}

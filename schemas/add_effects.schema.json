@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/1256/add-effects.schema.json",
+  "title": "添加特效（节点187358）输入输出契约",
+  "type": "object",
+  "properties": {
+    "input": {"type":"object","properties":{"draft_url":{"type":"string"},"effect_infos":{"type":"string"}},"required":["draft_url","effect_infos"],"additionalProperties":false},
+    "output": {"type":"object","properties":{"draft_url":{"type":"string"},"effect_ids":{"type":"array","items":{"type":"string"}},"segment_ids":{"type":"array","items":{"type":"string"}},"track_id":{"type":"string"}},"required":["draft_url","effect_ids","segment_ids","track_id"],"additionalProperties":false}
+  },
+  "required":["input","output"],"additionalProperties":false
+}

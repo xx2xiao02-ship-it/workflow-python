@@ -1,0 +1,4 @@
+{
+  "draft_url": "draft://synthetic-aigc-animation",
+  "video_infos": "[{\"video_url\":\"https://synthetic.invalid/video-01.mp4\",\"width\":1024,\"height\":1024,\"start\":0,\"end\":4000000,\"duration\":4000000,\"mask\":\"\",\"volume\":0,\"transition\":\"漫画撕纸\",\"transition_duration\":1000000},{\"video_url\":\"https://synthetic.invalid/video-02.mp4\",\"width\":1024,\"height\":1024,\"start\":4000000,\"end\":8500000,\"duration\":4500000,\"mask\":\"\",\"volume\":0,\"transition\":\"漫画撕纸\",\"transition_duration\":1000000},{\"video_url\":\"https://synthetic.invalid/video-03.mp4\",\"width\":1024,\"height\":1024,\"start\":8500000,\"end\":12000000,\"duration\":3500000,\"mask\":\"\",\"volume\":0,\"transition\":\"漫画撕纸\",\"transition_duration\":1000000}]"
+}

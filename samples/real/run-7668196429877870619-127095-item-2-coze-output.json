@@ -1,0 +1,22 @@
+{
+  "shots": [
+    {
+      "source_text": "无需害怕AI取代自己，真正值得警惕的是他人使用AI拉开与你的差距",
+      "clip_role": "信息触发",
+      "story_beat": "首先提出反常识观点，打破大众对AI会替代职业的固有恐慌认知",
+      "clip_duration": 9.2
+    },
+    {
+      "source_text": "AI是新时代的基础生产工具，如同过去的互联网只会重塑而非消灭职业",
+      "clip_role": "结果落点",
+      "story_beat": "明确AI的基础工具定位，完成对AI社会价值的正确认知传递",
+      "clip_duration": 5.2
+    }
+  ],
+  "clip_duration": [9.2, 5.2],
+  "int_duration": [10, 6],
+  "timelines": [
+    {"start": 16416000, "end": 25631333},
+    {"start": 25631333, "end": 30840000}
+  ]
+}

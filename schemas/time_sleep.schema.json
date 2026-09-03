@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/8364/time-sleep.schema.json",
+  "title": "8364 time_sleep 节点契约",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "object",
+      "properties": {
+        "seconds": {"type": "integer", "minimum": 0}
+      },
+      "required": ["seconds"],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "seconds": {"type": "integer", "minimum": 0}
+      },
+      "required": ["seconds"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["input", "output"],
+  "additionalProperties": false
+}

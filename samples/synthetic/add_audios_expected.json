@@ -1,0 +1,5 @@
+{
+  "audio_ids": ["synthetic-audio-1", "synthetic-audio-2"],
+  "draft_url": "synthetic://draft/1256-updated",
+  "track_id": "synthetic-track-1"
+}

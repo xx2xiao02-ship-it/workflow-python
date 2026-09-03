@@ -1,0 +1,22 @@
+{
+  "shots": [
+    {
+      "source_text": "旧时代竞争拼学历、拼资历、拼熬夜付出",
+      "clip_role": "现象建立",
+      "story_beat": "过往社会的主流竞争评判标准已经阐述完成。",
+      "clip_duration": 7.8
+    },
+    {
+      "source_text": "新时代竞争拼精准提问、审美把关、善用AI放大创造力",
+      "clip_role": "结果落点",
+      "story_beat": "新旧时代竞争标准的核心差异已经明确，核心观点输出完毕。",
+      "clip_duration": 5.6
+    }
+  ],
+  "clip_duration": [7.8, 5.6],
+  "int_duration": [8, 6],
+  "timelines": [
+    {"start": 53592000, "end": 61373373},
+    {"start": 61373373, "end": 66960000}
+  ]
+}
