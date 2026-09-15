@@ -1,0 +1,41 @@
+{
+  "schema_version": "governance-acceptance-record-v1",
+  "recorded_at": "2026-09-15T14:01:02+08:00",
+  "source_version": {
+    "kind": "production_source_aggregate_sha256",
+    "value": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
+    "git_revision": null,
+    "binding_rule": "用户验收必须绑定具体生产源码和治理登记版本；当前记录仍以生产源码 aggregate SHA-256 绑定，待本地提交完成后补充 commit SHA。"
+  },
+  "implementation_status": "implemented",
+  "test_status": "tested_governance_and_business_offline",
+  "user_acceptance_status": "pending_user_acceptance",
+  "user_acceptance": {
+    "accepted": false,
+    "accepted_at": null,
+    "accepted_source_version": null,
+    "accepted_by": null,
+    "note": "未经用户明确验收不得改为 accepted；治理工具通过不等于业务功能或生产版本验收通过。"
+  },
+  "external_validation": {
+    "browser": "not part of governance-only validation",
+    "paid_services": "not called",
+    "production_business_e2e": "not claimed"
+  },
+  "verification": {
+    "governance_pytest": "11 passed",
+    "business_pytest": "20 passed",
+    "compileall": "passed; topic_migration and tools",
+    "static_registry_and_boundaries": "passed; 16 production files and 16 unique migration registrations",
+    "import_linter": "passed; 1 contract kept, 0 broken",
+    "ruff": "passed; no automatic fixes",
+    "graphify": "fresh; 242 nodes, 634 links, no dangling endpoints or self-loops",
+    "production_hash_check": "passed; aggregate SHA-256 matches baseline"
+  },
+  "open_risks": [
+    "浏览器按钮、请求和隔离存储的真实 UI 验证尚未完成",
+    "真实 TikHub/专业媒体供应商连接未执行；连接测试因费用未知保持 deferred",
+    "静态门禁不能证明动态字符串导入、间接存储路径或第三方运行时行为的完整安全性",
+    "用户尚未对具体源码版本作最终验收；本项目尚未完成本地 Git 分阶段提交"
+  ]
+}

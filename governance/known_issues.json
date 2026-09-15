@@ -1,0 +1,29 @@
+{
+  "schema_version": "governance-known-issues-v1",
+  "policy": "已有违规必须显式登记；登记不等于豁免，治理入口仍报告其退出状态。禁止通过扩大 ignore 或修改测试掩盖问题。",
+  "source_version": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
+  "items": [
+    {
+      "issue_id": "RUFF-CONFIGURED-20260915",
+      "tool": "ruff",
+      "status": "resolved",
+      "command": ".\\.venv\\Scripts\\ruff.exe check .",
+      "exit_code": 0,
+      "count": 0,
+      "rule_counts": {},
+      "affected_scope": ["topic_migration", "tests/test_topic_migration.py"],
+      "resolved_at": "2026-09-15T14:01:02+08:00",
+      "note": "2026-09-15 通过手工整理导入并移除未使用导入解决；未使用 Ruff --fix。",
+      "blind_spot": "当前 Ruff 规则集只选择 E4/E7/E9/F/I；未选规则不等于已修复，历史 46 项基线另行保留。"
+    },
+    {
+      "issue_id": "RUFF-BASELINE-20260915",
+      "tool": "ruff",
+      "status": "historical_baseline",
+      "command": ".\\.venv\\Scripts\\ruff.exe check topic_migration tests",
+      "count": 46,
+      "rule_counts": {"I001": 12, "F401": 3, "PYI034": 1, "UP037": 1, "PYI036": 1, "RUF059": 1, "UP035": 5, "S110": 1, "BLE001": 3, "RUF022": 1, "UP012": 2, "C408": 2, "PIE810": 2, "FURB167": 6, "RUF012": 2, "PIE808": 1},
+      "note": "这是治理配置前的历史只读基线；当前配置后的实际门禁已退出 0，不用该历史规则集冒充当前阻断。"
+    }
+  ]
+}

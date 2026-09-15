@@ -1,0 +1,15 @@
+[importlinter]
+root_package = topic_migration
+
+[importlinter:topic-layers]
+name = topic_migration dependency layers
+type = layers
+layers =
+    topic_migration.server
+    topic_migration.topic_service
+    topic_migration.topic_collection
+    topic_migration.professional_media | topic_migration.trendradar_adapter
+    topic_migration.tikhub_transport
+    topic_migration.service_governance | topic_migration.governance_store | topic_migration.config_service
+    topic_migration.contracts
+    topic_migration.errors

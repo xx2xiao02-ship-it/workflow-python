@@ -1,0 +1,43 @@
+{
+  "schema_version": "code-governance-baseline-v1",
+  "recorded_at": "2026-09-15T14:01:02+08:00",
+  "migration_batch": "F0 public foundation + control-plane API config + F1 topic center; maintenance lock released",
+  "target_git": {
+    "is_repository": false,
+    "status": "not_a_git_repository",
+    "source_version_kind": "aggregate_sha256"
+  },
+  "python": {
+    "version": "3.14.6",
+    "executable": "C:\\Users\\Administrator\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe"
+  },
+  "pre_governance_tests": {
+    "compile_command": "python -m compileall -q topic_migration",
+    "compile_status": "passed",
+    "pytest_command": "python -m pytest -q tests --basetemp %TEMP%\\codex-project-pytest-current",
+    "pytest_status": "passed",
+    "pytest_result": "21 passed"
+  },
+  "production_snapshot": {
+    "aggregate_sha256": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
+    "hash_algorithm": "SHA-256",
+    "files": [
+      {"path": "static/api-management.html", "sha256": "f06ef21ee15399d85e14ae5a4385bacca186827394fc3f286d1af1e0de096fa6"},
+      {"path": "static/not-migrated.html", "sha256": "252a45ffde1b78cddfed53a0ecbaea52953c06fbb922e69d8cf15ba037644f00"},
+      {"path": "static/topic-center.html", "sha256": "b10dce951b3e025361951d5546a9cd34309e1db64783e7c18592efe018f96f4b"},
+      {"path": "static/topic-writing-governance.html", "sha256": "d0e4de0c1cffefe5750dade72b8ad2122ba0201444d006afbe32c81afc98046e"},
+      {"path": "topic_migration/__init__.py", "sha256": "3a32fbadcd483eed9f5905f35f3033c46e1ea4ee6c6f259c1579a60b0e6786ae"},
+      {"path": "topic_migration/config_service.py", "sha256": "74e9d284107eccc218f963c5c1f3c1ea2bc1d7e8d9c7d8e8bf03913e4d168326"},
+      {"path": "topic_migration/contracts.py", "sha256": "3e7167f4699f00e53cb0ba244b82a430657f938a1cf5030ef9c82f6172d2e3c4"},
+      {"path": "topic_migration/errors.py", "sha256": "e0e93b1e605d1e922044b7a7460f9e7cb2db6076328272f019e30cd0fb78598a"},
+      {"path": "topic_migration/governance_store.py", "sha256": "ad07b3437b941efba18e5118e0ac41ddc46bb8c1f116bd31c807487a82538323"},
+      {"path": "topic_migration/professional_media.py", "sha256": "5ee88c2cb022dd4973360aba0d521267524ea088c524ee668ed51381e52be285"},
+      {"path": "topic_migration/server.py", "sha256": "a2b8a5dac3c0fb5b5538c3d431424570be55783100d709e44cacb13368d97bfc"},
+      {"path": "topic_migration/service_governance.py", "sha256": "be47b78efa2683b0d5ae82989f29ae21e602d9ddc650b089cc7c1932025e0eeb"},
+      {"path": "topic_migration/tikhub_transport.py", "sha256": "1d6c757abd7333fc449eb0a0622eb69fa1aec3ca2c19531d786e56e25656517c"},
+      {"path": "topic_migration/topic_collection.py", "sha256": "8905180c1d00e6d896296312301b91a913429a49987410b3d27e0546d1ae662c"},
+      {"path": "topic_migration/topic_service.py", "sha256": "0e418176478d9931701f7b6d90a0bdff2dc7691c49d44e042a49f73d31dd2dad"},
+      {"path": "topic_migration/trendradar_adapter.py", "sha256": "04e138f659492f0b599435158ed6140524689491fd189a1fb581fcf2b10dc256"}
+    ]
+  }
+}

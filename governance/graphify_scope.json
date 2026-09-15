@@ -1,0 +1,47 @@
+{
+  "schema_version": "graphify-production-scope-v1",
+  "status": "fresh",
+  "graph_root": "topic_migration",
+  "graph_output": "graphify-out/graph.json",
+  "report_output": "graphify-out/GRAPH_REPORT.md",
+  "included_globs": [
+    "topic_migration/**/*.py"
+  ],
+  "excluded_globs": [
+    "**/__pycache__/**",
+    "**/.pytest_cache/**",
+    "**/.pytest_tmp*/**",
+    "tests/**",
+    "governance/**",
+    "tools/**",
+    "graphify-out/**"
+  ],
+  "semantic_extraction": "disabled; local AST only",
+  "source_hash": "0661bce754dd63b64202a4e14fbc39f6a222f80d811a89184dd5615f80cbb10e",
+  "source_files": [
+    "topic_migration/__init__.py",
+    "topic_migration/config_service.py",
+    "topic_migration/contracts.py",
+    "topic_migration/errors.py",
+    "topic_migration/governance_store.py",
+    "topic_migration/professional_media.py",
+    "topic_migration/server.py",
+    "topic_migration/service_governance.py",
+    "topic_migration/tikhub_transport.py",
+    "topic_migration/topic_collection.py",
+    "topic_migration/topic_service.py",
+    "topic_migration/trendradar_adapter.py"
+  ],
+  "graphify_version": "graphify 0.9.50",
+  "built_at": "2026-09-15T05:55:18+00:00",
+  "max_age_hours": 24,
+  "freshness_rule": "source hash mismatch or age over max_age_hours is stale; stale graph may guide nothing and never authorizes deletion",
+  "last_check": {
+    "checked_at": "2026-09-15T05:55:18+00:00",
+    "status": "fresh"
+  },
+  "graph_summary": {
+    "nodes": 242,
+    "edges": 637
+  }
+}
