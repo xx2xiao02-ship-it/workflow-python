@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-15T07:14:43+00:00",
+  "checked_at": "2026-09-15T07:53:17+00:00",
   "root": "E:\\codex project",
   "registry": "governance/module_registry.json",
   "module_filter": null,
@@ -26,7 +26,7 @@
       "topic_migration/topic_service.py",
       "topic_migration/trendradar_adapter.py"
     ],
-    "age_hours": 0.13824127944444445
+    "age_hours": 0.7809045691666666
   },
   "summary": {
     "errors": 0,

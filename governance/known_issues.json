@@ -1,7 +1,7 @@
 {
   "schema_version": "governance-known-issues-v1",
   "policy": "已有违规必须显式登记；登记不等于豁免，治理入口仍报告其退出状态。禁止通过扩大 ignore 或修改测试掩盖问题。",
-  "source_version": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
+  "source_version": "91b320d9d1f5288e38fcc23dde883a9024a03c2e2561880ecb3ef0140c627b1a",
   "items": [
     {
       "issue_id": "RUFF-CONFIGURED-20260915",
@@ -24,6 +24,47 @@
       "count": 46,
       "rule_counts": {"I001": 12, "F401": 3, "PYI034": 1, "UP037": 1, "PYI036": 1, "RUF059": 1, "UP035": 5, "S110": 1, "BLE001": 3, "RUF022": 1, "UP012": 2, "C408": 2, "PIE810": 2, "FURB167": 6, "RUF012": 2, "PIE808": 1},
       "note": "这是治理配置前的历史只读基线；当前配置后的实际门禁已退出 0，不用该历史规则集冒充当前阻断。"
+    },
+    {
+      "issue_id": "EXTERNAL-PROVIDERS-UNVERIFIED-20260915",
+      "tool": "TikHub / professional-media transports",
+      "status": "open",
+      "count": 1,
+      "affected_scope": ["topic_migration/tikhub_transport.py", "topic_migration/professional_media.py", "topic_migration/topic_collection.py"],
+      "note": "联合验收只使用 synthetic Transport、HTTPS 链接登记和手工 synthetic 正文；真实 TikHub 请求、专业媒体 RSS/正文和真实供应商连接测试均未执行，费用未知的连接测试保持 deferred。",
+      "blind_spot": "本地合同和 HTTP 边界不能证明第三方鉴权、限流、付费计费、实际响应字段或生产网络行为。"
+    },
+    {
+      "issue_id": "PRODUCTION-E2E-UNVERIFIED-20260915",
+      "tool": "production business flow",
+      "status": "open",
+      "count": 1,
+      "affected_scope": ["F0 public foundation", "F0 control-plane API config", "F1 topic center"],
+      "note": "目标服务可独立启动并完成 synthetic 页面/API/交接验证，但未切换生产流量、未导入生产凭据、未读取生产数据，也未验证真实文案下游。"
+    },
+    {
+      "issue_id": "BROWSER-CUA-CHANNEL-UNAVAILABLE-20260915",
+      "tool": "unified-computer-use",
+      "status": "environment_blocked",
+      "count": 1,
+      "affected_scope": ["final browser interaction evidence"],
+      "note": "最终联合验收期间 cua.getState() 两次返回 nodeRepl.fetch request failed；已改用仓库外 headless Chrome/CDP 完成 synthetic 页面点击和错误展示，仍未验证真实桌面浏览器会话。"
+    },
+    {
+      "issue_id": "LOCAL-CLEANUP-ACL-20260915",
+      "tool": "Windows filesystem",
+      "status": "open",
+      "count": 1,
+      "affected_scope": [".pytest_cache", ".pytest_tmp_joint_current", ".pytest_tmp_migration_baseline_20260915"],
+      "note": "这些临时目录早于本轮或为测试产物；删除操作受到 Windows ACL 拒绝，未修改权限、未强制删除，且均被 .gitignore 排除。"
+    },
+    {
+      "issue_id": "STALE-TEST-RUNTIME-LOCK-20260915",
+      "tool": "topic_migration.service_governance.ServiceLock",
+      "status": "blocked",
+      "count": 1,
+      "affected_scope": ["C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\runtime\\service.lock"],
+      "note": "隐藏验证实例 PID 13068 已退出且端口 53836 已释放，但该实例未执行 server_close，文本锁仍保留；未删除或改写锁文件。新的前台隔离 runtime 已证明服务可由自身释放锁；旧临时锁需显式 stale-lock 恢复流程或用户授权后再清理。"
     }
   ]
 }

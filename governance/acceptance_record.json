@@ -1,14 +1,19 @@
 {
   "schema_version": "governance-acceptance-record-v1",
-  "recorded_at": "2026-09-15T14:01:02+08:00",
+  "recorded_at": "2026-09-15T15:59:39+08:00",
   "source_version": {
     "kind": "production_source_aggregate_sha256",
-    "value": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
-    "git_revision": null,
-    "binding_rule": "用户验收必须绑定具体生产源码和治理登记版本；当前记录仍以生产源码 aggregate SHA-256 绑定，待本地提交完成后补充 commit SHA。"
+    "value": "91b320d9d1f5288e38fcc23dde883a9024a03c2e2561880ecb3ef0140c627b1a",
+    "git_revision": "2c6478d",
+    "stage_commits": {
+      "public_foundation": "20eb17f",
+      "api_config": "8711a02",
+      "topic_center": "2c6478d"
+    },
+    "binding_rule": "用户验收必须绑定具体生产源码和治理登记版本；aggregate SHA-256 绑定生产源码，stage_commits 绑定目标仓库分阶段本地提交；本记录不代表用户验收或生产可用。"
   },
   "implementation_status": "implemented",
-  "test_status": "tested_governance_and_business_offline",
+  "test_status": "tested_governance_business_and_synthetic_joint_flow",
   "user_acceptance_status": "pending_user_acceptance",
   "user_acceptance": {
     "accepted": false,
@@ -18,24 +23,75 @@
     "note": "未经用户明确验收不得改为 accepted；治理工具通过不等于业务功能或生产版本验收通过。"
   },
   "external_validation": {
-    "browser": "not part of governance-only validation",
+    "browser": "synthetic headless Chrome/CDP completed page loads and clicks for topic read, deferred preview, invalid professional-media input, manual intake and handoff rejection; API configuration screenshot also captured; CUA desktop channel separately returned nodeRepl.fetch request failed",
     "paid_services": "not called",
     "production_business_e2e": "not claimed"
+  },
+  "joint_validation": {
+    "service": {
+      "base_url": "http://127.0.0.1:53836",
+      "pid": 13068,
+      "runtime_root": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\runtime",
+      "trendradar_root": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\trendradar",
+      "external_requests_on_health": false,
+      "synthetic_only": true
+    },
+    "synthetic_flow": {
+      "topic_read": "GET /api/topic-center/topics returned one synthetic TrendRadar candidate",
+      "professional_media_import": "POST /api/topic-center/professional-media returned HTTP 200 for an HTTPS 36kr article URL; body_verified=false",
+      "selection_create": "POST /api/topic-center/selections returned HTTP 201 with primary_content_id preserved",
+      "content_ready": "POST /api/topic-writing-governance/sources/manual returned CONTENT_READY for synthetic text",
+      "handoff": "GET /api/topic-center/writing-input returned ready TopicContentManifest",
+      "hash": "computed UTF-8 SHA-256 matched content_sha256 0bb9caaa3abaa92bceb128b30dc9ca1c48fe50e365c8afbc9fe4e450ff34857e",
+      "id_pairing": "existing but mismatched selection_id returned HTTP 422; temporary probe was deleted with assets_preserved=true",
+      "archive": "source archive returned queue_state=ARCHIVED",
+      "short_text_gate": "short manual text returned HTTP 422",
+      "browser_clicks": "headless Chrome/CDP observed topic status 已读取 1 条真实主题, preview status deferred, invalid media status error, and manual intake status CONTENT_READY",
+      "browser_handoff_boundary": "unassociated manual source showed a visible handoff error selection_id 不能为空; no manifest was emitted without a selection_id"
+    },
+    "browser_artifacts": [
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\api-management.png",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\professional-media-import.json",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\selection-create.json",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\synthetic-content-ready.json",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\joint-http-evidence.json",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\id-mismatch-evidence.json",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\topic-center-final.png",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\topic-writing-governance-final.png",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\topic-center-cdp-final.png",
+      "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\topic-writing-governance-cdp-final.png"
+    ]
+  },
+  "startup_shutdown_validation": {
+    "runtime_root": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-final-runtime-20260915",
+    "port": 53837,
+    "health_http_status": 200,
+    "page_http_status": 200,
+    "shutdown_method": "foreground PTY Ctrl+C",
+    "process_present_after_shutdown": false,
+    "port_listening_after_shutdown": false,
+    "service_lock_exists_after_shutdown": false,
+    "evidence": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\topic-center-browser-joint-20260915-1509\\independent-startup-shutdown.json"
   },
   "verification": {
     "governance_pytest": "11 passed",
     "business_pytest": "20 passed",
     "compileall": "passed; topic_migration and tools",
+    "full_pytest": "22 passed in 3.24s",
+    "governance_check": "passed; 16 production files, 0 findings, external failures 0",
+    "staged_secret_scan": "passed; cached added-line scan found 0 secret patterns",
     "static_registry_and_boundaries": "passed; 16 production files and 16 unique migration registrations",
     "import_linter": "passed; 1 contract kept, 0 broken",
     "ruff": "passed; no automatic fixes",
-    "graphify": "fresh; 242 nodes, 634 links, no dangling endpoints or self-loops",
+    "graphify": "fresh; 244 nodes, 621 edges, no dangling endpoints, self-loops or collapsed endpoint pairs",
     "production_hash_check": "passed; aggregate SHA-256 matches baseline"
   },
   "open_risks": [
-    "浏览器按钮、请求和隔离存储的真实 UI 验证尚未完成",
+    "CUA 桌面控制通道不可用；已用本机 headless Chrome/CDP 完成 synthetic 页面点击和错误展示，未验证真实桌面浏览器会话",
     "真实 TikHub/专业媒体供应商连接未执行；连接测试因费用未知保持 deferred",
     "静态门禁不能证明动态字符串导入、间接存储路径或第三方运行时行为的完整安全性",
-    "用户尚未对具体源码版本作最终验收；本项目尚未完成本地 Git 分阶段提交"
+    "真实 TikHub、真实专业媒体 RSS、真实正文采集、生产数据交接和生产 E2E 均未验证",
+    "旧隐藏测试 runtime 的 PID 13068 已退出且端口 53836 已释放，但其文本 service.lock 仍是 stale；未删除，需显式的 stale-lock 恢复操作才能清除",
+    "用户尚未对具体源码版本作最终验收；未标记为生产可用"
   ]
 }

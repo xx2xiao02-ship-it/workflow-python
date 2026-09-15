@@ -33,11 +33,11 @@
     "topic_migration/trendradar_adapter.py"
   ],
   "graphify_version": "graphify 0.9.50",
-  "built_at": "2026-09-15T07:06:26+00:00",
+  "built_at": "2026-09-15T07:54:03+00:00",
   "max_age_hours": 24,
   "freshness_rule": "source hash mismatch or age over max_age_hours is stale; stale graph may guide nothing and never authorizes deletion",
   "last_check": {
-    "checked_at": "2026-09-15T07:06:26+00:00",
+    "checked_at": "2026-09-15T07:54:03+00:00",
     "status": "fresh"
   },
   "graph_summary": {
