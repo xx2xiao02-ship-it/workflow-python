@@ -5,7 +5,7 @@
   "source_git_revision": "0c5bcda9f3b3e6e180a90cdac9ce2dafb483a9e8",
   "source_worktree_status": "dirty rescue-current; hashes below are current working-tree hashes, not an assertion about Git HEAD",
   "file_register": "governance/migration_file_register.json",
-  "target_production_aggregate_sha256": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
+  "target_production_aggregate_sha256": "91b320d9d1f5288e38fcc23dde883a9024a03c2e2561880ecb3ef0140c627b1a",
   "source_governance_inputs": [
     {"path": "docs/module_governance_registry_v1.json", "sha256": "422625c9744e9748293a84c740695ff69dcf7495bf930f0e91a0b5c28d982447"},
     {"path": "docs/business_governance_mainline_v1.json", "sha256": "9006d4835536b818741535ae7670b306835851a06911cdb353d187f49c55f6a8"},

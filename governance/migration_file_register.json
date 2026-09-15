@@ -1,6 +1,6 @@
 {
   "schema_version": "migration-file-register-v1",
-  "recorded_at": "2026-09-15T13:58:00+08:00",
+  "recorded_at": "2026-09-15T15:08:59+08:00",
   "source_project": "C:\\Users\\Administrator\\Documents\\工作流py化",
   "source_git_revision": "0c5bcda9f3b3e6e180a90cdac9ce2dafb483a9e8",
   "source_worktree_status": "dirty rescue-current; source hashes are current working-tree hashes",
@@ -100,7 +100,7 @@
       "target_path": "topic_migration/topic_service.py",
       "source_path": "src/workflow_1256/topic_intelligence.py",
       "source_sha256": "5fb76a1cb38f9bd7e3abae12c80729a43ba0aa2d08e3be17742495eec9502cda",
-      "target_sha256": "0e418176478d9931701f7b6d90a0bdff2dc7691c49d44e042a49f73d31dd2dad",
+      "target_sha256": "cd6e22518c94843f0184b4a49ddc8532000a36bb716ca464d1661f19ed466c33",
       "module": "topic_migration.topic_service",
       "stage": "topic_center",
       "migration_reason": "按前端实际调用关系编排主题读取、预览、刷新、按需扩展、选题包、采集、归档和交接。"
@@ -111,7 +111,7 @@
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
       "target_sha256": "a2b8a5dac3c0fb5b5538c3d431424570be55783100d709e44cacb13368d97bfc",
       "module": "topic_migration.server",
-      "stage": "joint_acceptance",
+      "stage": "topic_center",
       "migration_reason": "建立标准库独立 HTTP Transport、页面/API 路由、错误响应和 trace_id 表面；禁止导入旧控制台。"
     },
     {
@@ -120,7 +120,7 @@
       "source_sha256": "f8ca3e59172e8cd872bf29f0c8461b31543c5f22a63800c89115bb85fb9e366f",
       "target_sha256": "b10dce951b3e025361951d5546a9cd34309e1db64783e7c18592efe018f96f4b",
       "module": "topic_migration.server",
-      "stage": "joint_acceptance",
+      "stage": "topic_center",
       "migration_reason": "提供正式选题中心页面，覆盖主题读取、预览、相关内容、选题包、正文采集、专业媒体、删除和进入文案。"
     },
     {
@@ -129,7 +129,7 @@
       "source_sha256": "7778fbaa69d77f4fb971679bccf8cfd480262e8e4097cb8b479752e157793f6e",
       "target_sha256": "d0e4de0c1cffefe5750dade72b8ad2122ba0201444d006afbe32c81afc98046e",
       "module": "topic_migration.server",
-      "stage": "joint_acceptance",
+      "stage": "topic_center",
       "migration_reason": "提供正文治理支撑页面，围绕 CONTENT_READY、来源证据、选择包和历史记录交接。"
     },
     {
@@ -147,7 +147,7 @@
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
       "target_sha256": "252a45ffde1b78cddfed53a0ecbaea52953c06fbb922e69d8cf15ba037644f00",
       "module": "topic_migration.server",
-      "stage": "joint_acceptance",
+      "stage": "topic_center",
       "migration_reason": "为未迁移文案入口提供明确的尚未迁移提示，防止跳转到空壳或伪造能力。"
     }
   ]

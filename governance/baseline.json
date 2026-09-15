@@ -1,10 +1,10 @@
 {
   "schema_version": "code-governance-baseline-v1",
-  "recorded_at": "2026-09-15T14:01:02+08:00",
+  "recorded_at": "2026-09-15T15:08:59+08:00",
   "migration_batch": "F0 public foundation + control-plane API config + F1 topic center; maintenance lock released",
   "target_git": {
-    "is_repository": false,
-    "status": "not_a_git_repository",
+    "is_repository": true,
+    "status": "independent_repository; branch main; parent E:/ has no .git; old repository not copied",
     "source_version_kind": "aggregate_sha256"
   },
   "python": {
@@ -19,7 +19,7 @@
     "pytest_result": "21 passed"
   },
   "production_snapshot": {
-    "aggregate_sha256": "3d676c828d97c1a56d31f6307cf5896a0ac96e9367cb0064f59376aa17cb1fad",
+    "aggregate_sha256": "91b320d9d1f5288e38fcc23dde883a9024a03c2e2561880ecb3ef0140c627b1a",
     "hash_algorithm": "SHA-256",
     "files": [
       {"path": "static/api-management.html", "sha256": "f06ef21ee15399d85e14ae5a4385bacca186827394fc3f286d1af1e0de096fa6"},
@@ -36,7 +36,7 @@
       {"path": "topic_migration/service_governance.py", "sha256": "be47b78efa2683b0d5ae82989f29ae21e602d9ddc650b089cc7c1932025e0eeb"},
       {"path": "topic_migration/tikhub_transport.py", "sha256": "1d6c757abd7333fc449eb0a0622eb69fa1aec3ca2c19531d786e56e25656517c"},
       {"path": "topic_migration/topic_collection.py", "sha256": "8905180c1d00e6d896296312301b91a913429a49987410b3d27e0546d1ae662c"},
-      {"path": "topic_migration/topic_service.py", "sha256": "0e418176478d9931701f7b6d90a0bdff2dc7691c49d44e042a49f73d31dd2dad"},
+      {"path": "topic_migration/topic_service.py", "sha256": "cd6e22518c94843f0184b4a49ddc8532000a36bb716ca464d1661f19ed466c33"},
       {"path": "topic_migration/trendradar_adapter.py", "sha256": "04e138f659492f0b599435158ed6140524689491fd189a1fb581fcf2b10dc256"}
     ]
   }

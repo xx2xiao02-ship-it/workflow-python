@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-15T06:18:42+00:00",
+  "checked_at": "2026-09-15T07:14:43+00:00",
   "root": "E:\\codex project",
   "registry": "governance/module_registry.json",
   "module_filter": null,
@@ -10,8 +10,8 @@
     "scope_path": "governance/graphify_scope.json",
     "graph_output": "graphify-out/graph.json",
     "report_output": "graphify-out/GRAPH_REPORT.md",
-    "recorded_source_hash": "45ef435072ca20ed645a759c428e00428218c9ed56eae76ee86de076a9ab81bd",
-    "current_source_hash": "45ef435072ca20ed645a759c428e00428218c9ed56eae76ee86de076a9ab81bd",
+    "recorded_source_hash": "8bfc9eef40687f159fb0a2a2c37cff78aefffe91277bf7eda73d51e9bf3e0c5a",
+    "current_source_hash": "8bfc9eef40687f159fb0a2a2c37cff78aefffe91277bf7eda73d51e9bf3e0c5a",
     "source_files": [
       "topic_migration/__init__.py",
       "topic_migration/config_service.py",
@@ -26,7 +26,7 @@
       "topic_migration/topic_service.py",
       "topic_migration/trendradar_adapter.py"
     ],
-    "age_hours": 0.057532433055555554
+    "age_hours": 0.13824127944444445
   },
   "summary": {
     "errors": 0,

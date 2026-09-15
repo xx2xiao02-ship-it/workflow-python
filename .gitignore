@@ -102,6 +102,7 @@ settings.local.*
 
 # Graphify caches are disposable; checked-in audit outputs stay visible.
 graphify-out/.graphify_*
+graphify-out/manifest.json
 graphify-out/cache/
 graphify-out/memory/
 graphify-out/reflections/
