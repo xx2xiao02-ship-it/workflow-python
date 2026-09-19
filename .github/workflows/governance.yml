@@ -1,0 +1,62 @@
+name: Project governance
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - 'codex/**'
+  workflow_dispatch:
+
+concurrency:
+  group: project-governance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  governance:
+    name: Version and code governance
+    runs-on: windows-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install development dependencies
+        shell: pwsh
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Verify exact revision and clean checkout
+        shell: pwsh
+        run: python tools/version_guard.py --require-clean --expected-sha $env:GITHUB_SHA
+
+      - name: Compile Python sources
+        shell: pwsh
+        run: python -m compileall -q topic_migration tools
+
+      - name: Run tests
+        shell: pwsh
+        run: python -m pytest -q tests --basetemp "$env:RUNNER_TEMP\codex-project-pytest"
+
+      - name: Run governance checks
+        shell: pwsh
+        run: python tools/governance_check.py
+
+      - name: Verify revision after execution
+        shell: pwsh
+        run: python tools/version_guard.py --require-clean --expected-sha $env:GITHUB_SHA --allow-path governance/reports/latest.json
