@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any, Mapping
 from urllib.parse import parse_qs, unquote, urlparse
 
+from .api_transports import UnifiedApiTransport
 from .errors import MigrationError, NotFoundError, ValidationError
 from .service_governance import ServiceGovernance, ServiceLock
 from .topic_service import TopicCenterService
@@ -38,9 +39,16 @@ class TopicMigrationHTTPServer(ThreadingHTTPServer):
     allow_reuse_address = True
     daemon_threads = True
 
-    def __init__(self, address: tuple[str, int], service: TopicCenterService, governance: ServiceGovernance) -> None:
+    def __init__(
+        self,
+        address: tuple[str, int],
+        service: TopicCenterService,
+        governance: ServiceGovernance,
+        api_transports: UnifiedApiTransport | None = None,
+    ) -> None:
         self.service = service
         self.governance = governance
+        self.api_transports = api_transports or UnifiedApiTransport(service.config_service)
         super().__init__(address, TopicMigrationHandler)
 
     def server_close(self) -> None:
@@ -56,13 +64,14 @@ def create_server(
     *,
     service: TopicCenterService | None = None,
     lock_path: Path | str | None = None,
+    api_transports: UnifiedApiTransport | None = None,
 ) -> TopicMigrationHTTPServer:
     instance = service or TopicCenterService()
     lock = ServiceLock(Path(lock_path) if lock_path is not None else instance.root / "service.lock")
     governance = ServiceGovernance(lock)
     governance.lock.acquire()
     try:
-        return TopicMigrationHTTPServer((host, int(port)), instance, governance)
+        return TopicMigrationHTTPServer((host, int(port)), instance, governance, api_transports)
     except Exception:
         governance.lock.release()
         raise
@@ -174,6 +183,10 @@ class TopicMigrationHandler(BaseHTTPRequestHandler):
             if path == "/api/api-management":
                 self._send_json(200, self.service.config_service.public_snapshot())
                 return
+            if path == "/api/api-management/transport-contract":
+                channel = _first(query, "channel_id", "tikhub")
+                self._send_json(200, self.server.api_transports.contract_snapshot(channel))
+                return
             if path == "/api/topic-center/health":
                 self._send_json(200, self.service.health())
                 return
@@ -258,7 +271,29 @@ class TopicMigrationHandler(BaseHTTPRequestHandler):
             if path == "/api/api-management/config":
                 self._send_json(200, self.service.config_service.save(payload))
                 return
-            if path in {"/api/api-management/test-connection", "/api/api-management/auth-verify"}:
+            if path == "/api/api-management/test-connection":
+                channels = payload.get("channels")
+                if not isinstance(channels, list) or not channels:
+                    channels = [str(payload.get("channel_id") or "tikhub").strip()]
+                if len(channels) > 20:
+                    raise ValidationError("单次连接验证通道数超出限制")
+                results = [
+                    self.server.api_transports.verify(
+                        str(channel),
+                        confirm=str(payload.get("confirm") or ""),
+                    )
+                    for channel in channels
+                ]
+                self._send_json(200, {
+                    "status": "completed",
+                    "executed": any(bool(item.get("executed")) for item in results),
+                    "external_requests": any(bool(item.get("external_request")) for item in results),
+                    "generation_started": any(bool(item.get("generation_started")) for item in results),
+                    "auth_verified": all(bool(item.get("auth_verified")) for item in results) if results else False,
+                    "results": results,
+                })
+                return
+            if path == "/api/api-management/auth-verify":
                 self._send_json(200, self.service.config_service.connection_test_deferred(payload))
                 return
             if path == "/api/topic-center/refresh-schedule":

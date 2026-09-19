@@ -17,9 +17,10 @@
     "graphify-out/**"
   ],
   "semantic_extraction": "disabled; local AST only",
-  "source_hash": "8bfc9eef40687f159fb0a2a2c37cff78aefffe91277bf7eda73d51e9bf3e0c5a",
+  "source_hash": "b1790efd2ad0bc413f5bc3cb15a402cebe477cad1292ecf4b4adfeff65475e34",
   "source_files": [
     "topic_migration/__init__.py",
+    "topic_migration/api_transports.py",
     "topic_migration/config_service.py",
     "topic_migration/contracts.py",
     "topic_migration/errors.py",
@@ -33,15 +34,15 @@
     "topic_migration/trendradar_adapter.py"
   ],
   "graphify_version": "graphify 0.9.50",
-  "built_at": "2026-09-15T07:54:03+00:00",
+  "built_at": "2026-09-19T09:14:44+00:00",
   "max_age_hours": 24,
   "freshness_rule": "source hash mismatch or age over max_age_hours is stale; stale graph may guide nothing and never authorizes deletion",
   "last_check": {
-    "checked_at": "2026-09-15T07:54:03+00:00",
+    "checked_at": "2026-09-19T09:14:44+00:00",
     "status": "fresh"
   },
   "graph_summary": {
-    "nodes": 244,
-    "edges": 621
+    "nodes": 291,
+    "edges": 826
   }
 }

@@ -36,6 +36,11 @@ def _text(value: Any, limit: int = 500) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()[:limit]
 
 
+def _bearer_header(value: Any) -> str:
+    token = str(value or "").strip()
+    return token if token.lower().startswith("bearer ") else "Bearer " + token
+
+
 def _number(value: Any) -> int | float | str | None:
     if value in (None, "") or isinstance(value, bool):
         return None
@@ -269,7 +274,7 @@ def _normalize_item(item: Mapping[str, Any], *, platform: str, endpoint: str, ke
 class TikHubTransport:
     ENDPOINTS = {
         "douyin": ("POST", "/api/v1/douyin/search/fetch_video_search_v2"),
-        "xiaohongshu": ("GET", "/api/v1/xiaohongshu/web_v2/fetch_search_notes"),
+        "xiaohongshu": ("GET", "/api/v1/xiaohongshu/app_v2/search_notes"),
         "weibo": ("GET", "/api/v1/weibo/web_v2/fetch_video_search"),
         "zhihu": ("GET", "/api/v1/zhihu/web/fetch_article_search_v3"),
         "wechat": ("GET", "/api/v1/wechat_mp/web/fetch_mp_article_list"),
@@ -319,7 +324,7 @@ class TikHubTransport:
                 raw_body = json.dumps(list(body), ensure_ascii=False).encode("utf-8")
             else:
                 raise TikHubTransportError("TikHub 请求体必须是对象或数组", code="invalid_request_body")
-        request = Request(url, data=raw_body, method=str(method).upper(), headers={"Accept": "application/json", "User-Agent": "TopicCenterMigration/1.0", "Authorization": f"Bearer {cfg.token}", **({"Content-Type": "application/json"} if raw_body is not None else {})})
+        request = Request(url, data=raw_body, method=str(method).upper(), headers={"Accept": "application/json", "User-Agent": "TopicCenterMigration/1.0", "Authorization": _bearer_header(cfg.token), **({"Content-Type": "application/json"} if raw_body is not None else {})})
         last_error: TikHubTransportError | None = None
         for attempt in range(cfg.max_retries + 1):
             try:
@@ -366,7 +371,7 @@ class TikHubTransport:
             if platform == "douyin":
                 kwargs = {"body": {"keyword": clean_keyword, "cursor": 0, "sort_type": "0", "publish_time": "0", "filter_duration": "0", "content_type": "0", "search_id": "", "backtrace": ""}}
             elif platform == "xiaohongshu":
-                kwargs = {"params": {"keywords": clean_keyword, "page": 1, "sort_type": "general", "note_type": 0}}
+                kwargs = {"params": {"keyword": clean_keyword, "page": 1, "sort_type": "general", "note_type": "不限"}}
             elif platform == "weibo":
                 kwargs = {"params": {"query": clean_keyword, "mode": "hot", "page": 1}}
             elif platform == "zhihu":

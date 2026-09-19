@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-09-15T07:53:17+00:00",
-  "root": "E:\\codex project",
+  "checked_at": "2026-09-19T09:19:56+00:00",
+  "root": "E:\\codex project\\.worktrees\\api-config-delivery-20260919",
   "registry": "governance/module_registry.json",
   "module_filter": null,
   "status": "passed",
@@ -10,10 +10,11 @@
     "scope_path": "governance/graphify_scope.json",
     "graph_output": "graphify-out/graph.json",
     "report_output": "graphify-out/GRAPH_REPORT.md",
-    "recorded_source_hash": "8bfc9eef40687f159fb0a2a2c37cff78aefffe91277bf7eda73d51e9bf3e0c5a",
-    "current_source_hash": "8bfc9eef40687f159fb0a2a2c37cff78aefffe91277bf7eda73d51e9bf3e0c5a",
+    "recorded_source_hash": "b1790efd2ad0bc413f5bc3cb15a402cebe477cad1292ecf4b4adfeff65475e34",
+    "current_source_hash": "b1790efd2ad0bc413f5bc3cb15a402cebe477cad1292ecf4b4adfeff65475e34",
     "source_files": [
       "topic_migration/__init__.py",
+      "topic_migration/api_transports.py",
       "topic_migration/config_service.py",
       "topic_migration/contracts.py",
       "topic_migration/errors.py",
@@ -26,28 +27,28 @@
       "topic_migration/topic_service.py",
       "topic_migration/trendradar_adapter.py"
     ],
-    "age_hours": 0.7809045691666666
+    "age_hours": 0.08684645888888888
   },
   "summary": {
     "errors": 0,
     "findings": 0,
-    "production_files": 16,
+    "production_files": 17,
     "external_failures": 0,
     "total_failures": 0
   },
   "external": [
     {
       "command": [
-        "E:\\codex project\\.venv\\Scripts\\lint-imports.exe"
+        "E:\\codex project\\.worktrees\\api-config-delivery-20260919\\.venv\\Scripts\\lint-imports.exe"
       ],
       "returncode": 0,
-      "stdout": "=============\nImport Linter\n=============\n\n\n---------\nContracts\n---------\n\nAnalyzed 12 files, 22 dependencies.\n-----------------------------------\n\ntopic_migration dependency layers KEPT\n\nContracts: 1 kept, 0 broken.\n",
+      "stdout": "=============\nImport Linter\n=============\n\n\n---------\nContracts\n---------\n\nAnalyzed 13 files, 25 dependencies.\n-----------------------------------\n\ntopic_migration dependency layers KEPT\n\nContracts: 1 kept, 0 broken.\n",
       "stderr": "",
       "name": "import-linter"
     },
     {
       "command": [
-        "E:\\codex project\\.venv\\Scripts\\ruff.exe",
+        "E:\\codex project\\.worktrees\\api-config-delivery-20260919\\.venv\\Scripts\\ruff.exe",
         "check",
         "."
       ],

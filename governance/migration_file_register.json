@@ -1,6 +1,6 @@
 {
   "schema_version": "migration-file-register-v1",
-  "recorded_at": "2026-09-15T15:08:59+08:00",
+  "recorded_at": "2026-09-19T18:00:00+08:00",
   "source_project": "C:\\Users\\Administrator\\Documents\\工作流py化",
   "source_git_revision": "0c5bcda9f3b3e6e180a90cdac9ce2dafb483a9e8",
   "source_worktree_status": "dirty rescue-current; source hashes are current working-tree hashes",
@@ -10,7 +10,7 @@
       "target_path": "topic_migration/__init__.py",
       "source_path": "src/workflow_1256/__init__.py",
       "source_sha256": "70662e10202df8efddeee6e2e25f9a6b65f8a41b4172ebc86e933ecb764e88b3",
-      "target_sha256": "3a32fbadcd483eed9f5905f35f3033c46e1ea4ee6c6f259c1579a60b0e6786ae",
+      "target_sha256": "26cef75765e2cda0278a1c661de0dd65e6d68e48e547e0a31b752743bc5f5b85",
       "module": "topic_migration",
       "stage": "public_foundation",
       "migration_reason": "提供独立包 facade，并只公开本批配置、选题服务和 TopicContentManifest。"
@@ -19,7 +19,7 @@
       "target_path": "topic_migration/errors.py",
       "source_path": "tools/video_production_console.py",
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
-      "target_sha256": "e0e93b1e605d1e922044b7a7460f9e7cb2db6076328272f019e30cd0fb78598a",
+      "target_sha256": "f848d4aec63f59807cc5af9836403db5e1814bde4fb293c4ee34af06989ecd5d",
       "module": "topic_migration.errors",
       "stage": "public_foundation",
       "migration_reason": "抽取旧控制台的可对外错误语义，统一 HTTP 状态、错误码和 retryable 边界。"
@@ -28,7 +28,7 @@
       "target_path": "topic_migration/service_governance.py",
       "source_path": "tools/local_service_governance.py",
       "source_sha256": "9e3f1b160c680bc510a62794e48e56213df2563545c100489421ecaf29565f44",
-      "target_sha256": "be47b78efa2683b0d5ae82989f29ae21e602d9ddc650b089cc7c1932025e0eeb",
+      "target_sha256": "10655d2de0c68fb6d65f4c4750130f8452fe3a4e60f5a14e8113d8b65f15c664",
       "module": "topic_migration.service_governance",
       "stage": "public_foundation",
       "migration_reason": "迁移最小服务治理能力：单实例维护锁、活动任务快照和不强杀边界。"
@@ -37,7 +37,7 @@
       "target_path": "topic_migration/config_service.py",
       "source_path": "tools/video_production_console.py",
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
-      "target_sha256": "74e9d284107eccc218f963c5c1f3c1ea2bc1d7e8d9c7d8e8bf03913e4d168326",
+      "target_sha256": "d8b0c6ae8889e714d4581bb88dbb4cfa24233e16883ed1b5c4ac41391a8dc2fc",
       "module": "topic_migration.config_service",
       "stage": "api_config",
       "migration_reason": "只迁移选题中心实际读取的服务地址、供应商、凭据引用、超时、重试和连接状态；配置与旧项目存储隔离。"
@@ -46,7 +46,7 @@
       "target_path": "topic_migration/contracts.py",
       "source_path": "src/workflow_1256/module_contracts.py",
       "source_sha256": "8643b34be4dcc448bbae7cdabf830c518a2792568ece7b4991bbd0dc41a77893",
-      "target_sha256": "3e7167f4699f00e53cb0ba244b82a430657f938a1cf5030ef9c82f6172d2e3c4",
+      "target_sha256": "f78c86488c048a3a0547e5e0f9b5e453d65e4b9c934d889aac325449b119bea9",
       "module": "topic_migration.contracts",
       "stage": "topic_center",
       "migration_reason": "保留 TopicContentManifest 的 CONTENT_READY 闸门、正文 hash、来源证据和 selection/source ID 配对。"
@@ -55,7 +55,7 @@
       "target_path": "topic_migration/governance_store.py",
       "source_path": "src/workflow_1256/topic_writing_governance.py",
       "source_sha256": "3621f7c6f271c4532b48d892e00e302763b65275a0af74778c2a436ded5e3415",
-      "target_sha256": "ad07b3437b941efba18e5118e0ac41ddc46bb8c1f116bd31c807487a82538323",
+      "target_sha256": "f7ebe6a47a5be908e66f0134bb8b04144e09efbbc6c85fb54cace8a06a764889",
       "module": "topic_migration.governance_store",
       "stage": "topic_center",
       "migration_reason": "提供独立选题包、来源正文、归档和删除历史记录存储；运行时 root 外置，不读取旧工程内部存储。"
@@ -64,7 +64,7 @@
       "target_path": "topic_migration/tikhub_transport.py",
       "source_path": "src/workflow_1256/tikhub_transport.py",
       "source_sha256": "f0c831a3600826c0497944486ee972090883863d0b13e3bef66f73c3d2aa5200",
-      "target_sha256": "1d6c757abd7333fc449eb0a0622eb69fa1aec3ca2c19531d786e56e25656517c",
+      "target_sha256": "89aa21ab1ab11a5411cab78242681a83d7426432ed920061dd674d9cb6332ee2",
       "module": "topic_migration.tikhub_transport",
       "stage": "topic_center",
       "migration_reason": "保留按需相关内容查询、视频时长秒单位归一化和配置边界；不在健康检查或缓存读取时自动请求。"
@@ -73,7 +73,7 @@
       "target_path": "topic_migration/topic_collection.py",
       "source_path": "src/workflow_1256/topic_collection.py",
       "source_sha256": "0dcebaf082070463c39c9f3924d7d4329f4404c0b628e4831f572714ffa74605",
-      "target_sha256": "8905180c1d00e6d896296312301b91a913429a49987410b3d27e0546d1ae662c",
+      "target_sha256": "efedc98cdda4177fabc2f7440e142007ad527aba38fcbca51c430db7effa6a99",
       "module": "topic_migration.topic_collection",
       "stage": "topic_center",
       "migration_reason": "迁移正文采集的真实 HTTP 来源校验、最小正文长度和知乎详情 Transport 入口。"
@@ -82,7 +82,7 @@
       "target_path": "topic_migration/professional_media.py",
       "source_path": "src/workflow_1256/topic_intelligence.py",
       "source_sha256": "5fb76a1cb38f9bd7e3abae12c80729a43ba0aa2d08e3be17742495eec9502cda",
-      "target_sha256": "5ee88c2cb022dd4973360aba0d521267524ea088c524ee668ed51381e52be285",
+      "target_sha256": "0f70df0acf8cec230baece8bb6e01b549a0e25cdf07aed6ee64be84c43924ccb",
       "module": "topic_migration.professional_media",
       "stage": "topic_center",
       "migration_reason": "提供专业媒体候选登记、RSS 标题筛选和 HTTPS 文章链接入口，不把标题当作正文证据。"
@@ -91,7 +91,7 @@
       "target_path": "topic_migration/trendradar_adapter.py",
       "source_path": "src/workflow_1256/trendradar_adapter.py",
       "source_sha256": "25beffd8f192f3a1128778a9119cf700d4f1a52d15ab58b99e2324a52c1fc76b",
-      "target_sha256": "04e138f659492f0b599435158ed6140524689491fd189a1fb581fcf2b10dc256",
+      "target_sha256": "76092b63298608b4c9c064ac4ab5be29659364de8ff2f74ec5a0424211187dfe",
       "module": "topic_migration.trendradar_adapter",
       "stage": "topic_center",
       "migration_reason": "以只读方式读取 TrendRadar SQLite 快照，保持候选 ID 稳定和真实来源 URL。"
@@ -100,7 +100,7 @@
       "target_path": "topic_migration/topic_service.py",
       "source_path": "src/workflow_1256/topic_intelligence.py",
       "source_sha256": "5fb76a1cb38f9bd7e3abae12c80729a43ba0aa2d08e3be17742495eec9502cda",
-      "target_sha256": "cd6e22518c94843f0184b4a49ddc8532000a36bb716ca464d1661f19ed466c33",
+      "target_sha256": "018ad35c845d1f4334af915ace9a35227faf13bd4a300ea7e55317243ab2b9b4",
       "module": "topic_migration.topic_service",
       "stage": "topic_center",
       "migration_reason": "按前端实际调用关系编排主题读取、预览、刷新、按需扩展、选题包、采集、归档和交接。"
@@ -109,7 +109,7 @@
       "target_path": "topic_migration/server.py",
       "source_path": "tools/video_production_console.py",
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
-      "target_sha256": "a2b8a5dac3c0fb5b5538c3d431424570be55783100d709e44cacb13368d97bfc",
+      "target_sha256": "30b80c58021ec46cc7e63b2272c3fb5472a5e44ed618acb058dfa7b4956076a2",
       "module": "topic_migration.server",
       "stage": "topic_center",
       "migration_reason": "建立标准库独立 HTTP Transport、页面/API 路由、错误响应和 trace_id 表面；禁止导入旧控制台。"
@@ -118,7 +118,7 @@
       "target_path": "static/topic-center.html",
       "source_path": "ui-drafts/topic-center.html",
       "source_sha256": "f8ca3e59172e8cd872bf29f0c8461b31543c5f22a63800c89115bb85fb9e366f",
-      "target_sha256": "b10dce951b3e025361951d5546a9cd34309e1db64783e7c18592efe018f96f4b",
+      "target_sha256": "5946e197fbf97bb7a586d26fb9bc8e34287da6d0ee1ee7182060549453f28557",
       "module": "topic_migration.server",
       "stage": "topic_center",
       "migration_reason": "提供正式选题中心页面，覆盖主题读取、预览、相关内容、选题包、正文采集、专业媒体、删除和进入文案。"
@@ -127,7 +127,7 @@
       "target_path": "static/topic-writing-governance.html",
       "source_path": "ui-drafts/topic-writing-governance.html",
       "source_sha256": "7778fbaa69d77f4fb971679bccf8cfd480262e8e4097cb8b479752e157793f6e",
-      "target_sha256": "d0e4de0c1cffefe5750dade72b8ad2122ba0201444d006afbe32c81afc98046e",
+      "target_sha256": "5e017ce6972cccd01c57b3ffb05c4dae69ed1a85f2eece67b6225745bd0bd33b",
       "module": "topic_migration.server",
       "stage": "topic_center",
       "migration_reason": "提供正文治理支撑页面，围绕 CONTENT_READY、来源证据、选择包和历史记录交接。"
@@ -136,7 +136,7 @@
       "target_path": "static/api-management.html",
       "source_path": "tools/video_production_console.py",
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
-      "target_sha256": "f06ef21ee15399d85e14ae5a4385bacca186827394fc3f286d1af1e0de096fa6",
+      "target_sha256": "392fd2eaeb2c52826a2f04dfab89f96d206888f52c59db7d9ed3a254af1047f4",
       "module": "topic_migration.server",
       "stage": "api_config",
       "migration_reason": "保留 /api-management 页面和 API 配置字段语义，明确 control-plane 归属、脱敏凭据和未迁移供应商状态。"
@@ -145,10 +145,19 @@
       "target_path": "static/not-migrated.html",
       "source_path": "tools/video_production_console.py",
       "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
-      "target_sha256": "252a45ffde1b78cddfed53a0ecbaea52953c06fbb922e69d8cf15ba037644f00",
+      "target_sha256": "3076cf8531ba04af4bd8919d24e4d7302581d81f7b5d771093c70c1707304b63",
       "module": "topic_migration.server",
       "stage": "topic_center",
       "migration_reason": "为未迁移文案入口提供明确的尚未迁移提示，防止跳转到空壳或伪造能力。"
+    },
+    {
+      "target_path": "topic_migration/api_transports.py",
+      "source_path": "tools/video_production_console.py",
+      "source_sha256": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
+      "target_sha256": "e507c274b6f5550da2d57c09508c506cd4ee8e4b9f17ac4966b1057118dd6e02",
+      "module": "topic_migration.api_transports",
+      "stage": "api_config",
+      "migration_reason": "将各配置服务的只读连接验证、字段映射和生成前置检查收敛为目标项目统一 Transport 边界；不复制旧执行器，不触发付费生成。"
     }
   ]
 }

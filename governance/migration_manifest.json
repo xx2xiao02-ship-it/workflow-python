@@ -1,62 +1,172 @@
 {
   "schema_version": "production-migration-manifest-v1",
-  "recorded_at": "2026-09-15",
+  "recorded_at": "2026-09-19",
   "source_project": "C:\\Users\\Administrator\\Documents\\工作流py化",
   "source_git_revision": "0c5bcda9f3b3e6e180a90cdac9ce2dafb483a9e8",
   "source_worktree_status": "dirty rescue-current; hashes below are current working-tree hashes, not an assertion about Git HEAD",
   "file_register": "governance/migration_file_register.json",
-  "target_production_aggregate_sha256": "91b320d9d1f5288e38fcc23dde883a9024a03c2e2561880ecb3ef0140c627b1a",
+  "target_production_aggregate_sha256": "11eb686407390e752cd5f62b67648e63b9fb737bdc422e624e9a190b48bef858",
   "source_governance_inputs": [
-    {"path": "docs/module_governance_registry_v1.json", "sha256": "422625c9744e9748293a84c740695ff69dcf7495bf930f0e91a0b5c28d982447"},
-    {"path": "docs/business_governance_mainline_v1.json", "sha256": "9006d4835536b818741535ae7670b306835851a06911cdb353d187f49c55f6a8"},
-    {"path": "docs/production_migration_whitelist_v1.json", "sha256": "cdab8945d1ac340a1e105450cdbdbf6c21bf139f3741fd6e8b164665f811224e"},
-    {"path": "docs/frontend_function_migration_matrix_v1.md", "sha256": "705b662a6594e17a19d4491ba063f2045be427a4c2e7eb0670f4689003b66ae"}
+    {
+      "path": "docs/module_governance_registry_v1.json",
+      "sha256": "422625c9744e9748293a84c740695ff69dcf7495bf930f0e91a0b5c28d982447"
+    },
+    {
+      "path": "docs/business_governance_mainline_v1.json",
+      "sha256": "9006d4835536b818741535ae7670b306835851a06911cdb353d187f49c55f6a8"
+    },
+    {
+      "path": "docs/production_migration_whitelist_v1.json",
+      "sha256": "cdab8945d1ac340a1e105450cdbdbf6c21bf139f3741fd6e8b164665f811224e"
+    },
+    {
+      "path": "docs/frontend_function_migration_matrix_v1.md",
+      "sha256": "705b662a6594e17a19d4491ba063f2045be427a4c2e7eb0670f4689003b66ae"
+    }
   ],
   "entries": [
     {
       "entry_id": "F0-contracts",
-      "source_paths": ["src/workflow_1256/module_contracts.py", "src/workflow_1256/topic_selection_contract.py"],
-      "source_hashes": {"src/workflow_1256/module_contracts.py": "8643b34be4dcc448bbae7cdabf830c518a2792568ece7b4991bbd0dc41a77893", "src/workflow_1256/topic_selection_contract.py": "a5404ec1e1d8777ab5ee03282af2782652c6eb514f3a6affcb31c75d537c6b6d"},
-      "target_paths": ["topic_migration/contracts.py"],
+      "source_paths": [
+        "src/workflow_1256/module_contracts.py",
+        "src/workflow_1256/topic_selection_contract.py"
+      ],
+      "source_hashes": {
+        "src/workflow_1256/module_contracts.py": "8643b34be4dcc448bbae7cdabf830c518a2792568ece7b4991bbd0dc41a77893",
+        "src/workflow_1256/topic_selection_contract.py": "a5404ec1e1d8777ab5ee03282af2782652c6eb514f3a6affcb31c75d537c6b6d"
+      },
+      "target_paths": [
+        "topic_migration/contracts.py"
+      ],
       "module": "topic_migration.contracts",
       "reason": "保留 F1 TopicContentManifest 公开交接契约的最小闭包。",
-      "adaptation_differences": ["从旧 shared-kernel 结构提取为独立包契约", "只保留 CONTENT_READY、hash、provenance 和 ID 配对校验"]
+      "adaptation_differences": [
+        "从旧 shared-kernel 结构提取为独立包契约",
+        "只保留 CONTENT_READY、hash、provenance 和 ID 配对校验"
+      ]
     },
     {
       "entry_id": "F0-config-service",
-      "source_paths": ["tools/video_production_console.py", "tools/local_service_governance.py"],
-      "source_hashes": {"tools/video_production_console.py": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958", "tools/local_service_governance.py": "9e3f1b160c680bc510a62794e48e56213df2563545c100489421ecaf29565f44"},
-      "target_paths": ["topic_migration/config_service.py", "topic_migration/service_governance.py"],
+      "source_paths": [
+        "tools/video_production_console.py",
+        "tools/local_service_governance.py"
+      ],
+      "source_hashes": {
+        "tools/video_production_console.py": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
+        "tools/local_service_governance.py": "9e3f1b160c680bc510a62794e48e56213df2563545c100489421ecaf29565f44"
+      },
+      "target_paths": [
+        "topic_migration/config_service.py",
+        "topic_migration/service_governance.py"
+      ],
       "module": "topic_migration.config_service",
       "reason": "只迁移选题中心实际使用的 TikHub 配置、凭据引用、超时和维护边界。",
-      "adaptation_differences": ["不复制旧控制台配置文件", "凭据使用源码外运行目录文件和 Windows ACL", "保存与连接测试分离，测试默认不发外部请求"]
+      "adaptation_differences": [
+        "不复制旧控制台配置文件",
+        "凭据使用源码外运行目录文件和 Windows ACL",
+        "保存与连接测试分离，测试默认不发外部请求"
+      ]
     },
     {
       "entry_id": "F1-topic-adapters",
-      "source_paths": ["src/workflow_1256/topic_intelligence.py", "src/workflow_1256/topic_collection.py", "src/workflow_1256/topic_knowledge_v2.py", "src/workflow_1256/topic_writing_governance.py"],
-      "source_hashes": {"src/workflow_1256/topic_intelligence.py": "5fb76a1cb38f9bd7e3abae12c80729a43ba0aa2d08e3be17742495eec9502cda", "src/workflow_1256/topic_collection.py": "0dcebaf082070463c39c9f3924d7d4329f4404c0b628e4831f572714ffa74605", "src/workflow_1256/topic_knowledge_v2.py": "f024bdef5827c8f73d0bb0af57379ea455671e854a5bf8edc2393389b612ac83", "src/workflow_1256/topic_writing_governance.py": "3621f7c6f271c4532b48d892e00e302763b65275a0af74778c2a436ded5e3415"},
-      "target_paths": ["topic_migration/topic_service.py", "topic_migration/topic_collection.py", "topic_migration/governance_store.py", "topic_migration/professional_media.py"],
+      "source_paths": [
+        "src/workflow_1256/topic_intelligence.py",
+        "src/workflow_1256/topic_collection.py",
+        "src/workflow_1256/topic_knowledge_v2.py",
+        "src/workflow_1256/topic_writing_governance.py"
+      ],
+      "source_hashes": {
+        "src/workflow_1256/topic_intelligence.py": "5fb76a1cb38f9bd7e3abae12c80729a43ba0aa2d08e3be17742495eec9502cda",
+        "src/workflow_1256/topic_collection.py": "0dcebaf082070463c39c9f3924d7d4329f4404c0b628e4831f572714ffa74605",
+        "src/workflow_1256/topic_knowledge_v2.py": "f024bdef5827c8f73d0bb0af57379ea455671e854a5bf8edc2393389b612ac83",
+        "src/workflow_1256/topic_writing_governance.py": "3621f7c6f271c4532b48d892e00e302763b65275a0af74778c2a436ded5e3415"
+      },
+      "target_paths": [
+        "topic_migration/topic_service.py",
+        "topic_migration/topic_collection.py",
+        "topic_migration/governance_store.py",
+        "topic_migration/professional_media.py"
+      ],
       "module": "topic_migration.topic_service",
       "reason": "按 /topic-center 和 /topic-writing-governance 页面反向收敛最小业务闭包。",
-      "adaptation_differences": ["运行时存储由外部 root 注入", "TrendRadar 只读快照", "社交平台未迁移时显式 blocked/deferred", "正文不足 80 字不能进入文案"]
+      "adaptation_differences": [
+        "运行时存储由外部 root 注入",
+        "TrendRadar 只读快照",
+        "社交平台未迁移时显式 blocked/deferred",
+        "正文不足 80 字不能进入文案"
+      ]
     },
     {
       "entry_id": "F1-transports",
-      "source_paths": ["src/workflow_1256/tikhub_transport.py", "src/workflow_1256/douyin_tikhub_adapter.py", "src/workflow_1256/trendradar_adapter.py"],
-      "source_hashes": {"src/workflow_1256/tikhub_transport.py": "f0c831a3600826c0497944486ee972090883863d0b13e3bef66f73c3d2aa5200", "src/workflow_1256/douyin_tikhub_adapter.py": "b9cd47932433b044464e4d48d6323b8753895591ac8686818c6c0a87dcea7490", "src/workflow_1256/trendradar_adapter.py": "25beffd8f192f3a1128778a9119cf700d4f1a52d15ab58b99e2324a52c1fc76b"},
-      "target_paths": ["topic_migration/tikhub_transport.py", "topic_migration/trendradar_adapter.py"],
+      "source_paths": [
+        "src/workflow_1256/tikhub_transport.py",
+        "src/workflow_1256/douyin_tikhub_adapter.py",
+        "src/workflow_1256/trendradar_adapter.py"
+      ],
+      "source_hashes": {
+        "src/workflow_1256/tikhub_transport.py": "f0c831a3600826c0497944486ee972090883863d0b13e3bef66f73c3d2aa5200",
+        "src/workflow_1256/douyin_tikhub_adapter.py": "b9cd47932433b044464e4d48d6323b8753895591ac8686818c6c0a87dcea7490",
+        "src/workflow_1256/trendradar_adapter.py": "25beffd8f192f3a1128778a9119cf700d4f1a52d15ab58b99e2324a52c1fc76b"
+      },
+      "target_paths": [
+        "topic_migration/tikhub_transport.py",
+        "topic_migration/trendradar_adapter.py"
+      ],
       "module": "topic_migration.tikhub_transport",
       "reason": "保留实际查询平台、时长单位归一化和只读新闻快照适配。",
-      "adaptation_differences": ["Transport 通过 ConfigService 获取凭据", "不暴露 token", "不把未验证摘要伪装成正文", "外部请求不在 health/read-cache 路径自动触发"]
+      "adaptation_differences": [
+        "Transport 通过 ConfigService 获取凭据",
+        "不暴露 token",
+        "不把未验证摘要伪装成正文",
+        "外部请求不在 health/read-cache 路径自动触发"
+      ]
     },
     {
       "entry_id": "F1-http-and-pages",
-      "source_paths": ["tools/video_production_console.py", "ui-drafts/topic-center.html", "ui-drafts/topic-writing-governance.html"],
-      "source_hashes": {"tools/video_production_console.py": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958", "ui-drafts/topic-center.html": "f8ca3e59172e8cd872bf29f0c8461b31543c5f22a63800c89115bb85fb9e366f", "ui-drafts/topic-writing-governance.html": "7778fbaa69d77f4fb971679bccf8cfd480262e8e4097cb8b479752e157793f6e"},
-      "target_paths": ["topic_migration/server.py", "static/topic-center.html", "static/topic-writing-governance.html", "static/api-management.html", "static/not-migrated.html"],
+      "source_paths": [
+        "tools/video_production_console.py",
+        "ui-drafts/topic-center.html",
+        "ui-drafts/topic-writing-governance.html"
+      ],
+      "source_hashes": {
+        "tools/video_production_console.py": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958",
+        "ui-drafts/topic-center.html": "f8ca3e59172e8cd872bf29f0c8461b31543c5f22a63800c89115bb85fb9e366f",
+        "ui-drafts/topic-writing-governance.html": "7778fbaa69d77f4fb971679bccf8cfd480262e8e4097cb8b479752e157793f6e"
+      },
+      "target_paths": [
+        "topic_migration/server.py",
+        "static/topic-center.html",
+        "static/topic-writing-governance.html",
+        "static/api-management.html",
+        "static/not-migrated.html"
+      ],
       "module": "topic_migration.server",
       "reason": "提供独立启动服务和已登记页面/API 表面，不复制旧控制台。",
-      "adaptation_differences": ["只使用 Python 标准库 HTTP server", "未迁移页面返回明确提示", "路由别名显式登记", "静态资源与运行存储分离"]
+      "adaptation_differences": [
+        "只使用 Python 标准库 HTTP server",
+        "未迁移页面返回明确提示",
+        "路由别名显式登记",
+        "静态资源与运行存储分离"
+      ]
+    },
+    {
+      "entry_id": "F1-api-transports",
+      "source_paths": [
+        "tools/video_production_console.py"
+      ],
+      "source_hashes": {
+        "tools/video_production_console.py": "294f495fcf463d3ca6e8ae961062d01ad6f5d30e032e535f19f940e366232958"
+      },
+      "target_paths": [
+        "topic_migration/api_transports.py"
+      ],
+      "module": "topic_migration.api_transports",
+      "reason": "为 API 配置页面提供统一、可审计、只读优先的连接验证边界。",
+      "adaptation_differences": [
+        "按供应商能力区分认证读取、健康检查和不可无生成验证",
+        "不发送生成、上传、删除或付费请求",
+        "所有验证结果回写 ConfigService 并脱敏展示"
+      ]
     }
   ]
 }

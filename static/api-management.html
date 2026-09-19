@@ -3,25 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 配置 | 独立迁移</title>
+  <title>API 配置</title>
   <style>
     :root{color-scheme:dark;--bg:#0b1118;--surface:#121c26;--line:#2a4356;--text:#edf5f7;--muted:#9bb0b8;--cyan:#69d7d2;--blue:#79b9ed;--amber:#f3c56c;--red:#ee8d98;--green:#78d6a7}
-    *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0b1118,#0e1820 58%,#111b20);color:var(--text);font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif}button,input,select{font:inherit}button,a{transition:.16s ease}button{cursor:pointer}a{color:var(--blue);text-decoration:none}a:hover{color:#c5e4fb}.shell{max-width:1280px;margin:0 auto;padding:22px 24px 48px}.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:8px 0 22px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.topbar h1{margin:6px 0 0;font-size:30px}.topnav{display:flex;gap:8px;flex-wrap:wrap}.topnav a{display:inline-flex;align-items:center;min-height:34px;padding:7px 11px;border:1px solid var(--line);border-radius:6px;color:#c8dce1;background:#111f2b}.topnav a[aria-current="page"]{border-color:var(--cyan);color:#071516;background:var(--cyan);font-weight:800}.hero{margin:20px 0;padding:22px 24px;border:1px solid #3c6572;border-radius:8px;background:linear-gradient(125deg,#142b36,#13202b 62%,#172a31);box-shadow:0 14px 40px #0005}.hero h2{margin:5px 0 8px;font-size:25px}.hero p{margin:0;max-width:900px;color:#c0d0d4}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.button{min-height:36px;padding:7px 12px;border:1px solid #4a7384;border-radius:5px;background:#17303c;color:#ecf7f7;font-weight:700}.button:hover{border-color:var(--cyan);background:#1d4350}.button.primary{border-color:#91ece7;background:var(--cyan);color:#071516}.button:disabled{cursor:not-allowed;opacity:.45}.status{min-height:40px;margin:12px 0;padding:10px 12px;border:1px dashed #456274;border-radius:6px;background:#101b24;color:#c4d5d8}.status.ok{border-color:#3f8d6e;background:#112c25;color:#bfe9d0}.status.warn{border-color:#8a7344;background:#2a2417;color:#f0d7a2}.status.error{border-color:#9d5966;background:#321d24;color:#ffd0d6}.status.pending{border-color:#7491a0;background:#182a35;color:#d2e5eb}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.metric{padding:13px 14px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{display:block;margin-top:3px;font-size:22px}.metric.good{border-color:#3f8467;background:#112923}.metric.good strong{color:#aeeac9}.metric.warn{border-color:#806d43;background:#292318}.metric.warn strong{color:#f2d69f}.metric.bad{border-color:#8c5260;background:#2c1b21}.metric.bad strong{color:#ffd0d6}.card{padding:17px;border:1px solid #355365;border-radius:7px;background:var(--surface);box-shadow:0 8px 25px #0002}.card h3{margin:0 0 5px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:12px}.config-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:16px}.form{margin-top:15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{color:#bdd0d5;font-size:12px}.field input,.field select{width:100%;min-height:39px;padding:8px 10px;border:1px solid #3b5c6b;border-radius:5px;outline:0;background:#0d171f;color:var(--text)}.field input:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #69d7d233}.field small{color:var(--muted);font-size:11px}.secret{padding:13px;border:1px dashed #637b84;border-radius:6px;background:#101b22}.secret input{font-family:"Cascadia Mono","Consolas",monospace;letter-spacing:.05em}.form-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px}.provider-list{display:grid;gap:10px;margin-top:14px}.provider{padding:14px;border:1px solid #2a4a5b;border-radius:6px;background:#101c25}.provider.current{border-color:#4d8a86;background:#12272a}.provider.not-migrated{border-color:#765d42;background:#251f17}.provider-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.provider h4{margin:0;font-size:15px}.provider p{margin:5px 0 0;color:var(--muted);font-size:12px}.badge{white-space:nowrap;padding:4px 8px;border:1px solid #457875;border-radius:99px;color:#b9ebe0;background:#102c2d;font-size:11px;font-weight:700}.not-migrated .badge{border-color:#806d43;color:#f0d7a2;background:#292318}.facts{display:grid;gap:7px;margin-top:12px}.fact{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;padding-top:7px;border-top:1px solid #273d4a}.fact dt{color:var(--muted);font-size:12px}.fact dd{margin:0;overflow-wrap:anywhere;font-size:12px}.masked{font-family:"Cascadia Mono","Consolas",monospace;color:#c4e1e3}.note{margin-top:16px;padding:12px 14px;border-left:3px solid var(--amber);background:#211e16;color:#e8d4a5;font-size:12px}.status-box{margin-top:15px;padding:13px;border:1px solid #365464;border-radius:6px;background:#101b24}.status-box h4{margin:0 0 6px;font-size:14px}.status-box p{margin:4px 0;color:var(--muted);font-size:12px}.code{font-family:"Cascadia Mono","Consolas",monospace;color:#cbe6e8;overflow-wrap:anywhere}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#0b1118,#0e1820 58%,#111b20);color:var(--text);font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif}button,input,select{font:inherit}button,a{transition:.16s ease}button{cursor:pointer}a{color:var(--blue);text-decoration:none}a:hover{color:#c5e4fb}.shell{max-width:1280px;margin:0 auto;padding:22px 24px 48px}.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:8px 0 22px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.topbar h1{margin:6px 0 0;font-size:30px}.topnav{display:flex;gap:8px;flex-wrap:wrap}.topnav a{display:inline-flex;align-items:center;min-height:34px;padding:7px 11px;border:1px solid var(--line);border-radius:6px;color:#c8dce1;background:#111f2b}.topnav a[aria-current="page"]{border-color:var(--cyan);color:#071516;background:var(--cyan);font-weight:800}.module-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:16px 0 18px}.module-nav a{display:block;min-width:0;min-height:60px;padding:10px 11px;border:1px solid #2b4057;border-radius:7px;color:#c8dce1;background:#111f2b}.module-nav a:hover,.module-nav a:focus-visible{border-color:#69d7d2;background:#173b42;color:#eaf7f7;outline:none}.module-nav a[aria-current="page"]{border-color:#69d7d2;background:#214a4e;color:#eaffff;font-weight:800}.module-nav strong,.module-nav small{display:block}.module-nav strong{font-size:13px}.module-nav small{margin-top:3px;color:#91abc5;font-size:10px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.module-nav a[aria-current="page"] small{color:#b7ece8}.hero{margin:20px 0;padding:22px 24px;border:1px solid #3c6572;border-radius:8px;background:linear-gradient(125deg,#142b36,#13202b 62%,#172a31);box-shadow:0 14px 40px #0005}.hero h2{margin:5px 0 8px;font-size:25px}.hero p{margin:0;max-width:900px;color:#c0d0d4}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.button{min-height:36px;padding:7px 12px;border:1px solid #4a7384;border-radius:5px;background:#17303c;color:#ecf7f7;font-weight:700}.button:hover{border-color:var(--cyan);background:#1d4350}.button.primary{border-color:#91ece7;background:var(--cyan);color:#071516}.button:disabled{cursor:not-allowed;opacity:.45}.status{min-height:40px;margin:12px 0;padding:10px 12px;border:1px dashed #456274;border-radius:6px;background:#101b24;color:#c4d5d8}.status.ok{border-color:#3f8d6e;background:#112c25;color:#bfe9d0}.status.warn{border-color:#8a7344;background:#2a2417;color:#f0d7a2}.status.error{border-color:#9d5966;background:#321d24;color:#ffd0d6}.status.pending{border-color:#7491a0;background:#182a35;color:#d2e5eb}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}.metric{padding:13px 14px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{display:block;margin-top:3px;font-size:22px}.metric.good{border-color:#3f8467;background:#112923}.metric.good strong{color:#aeeac9}.metric.warn{border-color:#806d43;background:#292318}.metric.warn strong{color:#f2d69f}.metric.bad{border-color:#8c5260;background:#2c1b21}.metric.bad strong{color:#ffd0d6}.card{padding:17px;border:1px solid #355365;border-radius:7px;background:var(--surface);box-shadow:0 8px 25px #0002}.card h3{margin:0 0 5px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:12px}.config-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:16px}.form{margin-top:15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{color:#bdd0d5;font-size:12px}.field input,.field select{width:100%;min-height:39px;padding:8px 10px;border:1px solid #3b5c6b;border-radius:5px;outline:0;background:#0d171f;color:var(--text)}.field input:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #69d7d233}.field small{color:var(--muted);font-size:11px}.secret{padding:13px;border:1px dashed #637b84;border-radius:6px;background:#101b22}.secret input{font-family:"Cascadia Mono","Consolas",monospace;letter-spacing:.05em}.form-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px}.provider-list{display:grid;gap:10px;margin-top:14px}.provider{padding:14px;border:1px solid #2a4a5b;border-radius:6px;background:#101c25}.provider.current{border-color:#4d8a86;background:#12272a}.provider.not-migrated{border-color:#765d42;background:#251f17}.provider-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.provider h4{margin:0;font-size:15px}.provider p{margin:5px 0 0;color:var(--muted);font-size:12px}.badge{white-space:nowrap;padding:4px 8px;border:1px solid #457875;border-radius:99px;color:#b9ebe0;background:#102c2d;font-size:11px;font-weight:700}.not-migrated .badge{border-color:#806d43;color:#f0d7a2;background:#292318}.facts{display:grid;gap:7px;margin-top:12px}.fact{display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;padding-top:7px;border-top:1px solid #273d4a}.fact dt{color:var(--muted);font-size:12px}.fact dd{margin:0;overflow-wrap:anywhere;font-size:12px}.masked{font-family:"Cascadia Mono","Consolas",monospace;color:#c4e1e3}.note{margin-top:16px;padding:12px 14px;border-left:3px solid var(--amber);background:#211e16;color:#e8d4a5;font-size:12px}.status-box{margin-top:15px;padding:13px;border:1px solid #365464;border-radius:6px;background:#101b24}.status-box h4{margin:0 0 6px;font-size:14px}.status-box p{margin:4px 0;color:var(--muted);font-size:12px}.code{font-family:"Cascadia Mono","Consolas",monospace;color:#cbe6e8;overflow-wrap:anywhere}
     @media(max-width:900px){.config-grid{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.shell{padding:16px 12px 32px}.topbar{display:block}.topnav{margin-top:14px}.topnav a{flex:1;justify-content:center}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.summary{grid-template-columns:1fr 1fr}.fact{grid-template-columns:1fr;gap:3px}}
-  </style>
+    textarea{width:100%;min-height:72px;padding:8px;border:1px solid #3b5c6b;border-radius:5px;background:#0d171f;color:var(--text);font:13px/1.5 Consolas,monospace}.field[hidden]{display:none}#additionalFields{gap:12px}.field input[type=checkbox]{width:20px;height:20px;min-height:20px;align-self:flex-start;accent-color:var(--cyan)}
+    .secret input::placeholder,input[data-secret]::placeholder{color:#bfe9d0;opacity:1;font-family:"Cascadia Mono","Consolas",monospace}
+    .provider{cursor:pointer;outline:0}.provider:hover{border-color:#5f8994;background:#142530}.provider:focus-visible{border-color:var(--cyan);box-shadow:0 0 0 2px #69d7d233}.provider.current{box-shadow:inset 3px 0 0 var(--cyan)}.provider.current:hover{border-color:var(--cyan);background:#173237}
+    .language-model-panel[hidden],.config-grid[hidden]{display:none}.view-selector{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}.view-selector .field{display:flex;flex-direction:column;gap:5px;min-width:280px}.view-selector label{color:#bdd0d5;font-size:12px}.view-selector select{width:100%;min-height:36px;padding:7px 10px;border:1px solid #3b5c6b;border-radius:5px;background:#0d171f;color:var(--text)}.view-selector small{color:var(--muted);font-size:11px}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.section-head p{max-width:780px}.language-model-rows{display:grid;gap:12px;margin-top:16px}.language-model-card{padding:15px;border:1px solid #385969;border-radius:7px;background:#101c25}.language-model-card.current{border-color:#5d9c98;box-shadow:inset 3px 0 0 var(--cyan)}.language-model-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:11px;border-bottom:1px solid #294453}.language-model-card-head h4{margin:0;font-size:16px}.language-model-card-head p{margin:4px 0 0;color:var(--muted);font-size:12px}.language-model-card .badge{align-self:flex-start}.language-model-settings{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(170px,.5fr);gap:10px;margin-top:12px}.language-model-card .field{display:flex;flex-direction:column;gap:5px}.language-model-card .field.full{grid-column:1/-1}.language-model-card label{color:#bdd0d5;font-size:12px}.language-model-card input,.language-model-card select{width:100%;min-height:37px;padding:7px 9px;border:1px solid #3b5c6b;border-radius:5px;outline:0;background:#0d171f;color:var(--text)}.language-model-card input:focus,.language-model-card select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px #69d7d233}.language-model-card input[readonly]{color:#a6c1c5;background:#111d24}.language-model-card small{color:var(--muted);font-size:11px}.model-slots{display:grid;gap:8px;margin-top:13px}.model-slots-title{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#bdd0d5;font-size:12px}.model-entry{display:grid;grid-template-columns:34px minmax(130px,.8fr) minmax(180px,1fr) minmax(150px,.9fr);gap:8px;align-items:end;padding:10px;border:1px solid #294553;border-radius:5px;background:#0d171f}.model-entry-rank{display:flex;align-items:center;justify-content:center;min-height:37px;border:1px solid #385d69;border-radius:5px;color:var(--cyan);font-weight:800}.model-entry label{min-width:0}.model-entry input{margin-top:5px}.model-entry .slot-key input{font-family:"Cascadia Mono","Consolas",monospace;font-size:12px}.language-model-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:13px;border-top:1px solid #294453}.language-model-actions small{color:var(--muted)}
+    .language-model-card-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:13px;padding-top:12px;border-top:1px solid #294453}.language-model-card-actions small{color:var(--muted);font-size:11px}
+    @media(max-width:720px){.section-head{display:block}.language-model-settings{grid-template-columns:1fr}.language-model-card .field.full{grid-column:auto}.model-entry{grid-template-columns:34px 1fr}.model-entry label:nth-child(3),.model-entry label:nth-child(4){grid-column:2}.language-model-actions{align-items:flex-start;flex-direction:column}}
+</style>
+<style>
+  .category-tabs{display:flex;gap:5px;overflow-x:auto;margin-top:14px;border-bottom:1px solid var(--line);scrollbar-width:thin}
+  .category-tab{flex:0 0 auto;min-height:38px;padding:7px 11px;border:0;border-bottom:2px solid transparent;background:transparent;color:#bdd0d5;font-weight:600}
+  .category-tab:hover{color:var(--text);background:#162630}
+  .category-tab[aria-selected="true"]{border-bottom-color:var(--cyan);color:var(--cyan)}
+  .category-description{margin:10px 0 0;color:var(--muted);font-size:12px}
+  .legacy-channel{margin-top:14px;padding:11px 12px;border:1px dashed #596a70;border-radius:6px;color:var(--muted)}
+  .legacy-channel summary{cursor:pointer;color:#d1dcde;font-weight:700}
+  .legacy-channel p{margin:7px 0 0;font-size:12px}
+  @media(max-width:980px){.module-nav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(max-width:620px){.topnav{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}.topnav a{flex:0 0 auto;white-space:nowrap}.module-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.module-nav a{min-height:0;padding:9px}.module-nav small{white-space:normal}}
+</style>
 </head>
 <body>
   <div class="shell">
-    <header class="topbar"><div><div class="eyebrow">F0 / CONTROL PLANE</div><h1>API 配置</h1></div><nav class="topnav" aria-label="迁移模块导航"><a href="/topic-center">选题中心</a><a href="/topic-writing-governance">正文治理</a><a href="/api-management" aria-current="page">API 配置</a><a href="/writing">文案模块</a></nav></header>
-    <section class="hero"><div class="eyebrow">API MANAGEMENT</div><h2>选题中心的最小服务配置</h2><p>本页保留 `/api/api-management`、`/api/api-management/config` 和 `/api/api-management/auth-verify`。当前只登记 TikHub；保存配置与连接验证分开，验证在无法确认免费性时保持 deferred。</p></section>
-    <div class="toolbar"><span class="small" style="color:var(--muted)">配置存储独立于旧项目；密钥只写入源码仓库之外的受限运行时凭据文件。</span><button class="button" id="refresh" type="button">刷新状态</button></div>
+    <header class="topbar"><div><div class="eyebrow">F0 / CONTROL PLANE</div><h1>API 配置</h1></div><nav class="topnav" aria-label="辅助入口"><a href="/api-management" aria-current="page">API 配置</a><a href="/obsidian">Obsidian</a></nav></header>
+    <nav class="module-nav" aria-label="视频制作模块导航">
+      <a href="/topic-center"><strong>1. 选题中心</strong><small>主题发现与内容筛选</small></a>
+      <a href="/writing"><strong>2. 文案创作</strong><small>文案与内容审查</small></a>
+      <a href="/director"><strong>3. 编导审核</strong><small>逐镜脚本与审核</small></a>
+      <a href="/assets"><strong>4. 素材生产</strong><small>图像、视频与音频</small></a>
+      <a href="/editing"><strong>5. 剪辑交付</strong><small>草稿、字幕与轨道</small></a>
+      <a href="/production"><strong>6. 视频制作</strong><small>制作入口与依赖检查</small></a>
+    </nav>
+    <section class="hero"><h2>统一 API 配置中心</h2><p>配置、凭据、业务模块和连接验证</p></section>
+    <div class="toolbar"><div class="view-selector"><div class="field"><label for="provider">服务设置</label><select id="provider"><option value="language-model">大语言模型（统一设置）</option></select><small>先选用途分类；此处可直接跳转到具体服务。</small></div></div><div><span class="small" style="color:var(--muted)">配置存储独立于旧项目；密钥只写入源码仓库之外的受限运行时凭据文件。</span><button class="button" id="refresh" type="button">刷新状态</button></div></div>
     <div id="status" class="status pending" role="status" aria-live="polite">正在读取 API 配置。</div>
     <section id="summary" class="summary"></section>
-    <section class="config-grid">
-      <article class="card"><h3>TikHub 内容数据通道</h3><p>选题中心的按需扩展 Transport 使用这里登记的服务地址、超时、重试和凭据引用。</p><form id="form" class="form"><div class="form-grid"><div class="field"><label for="provider">供应商</label><select id="provider"><option value="tikhub">TikHub</option></select><small>其他供应商本批尚未迁移。</small></div><div class="field"><label for="groupId">group_id / channel_id</label><input id="groupId" value="tikhub" readonly><small>保留现有 API 地址和字段语义。</small></div><div class="field full"><label for="endpoint">服务地址 endpoint</label><input id="endpoint" type="url" required placeholder="https://api.tikhub.dev"><small>不包含用户名、密码或 fragment；请求路径由 TikHub Transport 固定。</small></div><div class="field"><label for="timeout">超时 timeout_seconds</label><input id="timeout" type="number" min="3" max="120" step="0.1" required><small>单位：秒，范围 3 到 120。</small></div><div class="field"><label for="retries">最大重试 max_retries</label><input id="retries" type="number" min="0" max="1" step="1" required><small>只允许 0 或 1，避免不可控的计费循环。</small></div><div class="field full secret"><label for="apiKey">主凭据 primary_api_key</label><input id="apiKey" type="password" autocomplete="new-password" placeholder="已保存时留空，不会覆盖原密钥"><small>前端只显示脱敏状态；空值不会清除已保存密钥。</small></div></div><div class="form-actions"><button class="button primary" type="submit">保存配置</button><button class="button" id="test" type="button">测试连接</button></div></form><div id="connection" class="status-box"><h4>连接状态</h4><p>尚未读取。</p></div></article>
+    <section class="card" aria-labelledby="categoryHeading">
+      <div class="section-head"><div><h3 id="categoryHeading">按用途分类</h3><p>分类只整理设置入口；每项仍使用原有服务通道和凭据协议。</p></div></div>
+      <div id="categoryTabs" class="category-tabs" role="tablist" aria-label="API 鉴权用途"></div>
+      <p id="categoryDescription" class="category-description"></p>
+    </section>
+    <section id="languageModelPanel" class="card language-model-panel" role="tabpanel" aria-labelledby="category-tab-language-model">
+      <div class="section-head"><div><h3>大语言模型统一设置</h3><p>文案与编导配置集中展示；仍按各自原有模型值、接口和业务通道保存。</p></div><span class="badge">统一视图</span></div>
+      <div id="languageModelRows" class="language-model-rows"></div>
+      <div class="language-model-actions"><button class="button primary" id="saveLanguageModels" type="button">保存语言模型配置</button><small>保存只更新本地配置，不发送供应商请求；已保存凭据留空即可保留。</small></div>
+      <div id="languageModelStatus" class="status-box"><h4>语言模型配置状态</h4><p>尚未读取。</p></div>
+      <details class="legacy-channel"><summary>历史通道：编导视觉约束（visual-guidance）</summary><p>当前生产源码未发现实际业务消费者，不作为独立鉴权入口。历史配置与代码保留，不会自动删除。</p></details>
+    </section>
+    <section id="voiceClonePanel" class="card language-model-panel" role="tabpanel" aria-labelledby="category-tab-voice-clone" hidden>
+      <div class="section-head"><div><h3>语音复刻</h3><p>复刻接口复用 TTS 主凭据，不新增或复制 API Key。</p></div><span class="badge">凭据来源：TTS</span></div>
+      <div id="voiceCloneStatus" class="status-box"><h4>语音复刻凭据状态</h4><p>尚未读取。</p></div>
+      <div class="language-model-actions"><button class="button primary" id="openTtsSettings" type="button">打开 TTS 凭据设置</button><small>语音复刻的凭据与 TTS 共用；验证状态不代表已执行复刻。</small></div>
+    </section>
+    <section id="configGrid" class="config-grid" role="tabpanel" hidden>
+       <article class="card"><h3>TikHub 内容数据通道</h3><p>选题中心的按需扩展 Transport 使用这里登记的服务地址、超时、重试和凭据引用。</p><form id="form" class="form"><div class="form-grid"><div class="field"><label for="groupId">group_id / channel_id</label><input id="groupId" value="tikhub" readonly><small>保留现有 API 地址和字段语义。</small></div><div class="field full"><label for="endpoint">服务地址 endpoint</label><input id="endpoint" type="url" required placeholder="https://api.tikhub.io"><small>不包含用户名、密码或 fragment；请求路径由 Transport 固定。</small></div><div class="field"><label for="timeout">超时 timeout_seconds</label><input id="timeout" type="number" min="3" max="120" step="0.1" required><small>单位：秒，范围 3 到 120。</small></div><div class="field"><label for="retries">最大重试 max_retries</label><input id="retries" type="number" min="0" max="1" step="1" required><small>只允许 0 或 1，避免不可控的计费循环。</small></div><div class="field full secret"><label for="apiKey">主凭据 primary_api_key</label><input id="apiKey" type="password" autocomplete="new-password" placeholder="已保存时留空，不会覆盖原密钥"><small>前端只显示脱敏状态；空值不会清除已保存密钥。</small></div></div><div class="form-actions"><button class="button primary" type="submit">保存配置</button><button class="button" id="test" type="button">测试连接</button></div></form><div id="connection" class="status-box"><h4>连接状态</h4><p>尚未读取。</p></div></article>
       <aside class="card"><h3>模块使用关系</h3><p>配置只通过 control-plane 边界向选题中心提供。</p><dl class="facts"><div class="fact"><dt>使用模块</dt><dd>topic-center</dd></div><div class="fact"><dt>业务入口</dt><dd class="code">TopicCenterService.enrich</dd></div><div class="fact"><dt>Transport</dt><dd class="code">TikHubTransport.search_related</dd></div><div class="fact"><dt>凭据引用</dt><dd class="code">tikhub.primary_api_key</dd></div><div class="fact"><dt>保存副作用</dt><dd>不采集、不生成、不发送供应商请求</dd></div><div class="fact"><dt>测试副作用</dt><dd>当前 deferred，不发送外部请求</dd></div></dl><div class="note">“已配置，未验证”不等于“已连接”。真实供应商连接验证需要单独确认免费性和使用额度。</div></aside>
     </section>
-    <section class="card" style="margin-top:16px"><h3>供应商状态</h3><p>未迁移项只展示登记状态，不展示虚假连接结果。</p><div id="providers" class="provider-list"><div class="provider"><p>正在读取。</p></div></div></section>
+    <section class="card" style="margin-top:16px"><h3>当前分类服务状态</h3><p>状态按用途筛选；每个服务按自身协议给出鉴权结论，不用生成请求代替鉴权验证。</p><div id="providers" class="provider-list"><div class="provider"><p>正在读取。</p></div></div></section>
   </div>
   <script>
     (() => {
@@ -30,10 +73,248 @@
       const setStatus = (text, kind = '') => { $('status').textContent = text; $('status').className = 'status' + (kind ? ' ' + kind : ''); };
       const api = async (path, init = {}) => { const response = await fetch(path, { cache: 'no-store', ...init }); let data = {}; try { data = await response.json(); } catch {} if (!response.ok) throw new Error(data.message || ('请求失败 HTTP ' + response.status)); return data; };
       const jsonInit = (body) => ({ method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-      function render(data) { snapshot = data; const summary = data.summary || {}; $('summary').innerHTML = [['供应商总数', summary.total || 0, ''], ['已配置', summary.configured || 0, summary.configured ? 'good' : 'warn'], ['已验证', summary.verified || 0, 'warn'], ['尚未迁移', summary.not_migrated || 0, 'warn']].map((item) => '<div class="metric ' + item[2] + '"><span>' + item[0] + '</span><strong>' + esc(item[1]) + '</strong></div>').join(''); const group = (data.groups || []).find((item) => item.group_id === 'tikhub'); const settings = group?.settings || {}; $('endpoint').value = settings.endpoint || ''; $('timeout').value = settings.timeout_seconds ?? 25; $('retries').value = settings.max_retries ?? 1; $('apiKey').value = ''; $('connection').innerHTML = '<h4>连接状态</h4><p>' + esc(group?.status_label || '未配置') + ' · ' + esc(group?.connection_status_label || '未执行供应商连接验证') + '</p><p class="masked">凭据：' + esc(group?.credential_masked || '未配置') + ' · 引用：' + esc(group?.credential_ref || '—') + '</p>'; const providers = [...(data.groups || []), ...(data.unmigrated_providers || []).map((item) => ({ ...item, group_id: item.provider_id, status_label: item.status_label }))]; $('providers').innerHTML = providers.map((item) => { const current = item.group_id === 'tikhub'; return '<article class="provider ' + (current ? 'current' : 'not-migrated') + '"><div class="provider-head"><div><h4>' + esc(item.provider || item.group_id) + '</h4><p>' + esc(current ? '选题中心按需查询配置' : item.note || '本批不迁移') + '</p></div><span class="badge">' + esc(item.status_label || '尚未迁移') + '</span></div><dl class="facts"><div class="fact"><dt>group_id</dt><dd class="code">' + esc(item.group_id || '—') + '</dd></div><div class="fact"><dt>connection_status</dt><dd>' + esc(item.connection_status_label || item.connection_status || 'not_available') + '</dd></div><div class="fact"><dt>credential_status</dt><dd>' + esc(item.credential_status || 'not_imported') + '</dd></div></dl></article>'; }).join(''); }
+      const stateNames={imported:'已迁入',import_conflict:'迁入有冲突，保留目标值',saved:'已保存',not_imported:'未迁入',configured:'已存在',missing:'缺失',incomplete:'不完整',not_applicable:'不适用',migrated:'已接入目标入口',not_migrated:'未迁移',verified:'已验证连接',reachable_not_auth_verified:'网络可达，鉴权未验证',not_verifiable_without_generation:'协议要求生成请求，未验证鉴权',auth_failed:'鉴权验证失败',forbidden:'供应商拒绝 Token/接口权限',billing_blocked:'余额或计费受限',request_failed:'连接失败',blocked_missing_credential:'凭据缺失，未发送请求',not_tested:'未验证'};
+      const verificationErrors={stale_verification_contract:'旧验证未使用当前账户接口，请重新验证',auth_requires_billable_operation:'当前协议没有独立免费鉴权端点；本次未发送外部请求',http_401:'Token 无效、缺失或已过期',http_403_permission_or_account:'供应商返回 403：Token/接口权限受限；也可能是 Token 所属供应商账户未验证或被限制',http_402_balance_or_billing:'余额或计费受限',http_404_auth_probe_not_found:'只读鉴权路径不存在，请检查官方 endpoint',http_429_rate_limited:'请求过快，触发限流'};
+      const authConclusion=(group)=>{
+        if(group.auth_mode==='not_applicable')return '不适用（本地服务无鉴权）';
+        if(group.auth_verified)return '已验证';
+        if(group.connection_status==='not_verifiable_without_generation')return '未验证：协议无免费鉴权端点';
+        if(group.connection_status==='blocked_missing_credential')return '未验证：凭据缺失';
+        return '未宣称通过';
+      };
+      const verificationDescription=(group)=>group.verification_message||verificationErrors[group.verification_error_type]||(group.verification_evidence?'证据：'+group.verification_evidence:'尚未执行只读验证');
+      const resultMessage=(result)=>{
+        let message=result.message||stateNames[result.connection_status]||result.connection_status||'连接验证完成';
+        if(result.external_request===false&&!message.includes('未发送外部请求'))message+='；未发送外部请求';
+        if(result.external_request===true&&!message.includes('只读'))message+='；已发送只读请求';
+        return message;
+      };
+      const serviceFields={
+        'story-writing':['primary_model','backup_model','strategy','max_attempts','timeout_seconds'],
+        'director-seed21':['primary_model','backup_model','strategy','max_attempts','timeout_seconds'],
+        'image-generation':['primary_model','strategy','max_attempts','timeout_seconds'],
+        'video-generation':['primary_model','backup_model','strategy','max_attempts'],
+        'digital-human':['primary_model'],tts:['primary_model','strategy','timeout_seconds'],
+        'sound-effect':['primary_model','strategy','timeout_seconds'],
+        'bgm-audio':['primary_model','strategy','timeout_seconds'],
+        'audio-storage':['primary_model','region','strategy'], 'capcut-mate':[],tikhub:[]
+      };
+      const categories=[
+        {id:'language-model',label:'大语言模型',description:'文案与编导模型集中设置；保留各自的 Endpoint、模型值和业务路由。',channels:['story-writing','director-seed21']},
+        {id:'image-generation',label:'生图模型',description:'图像生成服务及其自定义 API 通道。',channels:['image-generation']},
+        {id:'video-generation',label:'生视频模型',description:'视频生成与数字人视频服务，凭据仍分别保存。',channels:['video-generation','digital-human']},
+        {id:'audio-storage',label:'TOS',description:'音频对象存储凭据（Access Key / Secret Key）。',channels:['audio-storage']},
+        {id:'tts',label:'TTS',description:'语音合成服务；语音复刻沿用此处的 TTS 主凭据。',channels:['tts']},
+        {id:'voice-clone',label:'语音复刻',description:'复刻能力复用 TTS 主凭据，不建立第二份密钥。',channels:[]},
+        {id:'sound-effect',label:'音效生成',description:'音效通道可使用专用 Key；未配置时沿用 TTS 主 Key。',channels:['sound-effect']},
+        {id:'other-services',label:'其他服务',description:'背景音乐、内容数据和本机工具；分别保留各自现有配置与鉴权方式。',channels:['bgm-audio','tikhub','capcut-mate']}
+      ];
+      const categoryByChannel=Object.fromEntries(categories.flatMap(category=>category.channels.map(channel=>[channel,category.id])));
+      const legacyChannelIds=new Set(['visual-guidance']);
+      const baseChannel=(channel)=>String(channel||'').split('__custom_',1)[0];
+      const categoryForChannel=(channel)=>categoryByChannel[baseChannel(channel)]||'legacy';
+      const isLanguageModel=(channel)=>categoryForChannel(channel)==='language-model';
+      let selected='language-model';
+      $('provider').parentElement.querySelector('small').textContent='按用途分类；音效可复用 TTS 凭据，语音复刻与 TTS 共用凭据。';
+      $('endpoint').parentElement.querySelector('small').textContent='HTTP(S) 服务地址';
+      $('timeout').parentElement.querySelector('small').textContent='单位：秒';
+      const languageModelGroups=(groups)=>groups.filter(group=>isLanguageModel(group.channel_id));
+      const categoryGroups=(groups,categoryId)=>groups.filter(group=>categoryForChannel(group.channel_id)===categoryId);
+      function selectedCategory(groups) {
+        if(selected==='language-model'||selected==='voice-clone')return selected;
+        const group=groups.find(item=>item.channel_id===selected);
+        return group?categoryForChannel(group.channel_id):'language-model';
+      }
+      function renderCategoryTabs(groups,activeCategory) {
+        $('categoryTabs').innerHTML=categories.map(category=>{
+          const active=category.id===activeCategory;
+          const panelId=category.id==='language-model'?'languageModelPanel':category.id==='voice-clone'?'voiceClonePanel':'configGrid';
+          return '<button type="button" id="category-tab-'+esc(category.id)+'" role="tab" class="category-tab" data-category-id="'+esc(category.id)+'" aria-controls="'+panelId+'" aria-selected="'+String(active)+'" tabindex="'+(active?'0':'-1')+'">'+esc(category.label)+'</button>';
+        }).join('');
+        $('categoryDescription').textContent=categories.find(category=>category.id===activeCategory)?.description||'';
+        $('configGrid').setAttribute('aria-labelledby','category-tab-'+activeCategory);
+      }
+      function renderServiceSelector(groups) {
+        const activeGroups=groups.filter(group=>!legacyChannelIds.has(baseChannel(group.channel_id)));
+        const categoryOptions=categories.filter(category=>category.id!=='language-model'&&category.id!=='voice-clone').map(category=>{
+          const members=categoryGroups(activeGroups,category.id);
+          return members.length?'<optgroup label="'+esc(category.label)+'">'+members.map(group=>'<option value="'+esc(group.channel_id)+'">'+esc(group.provider)+'</option>').join('')+'</optgroup>':'';
+        }).join('');
+        $('provider').innerHTML='<option value="language-model">大语言模型（统一设置）</option><option value="voice-clone">语音复刻（复用 TTS 凭据）</option>'+categoryOptions;
+        $('provider').value=selected;
+      }
+      function renderLanguageModels(groups) {
+        const rows=languageModelGroups(groups).map(group=>{
+          const channel=String(group.channel_id||''),settings=group.settings||{};
+          const structuredSlots=settings.model_slots&&typeof settings.model_slots==='object'&&!Array.isArray(settings.model_slots);
+          const slots=structuredSlots?settings.model_slots:(settings.primary_model?{primary_model:settings.primary_model}:{});
+          const names=settings.model_names&&typeof settings.model_names==='object'&&!Array.isArray(settings.model_names)?settings.model_names:(settings.primary_model?{primary_model:settings.primary_model}:{});
+          const ordered=Array.isArray(settings.model_order)?settings.model_order:[];
+          const keys=[...new Set([...ordered,...Object.keys(slots)])].filter(key=>Object.hasOwn(slots,key));
+          const credentialFields=group.credential_fields||[];
+          const modelRows=keys.length?keys.map((key,index)=>'<div class="model-entry" data-lm-entry="'+esc(key)+'"><div class="model-entry-rank">'+(index+1)+'</div><label class="slot-key">模型标识<input type="text" value="'+esc(key)+'" readonly></label><label>Endpoint / 应用 ID<input type="text" data-lm-slot-value value="'+esc(slots[key]||'')+'" required></label><label>显示名称<input type="text" data-lm-name value="'+esc(names[key]||'')+'" placeholder="例如：Seed 2.1 pro"></label></div>').join(''):'<div class="status warn">当前通道尚未登记模型槽位。</div>';
+          const secretRows=credentialFields.map(field=>'<label>凭据 '+esc(field.field)+(field.present?' · 已保存 ***********':' · 未保存')+'<input type="password" data-lm-secret="'+esc(field.field)+'" autocomplete="new-password" placeholder="'+(field.present?'***********（已保存，留空保留）':'请输入后保存')+'"></label>').join('');
+          return '<article class="language-model-card" data-lm-channel="'+esc(channel)+'"><div class="language-model-card-head"><div><h4>'+esc(group.provider)+'</h4><p>'+esc(channel)+' · '+esc(group.business_entrypoint||'未登记')+'</p></div><span class="badge">'+esc(stateNames[group.connection_status]||group.connection_status)+'</span></div><div class="language-model-settings"><label class="field full">服务地址 endpoint<input type="url" data-lm-setting="endpoint" value="'+esc(settings.endpoint||'')+'" required><small>保留当前供应商协议地址；不会自动改写请求路径。</small></label><label class="field">切换策略<input type="text" data-lm-setting="strategy" value="'+esc(settings.strategy||'primary_then_backup')+'"></label><label class="field">尝试次数<input type="number" min="0" max="10" step="1" data-lm-setting="max_attempts" value="'+esc(settings.max_attempts??3)+'"></label><label class="field">超时（秒）<input type="number" min="3" max="3600" step="1" data-lm-setting="timeout_seconds" value="'+esc(settings.timeout_seconds??120)+'"></label>'+secretRows+'</div><div class="model-slots"><div class="model-slots-title"><span>模型值</span><span>保存后仍按原模型标识调用</span></div>'+modelRows+'</div><div class="language-model-card-actions"><button class="button" type="button" data-lm-test="'+esc(channel)+'">只读验证连接</button><small>验证已保存配置，不启动生成任务。</small></div></article>';
+        }).join('');
+        $('languageModelRows').innerHTML=rows||'<div class="status warn">暂无已登记的语言模型通道。</div>';
+      }
+      function collectLanguageModelPayload(card) {
+        const channel=card.dataset.lmChannel,group=snapshot.groups.find(item=>item.channel_id===channel),original=group.settings||{},settings={...original},secrets={};
+        const readSetting=(name)=>card.querySelector('[data-lm-setting="'+name+'"]');
+        ['endpoint','strategy'].forEach(name=>{const field=readSetting(name);if(field&&field.value.trim())settings[name]=field.value.trim()});
+        ['max_attempts','timeout_seconds'].forEach(name=>{const field=readSetting(name);if(field&&field.value!=='')settings[name]=Number(field.value)});
+        const modelSlots={},modelNames={},modelOrder=[];
+        card.querySelectorAll('[data-lm-entry]').forEach(entry=>{const key=entry.dataset.lmEntry,value=entry.querySelector('[data-lm-slot-value]').value.trim(),name=entry.querySelector('[data-lm-name]').value.trim();if(!value)throw new Error(channel+' 的模型值不能为空：'+key);modelSlots[key]=value;modelNames[key]=name;modelOrder.push(key)});
+        if(!modelOrder.length)throw new Error(channel+' 尚未登记模型值');
+        if(!Object.hasOwn(original,'model_slots')&&Object.hasOwn(original,'primary_model')){settings.primary_model=modelSlots.primary_model||Object.values(modelSlots)[0];delete settings.model_slots;delete settings.model_names;delete settings.model_order}else{settings.model_slots=modelSlots;settings.model_names=modelNames;settings.model_order=modelOrder}
+        card.querySelectorAll('[data-lm-secret]').forEach(field=>{if(field.value)secrets[field.dataset.lmSecret]=field.dataset.lmSecret==='extra_api_keys'?field.value.split(',').map(value=>value.trim()).filter(Boolean):field.value});
+        return {group_id:channel,channel_id:channel,settings,secrets};
+      }
+      async function testLanguageModel(channel, button) {
+        button.disabled=true;
+        try {
+          const data=await api('/api/api-management/test-connection',jsonInit({confirm:'safe-readonly-connection',channels:[channel]}));
+          const result=(data.results||[])[0]||{};
+          await load();
+          setStatus(resultMessage(result),result.connection_status==='verified'?'ok':'warn');
+        } catch(error) {
+          setStatus(error.message,'error');
+        } finally {
+          button.disabled=false;
+        }
+      }
+      function renderVoiceClone(groups) {
+        const tts=groups.find(group=>group.channel_id==='tts')||{};
+        const credential=stateNames[tts.credential_status]||tts.credential_status||'missing';
+        const connection=stateNames[tts.connection_status]||tts.connection_status||'not_tested';
+        $('voiceCloneStatus').innerHTML='<h4>语音复刻凭据状态</h4><p>凭据：'+esc(credential)+'（复用 TTS 主凭据）</p><p>TTS 主接口连接：'+esc(connection)+'；TTS 主接口鉴权：'+esc(authConclusion(tts))+'</p><p>'+esc(verificationDescription(tts))+'</p><p>语音复刻接口未单独验证；这里只显示共用凭据状态，不会保存第二份密钥或执行复刻。</p>';
+      }
+      function renderProviderStatuses(groups,categoryId) {
+        if(categoryId==='voice-clone'){
+          const tts=groups.find(group=>group.channel_id==='tts')||{};
+          const credential=stateNames[tts.credential_status]||tts.credential_status||'missing';
+          $('providers').innerHTML='<article class="provider"><div class="provider-head"><h4>语音复刻（复用 TTS）</h4><span class="badge">'+esc(credential)+'</span></div><dl class="facts"><div class="fact"><dt>凭据来源</dt><dd>tts.primary_api_key</dd></div><div class="fact"><dt>TTS 主接口鉴权</dt><dd>'+esc(authConclusion(tts))+'</dd></div><div class="fact"><dt>验证说明</dt><dd>'+esc(verificationDescription(tts))+'</dd></div><div class="fact"><dt>复刻接口</dt><dd>未单独验证</dd></div></dl></article>';
+          return;
+        }
+        const members=categoryGroups(groups,categoryId);
+        $('providers').innerHTML=members.map(group=>{
+          const current=categoryId==='language-model'||group.channel_id===selected;
+          const credential=group.channel_id==='sound-effect'&&group.credential_source==='tts.primary_api_key'?'复用 TTS 主 Key':stateNames[group.credential_status]||group.credential_status;
+          return '<article class="provider'+(current?' current':'')+'" data-channel-id="'+esc(group.channel_id)+'" role="button" tabindex="0" aria-pressed="'+String(current)+'" aria-label="'+esc(isLanguageModel(group.channel_id)?'打开大语言模型统一设置':'切换到 '+group.provider)+'"><div class="provider-head"><h4>'+esc(group.provider)+'</h4><span class="badge">'+esc(stateNames[group.connection_status]||group.connection_status)+'</span></div><dl class="facts">'+[['凭据状态',credential],['业务模块',stateNames[group.business_status]||group.business_status],['鉴权结论',authConclusion(group)],['验证说明',verificationDescription(group)]].map(([label,value])=>'<div class="fact"><dt>'+esc(label)+'</dt><dd>'+esc(value)+'</dd></div>').join('')+'</dl></article>';
+        }).join('')||'<div class="status warn">当前分类没有已登记服务。</div>';
+      }
+      function render(data) {
+        snapshot=data;
+        const groups=data.groups||[];
+        const activeGroups=groups.filter(item=>!legacyChannelIds.has(baseChannel(item.channel_id)));
+        let categoryId=selectedCategory(activeGroups);
+        if(!categories.some(category=>category.id===categoryId)){selected='language-model';categoryId='language-model'}
+        const languageView=categoryId==='language-model',voiceCloneView=categoryId==='voice-clone';
+        const group=activeGroups.find(item=>item.channel_id===selected);
+        $('summary').innerHTML=[['配置分类',categories.length],['活动服务通道',activeGroups.length],['凭据已配置',activeGroups.filter(item=>item.credential_status==='configured').length],['鉴权已验证',activeGroups.filter(item=>item.auth_verified).length]].map(([label,n])=>'<div class="metric"><span>'+label+'</span><strong>'+esc(n)+'</strong></div>').join('');
+        renderCategoryTabs(activeGroups,categoryId);
+        renderServiceSelector(activeGroups);
+        $('groupId').value=group?group.channel_id:'';
+        $('languageModelPanel').hidden=!languageView;
+        $('voiceClonePanel').hidden=!voiceCloneView;
+        $('configGrid').hidden=languageView||voiceCloneView||!group;
+        if(languageView)renderLanguageModels(activeGroups);
+        if(voiceCloneView)renderVoiceClone(activeGroups);
+        renderProviderStatuses(activeGroups,categoryId);
+        if(languageView||voiceCloneView||!group)return;
+         const settings=group.settings||{},base=baseChannel(selected),fields=serviceFields[base]||[];
+         $('endpoint').parentElement.querySelector('small').textContent=base==='tikhub'?'官方推荐：https://api.tikhub.io；只填写服务根地址':'HTTP(S) 服务地址';
+         $('apiKey').closest('.field').querySelector('small').textContent=base==='tikhub'?'只填纯 Token，不要包含 Bearer；请求时程序自动添加 Authorization。':base==='sound-effect'?'音效专用 Key 可选；留空时复用 TTS 主 Key。':'前端只显示脱敏状态；空值不会清除已保存凭据。';
+        $('endpoint').value=settings.endpoint||'';$('endpoint').readOnly=['tts','sound-effect'].includes(base)&&!!settings.endpoint;
+        $('endpoint').required=false;
+        $('timeout').value=settings.timeout_seconds??(base==='tikhub'?25:'');$('timeout').max=base==='tikhub'?120:3600;$('timeout').required=base==='tikhub';$('retries').value=settings.max_retries??1;
+        $('timeout').closest('.field').hidden=base!=='tikhub'&&!fields.includes('timeout_seconds')&&!Object.hasOwn(settings,'timeout_seconds');$('retries').closest('.field').hidden=base!=='tikhub';
+        const credentialFields=group.credential_fields||[],primaryCredential=credentialFields.find(f=>f.field==='primary_api_key'),primaryField=$('apiKey').closest('.field');
+        primaryField.querySelector('label').textContent=primaryCredential?.present?'主凭据 primary_api_key · 已保存 ***********':base==='sound-effect'?'音效专用 Key（可选）':'主凭据 primary_api_key';
+        $('apiKey').value='';$('apiKey').placeholder=primaryCredential?.present?'***********（已保存，留空保留）':base==='sound-effect'&&group.credential_source==='tts.primary_api_key'?'当前复用 TTS 主 Key；留空继续复用':'请输入后保存';primaryField.hidden=!primaryCredential;
+        let additional=$('additionalFields');if(!additional){additional=document.createElement('div');additional.id='additionalFields';additional.className='field full';$('form').querySelector('.form-grid').append(additional)}
+        const names={primary_model:'主模型 / 应用 ID',backup_model:'备用模型',region:'区域',strategy:'切换策略',max_attempts:'尝试次数',quality:'图像质量',model_slots:'模型与应用配置',model_names:'模型名称',model_order:'模型顺序',primary_access_key:'主 Access Key',primary_secret_key:'主 Secret Key',backup_access_key:'备用 Access Key',backup_secret_key:'备用 Secret Key',backup_api_key:'备用 API Key',extra_api_keys:'额外 API Key（逗号分隔）'};
+        additional.innerHTML=[...new Set([...fields,...Object.keys(settings)])].filter(k=>!['endpoint','timeout_seconds','max_retries'].includes(k)).map(k=>{
+          const v=settings[k],id='setting-'+k,label=k==='enabled'?'启用':k==='primary_model'&&base==='digital-human'?'RunningHub 应用 ID':k==='primary_model'&&base==='audio-storage'?'TOS 存储桶':names[k]||k;
+          const attrs=' id="'+esc(id)+'" data-setting="'+esc(k)+'"';
+          let control;
+          if(k==='enabled')control='<input type="checkbox"'+attrs+(v?' checked':'')+'>';
+          else if(k==='max_attempts')control='<input type="number" min="0" max="10" step="1"'+attrs+' value="'+esc(v??'')+'">';
+          else if(typeof v==='object')control='<textarea'+attrs+' data-json="1">'+esc(JSON.stringify(v,null,2))+'</textarea>';
+          else control='<input type="text"'+attrs+' value="'+esc(v??'')+'" '+(['tts','sound-effect'].includes(base)&&k==='primary_model'?'readonly':'')+'>';
+          return '<div class="field"><label for="'+esc(id)+'">'+esc(label)+'</label>'+control+'</div>';
+        }).join('')+credentialFields.filter(f=>f.field!=='primary_api_key').map(f=>'<div class="field"><label>'+esc(names[f.field]||f.field)+' · '+(f.present?'已存在 ***********':'未保存')+'</label><input type="password" data-secret="'+esc(f.field)+'" autocomplete="new-password" placeholder="'+(f.present?'***********（已保存，留空保留）':'请输入后保存')+'"></div>').join('');
+        $('connection').innerHTML='<h4>连接状态</h4><p>连接：'+esc(stateNames[group.connection_status]||group.connection_status)+'；凭据：'+esc(stateNames[group.credential_status]||group.credential_status)+'；鉴权结论：'+esc(authConclusion(group))+(group.credential_source==='tts.primary_api_key'?'（使用 TTS 主 Key）':'')+'</p>'+(group.verification_http_status?'<p>HTTP '+esc(group.verification_http_status)+(group.verification_evidence?'；'+esc(group.verification_evidence):'')+'</p>':'')+'<p>验证说明：'+esc(verificationDescription(group))+'</p>';
+        document.querySelector('.config-grid article h3').textContent=group.provider;
+        document.querySelector('.config-grid article p').textContent='';
+        document.querySelector('.config-grid aside').innerHTML='<h3>当前服务</h3><dl class="facts"><div class="fact"><dt>业务模块</dt><dd>'+esc(stateNames[group.business_status]||group.business_status)+'</dd></div><div class="fact"><dt>业务入口</dt><dd class="code">'+esc(group.business_entrypoint||'未登记')+'</dd></div><div class="fact"><dt>鉴权类型</dt><dd>'+esc(group.auth_mode==='not_applicable'?'不适用':group.auth_mode)+'</dd></div><div class="fact"><dt>连接状态</dt><dd>'+esc(stateNames[group.connection_status]||group.connection_status)+'</dd></div><div class="fact"><dt>凭据存储</dt><dd>'+esc(data.runtime.credential_store)+'</dd></div></dl>'+(group.migration_conflicts||[]).map(c=>'<div class="status warn">冲突字段：'+esc(c.field)+'；来源 ********，目标 ********；已保留目标值。</div>').join('');
+      }
       async function load() { setStatus('正在读取 API 配置。', 'pending'); try { const data = await api('/api/api-management'); render(data); setStatus('配置读取完成；未执行供应商请求。', 'ok'); } catch (error) { setStatus(error.message, 'error'); } }
-      $('refresh').addEventListener('click', load); $('form').addEventListener('submit', async (event) => { event.preventDefault(); setStatus('正在保存配置。', 'pending'); try { const data = await api('/api/api-management/config', jsonInit({ group_id: 'tikhub', channel_id: 'tikhub', settings: { endpoint: $('endpoint').value, timeout_seconds: $('timeout').value, max_retries: $('retries').value }, secrets: { primary_api_key: $('apiKey').value } })); render(data); setStatus('配置已保存；保存没有触发外部请求。', 'ok'); } catch (error) { setStatus(error.message, 'error'); } }); $('test').addEventListener('click', async () => { setStatus('连接测试保持 deferred，未发送外部请求。', 'pending'); try { const data = await api('/api/api-management/auth-verify', jsonInit({ confirm: 'controlled-auth-verification', channels: ['tikhub'] })); $('connection').innerHTML = '<h4>连接状态</h4><p>' + esc(data.message || '连接测试未执行') + '</p><p>executed：' + esc(data.executed) + ' · auth_verified：' + esc(data.auth_verified) + '</p>'; setStatus('连接测试结果已返回，状态仍未验证。', 'warn'); } catch (error) { setStatus(error.message, 'error'); } }); load();
+      function chooseProvider(channelId) {
+        if(!snapshot)return;
+        if(channelId==='language-model'||isLanguageModel(channelId)){selected='language-model';render(snapshot);return}
+        if(channelId==='voice-clone'){selected='voice-clone';render(snapshot);return}
+        if(!snapshot.groups.some(group=>group.channel_id===channelId)||legacyChannelIds.has(baseChannel(channelId)))return;
+        selected=channelId;
+        render(snapshot);
+        Array.from(document.querySelectorAll('#providers .provider')).find(card=>card.dataset.channelId===selected)?.focus({preventScroll:true});
+      }
+      function chooseCategory(categoryId) {
+        if(!snapshot||!categories.some(category=>category.id===categoryId))return;
+        if(categoryId==='language-model'||categoryId==='voice-clone')selected=categoryId;
+        else {
+          const members=categoryGroups(snapshot.groups||[],categoryId);
+          if(!members.some(group=>group.channel_id===selected))selected=members[0]?.channel_id||'language-model';
+        }
+        render(snapshot);
+      }
+      $('refresh').addEventListener('click',load);
+      $('provider').addEventListener('change',()=>chooseProvider($('provider').value));
+      $('categoryTabs').addEventListener('click',event=>{const tab=event.target.closest('[data-category-id]');if(tab)chooseCategory(tab.dataset.categoryId)});
+      $('categoryTabs').addEventListener('keydown',event=>{
+        if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+        const tabs=Array.from(document.querySelectorAll('#categoryTabs [data-category-id]'));
+        const current=tabs.findIndex(tab=>tab.dataset.categoryId===selectedCategory(snapshot?.groups||[]));
+        const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:(current+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
+        event.preventDefault();
+        chooseCategory(tabs[next].dataset.categoryId);
+        document.getElementById('category-tab-'+tabs[next].dataset.categoryId)?.focus({preventScroll:true});
+      });
+      $('openTtsSettings').addEventListener('click',()=>chooseProvider('tts'));
+      $('languageModelRows').addEventListener('click',event=>{const button=event.target.closest('[data-lm-test]');if(button)testLanguageModel(button.dataset.lmTest,button)});
+      $('providers').addEventListener('click',event=>{const card=event.target.closest('[data-channel-id]');if(card)chooseProvider(card.dataset.channelId)});
+      $('providers').addEventListener('keydown',event=>{if(event.key!=='Enter'&&event.key!==' ')return;const card=event.target.closest('[data-channel-id]');if(card){event.preventDefault();chooseProvider(card.dataset.channelId)}});
+      $('saveLanguageModels').addEventListener('click',async()=>{
+        if(!snapshot)return;
+        const button=$('saveLanguageModels'),cards=Array.from(document.querySelectorAll('[data-lm-channel]'));let saved=0;
+        button.disabled=true;$('languageModelStatus').innerHTML='<h4>语言模型配置状态</h4><p>正在保存。</p>';
+        try{for(const card of cards){await api('/api/api-management/config',jsonInit(collectLanguageModelPayload(card)));saved+=1}await load();selected='language-model';render(snapshot);$('languageModelStatus').innerHTML='<h4>语言模型配置状态</h4><p>已保存 '+saved+' 个语言模型通道；连接未验证。</p>'}catch(error){$('languageModelStatus').innerHTML='<h4>语言模型配置状态</h4><p>已保存 '+saved+' 个通道；'+esc(error.message)+'</p>';setStatus(error.message,'error')}finally{button.disabled=false}
+      });
+      $('form').addEventListener('submit',async event=>{
+        event.preventDefault();setStatus('正在保存配置。','pending');
+        try{
+          const group=snapshot.groups.find(g=>g.channel_id===selected),settings={...group.settings},secrets={};
+          settings.endpoint=$('endpoint').value;
+          if(!$('timeout').closest('.field').hidden)settings.timeout_seconds=$('timeout').value;
+          if(selected==='tikhub')settings.max_retries=$('retries').value;
+          if(!$('apiKey').closest('.field').hidden&&$('apiKey').value)secrets.primary_api_key=$('apiKey').value;
+          document.querySelectorAll('[data-setting]').forEach(el=>{
+            if(el.type==='checkbox')settings[el.dataset.setting]=el.checked;
+            else if(el.value!=='')settings[el.dataset.setting]=el.dataset.json==='1'?JSON.parse(el.value):el.type==='number'?Number(el.value):el.value;
+          });
+          document.querySelectorAll('[data-secret]').forEach(el=>{if(el.value)secrets[el.dataset.secret]=el.dataset.secret==='extra_api_keys'?el.value.split(',').map(v=>v.trim()).filter(Boolean):el.value});
+          const data=await api('/api/api-management/config',jsonInit({group_id:selected,channel_id:selected,settings,secrets}));render(data);setStatus('配置已保存；连接未验证。','ok');
+        }catch(error){setStatus(error.message,'error')}
+      });
+      $('test').addEventListener('click',async()=>{
+        try{const data=await api('/api/api-management/test-connection',jsonInit({confirm:'safe-readonly-connection',channels:[selected]}));const result=(data.results||[])[0]||{};await load();setStatus(resultMessage(result),result.connection_status==='verified'?'ok':'warn')}catch(error){setStatus(error.message,'error')}
+      });
+      load();
     })();
+  </script>
+  <script>
+    document.querySelector('#endpoint')?.setAttribute('placeholder','https://api.tikhub.io');
+    document.querySelector('#test')?.replaceChildren(document.createTextNode('只读验证连接'));
   </script>
 </body>
 </html>
